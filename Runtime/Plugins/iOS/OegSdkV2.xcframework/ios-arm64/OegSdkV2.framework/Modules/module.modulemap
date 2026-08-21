@@ -1,0 +1,4 @@
+framework module OegSdkV2 {
+header "OegSdkV2-Swift.h"
+export *
+}

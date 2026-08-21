@@ -1,0 +1,201 @@
+/* OEG SDK - Vietnamese Localization */
+
+/* Login Screen */
+"oeg_login" = "Đăng nhập";
+"oeg_register" = "Đăng ký";
+"oeg_username" = "Tài khoản";
+"oeg_password" = "Mật khẩu";
+"oeg_forgot_password" = "Quên mật khẩu?";
+"oeg_create_account" = "Tạo tài khoản mới";
+"oeg_has_account" = "Đã có tài khoản?";
+"oeg_or_login_with" = "Hoặc đăng nhập với";
+"oeg_play_now" = "Chơi ngay";
+"oeg_remember_me" = "Ghi nhớ đăng nhập";
+"oeg_password_strength_weak" = "Yếu";
+"oeg_password_strength_medium" = "Khá mạnh";
+"oeg_password_strength_strong" = "Mạnh";
+
+/* Dashboard */
+"oeg_dashboard" = "Bảng điều khiển";
+"oeg_guest" = "Khách";
+"oeg_guest_account" = "Tài khoản khách";
+"oeg_not_set" = "Chưa cập nhật";
+"oeg_update_information" = "Cập nhật thông tin";
+"oeg_change_password" = "Đổi mật khẩu";
+"oeg_test_push" = "Push Notification";
+"oeg_test_iap" = "iAP";
+
+/* Change Password */
+"oeg_current_password" = "Mật khẩu hiện tại";
+"oeg_new_password" = "Mật khẩu mới";
+"oeg_confirm_new_password" = "Xác nhận mật khẩu mới";
+"oeg_confirm" = "Xác nhận";
+"oeg_password_mismatch" = "Mật khẩu xác nhận không khớp";
+"oeg_fill_all_fields" = "Vui lòng nhập đầy đủ thông tin";
+"oeg_password_changed_success" = "Đổi mật khẩu thành công";
+"oeg_password_invalid_length" = "Mật khẩu phải có từ 6 đến 100 ký tự";
+"oeg_username_too_short" = "Tên đăng nhập tối thiểu 6 ký tự";
+"oeg_username_invalid_length" = "Tài khoản phải có độ dài từ 6 đến 12 ký tự";
+"oeg_username_invalid_chars" = "Tên tài khoản chỉ được chứa chữ cái (a-z), chữ số và dấu gạch dưới (_)";
+"oeg_password_too_short" = "Mật khẩu tối thiểu 6 ký tự";
+"oeg_password_complexity" = "Mật khẩu phải có ít nhất 1 chữ hoa, 1 chữ thường, 1 chữ số và 1 ký tự đặc biệt";
+
+/* Update Profile */
+"oeg_update_profile" = "Cập nhật thông tin";
+"oeg_fullname" = "Họ và tên";
+"oeg_email" = "Email";
+"oeg_phone" = "Số điện thoại";
+"oeg_birthday" = "Ngày sinh (dd/MM/yyyy)";
+"oeg_address" = "Địa chỉ";
+"oeg_id_number" = "Số CMND/CCCD";
+"oeg_update" = "Cập nhật";
+"oeg_update_success" = "Cập nhật thành công";
+
+/* Profile Hub */
+"oeg_account" = "Tài khoản";
+"oeg_logout" = "Đăng xuất";
+"oeg_user" = "Người dùng";
+"oeg_unknown" = "Không xác định";
+"oeg_version" = "Phiên bản";
+
+/* Gender */
+"oeg_gender" = "Giới tính:";
+"oeg_gender_male" = "Nam";
+"oeg_gender_female" = "Nữ";
+"oeg_gender_other" = "Khác";
+
+/* Age Warning */
+"oeg_age_warning" = "CHƠI GAME QUÁ 180 PHÚT MỖI NGÀY SẼ ẢNH HƯỞNG XẤU ĐẾN SỨC KHỎE";
+"oeg_age_restriction_title" = "Giới hạn độ tuổi";
+"oeg_age_restriction_message" = "Bạn phải từ 18 tuổi trở lên để sử dụng dịch vụ này.";
+
+/* Dashboard Sections */
+"oeg_account_section" = "Tài khoản";
+"oeg_services_section" = "Dịch vụ";
+"oeg_danger_zone" = "Khu vực nguy hiểm";
+
+/* Dashboard Actions */
+"oeg_change_language" = "Thay đổi ngôn ngữ";
+"oeg_select_language" = "Chọn ngôn ngữ";
+"oeg_delete_account" = "Xóa tài khoản";
+"oeg_delete_account_confirm" = "Bạn có chắc chắn muốn xóa tài khoản? Hành động này không thể hoàn tác.";
+"oeg_sdk_version" = "Phiên bản SDK";
+
+/* Dashboard Modules */
+"oeg_support_title" = "Hỗ trợ (Báo lỗi)";
+"oeg_giftcode_title" = "Giftcode";
+"oeg_select_function_left" = "Chọn một chức năng bên trái";
+
+/* Email Verification */
+"oeg_verify" = "Xác thực";
+"oeg_check" = "Kiểm tra";
+"oeg_verified" = "Đã xác thực";
+"oeg_email_link_sent_message" = "Kiểm tra và làm theo hướng dẫn trong email để tiến hành xác thực tài khoản";
+
+/* Delete Account Popup */
+"oeg_confirm_delete" = "Xác nhận xoá";
+"oeg_cancel" = "Huỷ";
+
+/* Update Profile Validation */
+"oeg_fill_fullname" = "Vui lòng nhập họ tên";
+"oeg_fill_email" = "Vui lòng nhập email";
+"oeg_invalid_email" = "Email không hợp lệ";
+"oeg_fill_phone" = "Vui lòng nhập số điện thoại";
+"oeg_fill_birthday" = "Vui lòng nhập ngày sinh";
+
+/* Age Restriction */
+"oeg_age_too_young" = "Bạn không đủ tuổi cho phép để tham gia trò chơi.";
+
+/* Error Messages */
+"oeg_login_failed" = "Đăng nhập thất bại. Vui lòng thử lại.";
+"oeg_unexpected_error" = "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.";
+"oeg_username_already_exists" = "Tên tài khoản đã tồn tại. Vui lòng chọn tên khác.";
+"oeg_incorrect_credentials" = "Tên đăng nhập hoặc mật khẩu không đúng.";
+"oeg_network_error" = "Không thể kết nối. Vui lòng kiểm tra kết nối mạng.";
+"oeg_server_unavailable" = "Máy chủ tạm thời không khả dụng. Vui lòng thử lại sau.";
+"oeg_too_many_attempts" = "Quá nhiều lần thử. Vui lòng đợi một chút.";
+"oeg_service_not_ready" = "Dịch vụ chưa sẵn sàng. Vui lòng khởi động lại ứng dụng.";
+"oeg_operation_cancelled" = "Đã hủy thao tác.";
+"oeg_otp_send_failed" = "Gửi mã OTP thất bại. Vui lòng thử lại.";
+"oeg_deletion_already_pending" = "Tài khoản của bạn đã có yêu cầu xóa đang chờ xử lý.";
+"oeg_deletion_guest_not_allowed" = "Tài khoản khách không thể yêu cầu xóa tài khoản.";
+
+/* Labels */
+"oeg_user_id_label" = "ID: %@";
+
+/* Forgot Password */
+"oeg_forgot_password_desc" = "Nhập địa chỉ email của bạn và chúng tôi sẽ gửi liên kết đặt lại mật khẩu.";
+"oeg_forgot_password_success" = "Liên kết đặt lại mật khẩu đã được gửi đến email của bạn.";
+"oeg_forgot_password_check_inbox" = "Vui lòng kiểm tra hộp thư đến và làm theo hướng dẫn.";
+"oeg_send_reset_link" = "Gửi liên kết đặt lại";
+
+/* General */
+"oeg_notification" = "Thông báo";
+"oeg_ok" = "Đồng ý";
+
+/* Session */
+"oeg_session_expired_message" = "Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.";
+
+/* Terms */
+"oeg_terms_agree_prefix" = "Tôi đã đọc và đồng ý với ";
+"oeg_terms_of_service" = "Điều khoản sử dụng dịch vụ và Chính sách bảo vệ dữ liệu cá nhân (mục đích xử lý dữ liệu cơ bản)";
+"oeg_privacy_optional_prefix" = "Tôi đồng ý với ";
+"oeg_privacy_optional_policy" = "Chính sách bảo vệ dữ liệu cá nhân (mục đích xử lý dữ liệu tuỳ chọn)";
+"oeg_consent_master" = "Tôi đã đọc và đồng ý với các điều khoản";
+
+/* Email Verification Alert */
+"oeg_email_verify_title" = "Xác thực email";
+
+/* OTP Verify Screen */
+"oeg_verify_email_title" = "Xác minh Email";
+"oeg_verify_otp_title" = "Xác minh OTP";
+"oeg_verify_email_desc" = "Nhập mã xác thực đã được gửi đến địa chỉ email của bạn.";
+"oeg_verify_phone_desc" = "Nhập mã xác thực đã được gửi đến số điện thoại của bạn.";
+"oeg_send_otp" = "Gửi mã OTP";
+"oeg_verify_success" = "Xác minh thành công!";
+"oeg_resend_code" = "Gửi lại mã";
+"oeg_otp_countdown" = "Bạn chưa có mã xác thực? Gửi lại sau %ds";
+
+/* Maintain Popup */
+"oeg_maintain_refresh" = "Làm mới";
+"oeg_maintain_go_website" = "Đến Website";
+"oeg_maintain_checking" = "Đang kiểm tra...";
+"oeg_maintain_start_in" = "Hệ thống sẽ bảo trì sau %@";
+
+/* Force Update Popup */
+"oeg_force_update_message" = "Đã có phiên bản mới (%@). Vui lòng cập nhật để tiếp tục chơi.";
+"oeg_force_update_now" = "Cập nhật ngay";
+"oeg_force_update_continue_old" = "Tiếp tục dùng bản cũ";
+"oeg_bubble_hide_title" = "Ẩn Floating Button?";
+"oeg_bubble_hide_checkbox" = "Không hiển thị lại trong lần đăng nhập này";
+"oeg_bubble_hide_note" = "Nếu không chọn, nút sẽ tự hiện lại sau 10 phút.";
+"oeg_bubble_hide_confirm" = "Ẩn";
+"oeg_bubble_hide_cancel" = "Hủy";
+"oeg_time_minutes" = "%d phút";
+"oeg_time_seconds" = "%d giây";
+
+/* Link Account */
+"oeg_link_account" = "Liên kết tài khoản";
+"oeg_link_account_iap_warning" = "Bạn đang sử dụng tài khoản chơi ngay và chưa liên kết, có rủi ro mất thông tin tài khoản, đề nghị tiến hành liên kết tài khoản OEG ID, tiếp tục?";
+"oeg_link_account_guest_prompt" = "Bạn có muốn liên kết tài khoản khách với tài khoản OEG?";
+"oeg_link" = "Liên kết";
+"oeg_skip" = "Bỏ qua";
+"oeg_continue_payment" = "Tiếp tục thanh toán";
+
+/* Update Profile Results */
+"oeg_update_success_pw_error" = "Cập nhật thành công nhưng lỗi mật khẩu: %@";
+"oeg_email_verified_success" = "Email đã được xác thực.";
+"oeg_phone_verified_success" = "Số điện thoại đã được xác thực.";
+
+/* Guest Account Deletion */
+"oeg_delete_guest_title" = "Xoá tài khoản khách";
+"oeg_delete_guest_message" = "Bạn có chắc chắn muốn xoá tài khoản khách? Tài khoản sẽ bị xoá ngay lập tức.";
+"oeg_delete" = "Xoá";
+
+/* Deletion Popup */
+"oeg_delete_account_warning_title" = "Xoá tài khoản";
+"oeg_delete_account_final_title" = "Xác nhận xoá tài khoản";
+"oeg_delete_account_final_message" = "Bạn có chắc chắn muốn xóa tài khoản? Toàn bộ dữ liệu sẽ bị xóa sau 30 ngày.";
+"oeg_pending_deletion_title" = "Tài khoản đang chờ xoá";
+"oeg_pending_deletion_message" = "Tài khoản của bạn sẽ bị xoá vào ngày %@. Tiếp tục sẽ huỷ yêu cầu xoá.";
+"oeg_continue_cancel_deletion" = "Tiếp tục & Huỷ xoá";

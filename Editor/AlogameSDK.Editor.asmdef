@@ -1,0 +1,18 @@
+{
+    "name": "AlogameSDK.Editor",
+    "rootNamespace": "Alogame.SDK.Editor",
+    "references": [
+        "AlogameSDK"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,93 @@
+/* OEG SDK - Chinese Simplified Localization */
+
+/* Login Screen */
+"oeg_login" = "登录";
+"oeg_register" = "注册";
+"oeg_username" = "用户名";
+"oeg_password" = "密码";
+"oeg_forgot_password" = "忘记密码？";
+"oeg_create_account" = "创建新账号";
+"oeg_has_account" = "已有账号？";
+"oeg_or_login_with" = "或使用以下方式登录";
+"oeg_play_now" = "立即体验";
+"oeg_remember_me" = "记住我";
+"oeg_password_strength_weak" = "弱";
+"oeg_password_strength_medium" = "一般";
+"oeg_password_strength_strong" = "强";
+
+/* Dashboard */
+"oeg_dashboard" = "控制面板";
+"oeg_guest" = "游客";
+"oeg_guest_account" = "游客账号";
+"oeg_not_set" = "未设置";
+"oeg_update_information" = "更新信息";
+"oeg_change_password" = "修改密码";
+"oeg_test_push" = "推送通知";
+"oeg_test_iap" = "内购";
+
+/* Change Password */
+"oeg_current_password" = "当前密码";
+"oeg_new_password" = "新密码";
+"oeg_confirm_new_password" = "确认新密码";
+"oeg_confirm" = "确认";
+"oeg_password_mismatch" = "两次密码输入不一致";
+"oeg_fill_all_fields" = "请填写所有字段";
+"oeg_password_changed_success" = "密码修改成功";
+"oeg_password_invalid_length" = "密码长度需为6到100个字符";
+"oeg_username_too_short" = "用户名至少需要6个字符";
+"oeg_username_invalid_length" = "用户名长度必须在6到12个字符之间";
+"oeg_password_too_short" = "密码至少需要6个字符";
+"oeg_password_complexity" = "密码必须包含至少1个大写字母、1个小写字母、1个数字和1个特殊字符";
+
+/* Update Profile */
+"oeg_update_profile" = "更新个人信息";
+"oeg_fullname" = "姓名";
+"oeg_email" = "电子邮箱";
+"oeg_phone" = "手机号码";
+"oeg_birthday" = "生日 (dd/MM/yyyy)";
+"oeg_address" = "地址";
+"oeg_id_number" = "身份证号";
+"oeg_update" = "更新";
+"oeg_update_success" = "更新成功";
+
+/* Profile Hub */
+"oeg_account" = "账户";
+"oeg_logout" = "退出登录";
+"oeg_user" = "用户";
+"oeg_unknown" = "未知";
+"oeg_version" = "版本";
+
+/* Gender */
+"oeg_gender" = "性别:";
+"oeg_gender_male" = "男";
+"oeg_gender_female" = "女";
+"oeg_gender_other" = "其他";
+
+/* Age Warning */
+"oeg_age_warning" = "每天玩游戏超过180分钟有害健康";
+"oeg_age_restriction_title" = "年龄限制";
+"oeg_age_restriction_message" = "您必须年满18岁才能使用此服务。";
+
+/* Dashboard Sections */
+"oeg_account_section" = "账户";
+"oeg_services_section" = "服务";
+"oeg_danger_zone" = "危险操作";
+
+/* Dashboard Actions */
+"oeg_change_language" = "更改语言";
+"oeg_select_language" = "选择语言";
+"oeg_delete_account" = "删除账户";
+"oeg_delete_account_confirm" = "您确定要删除您的账户吗？此操作无法撤销。";
+"oeg_sdk_version" = "SDK 版本";
+
+/* Dashboard Modules */
+"oeg_support_title" = "支持";
+"oeg_giftcode_title" = "礼包码";
+"oeg_select_function_left" = "从左侧选择一个功能";
+
+/* Floating Bubble (drag-to-hide) */
+"oeg_bubble_hide_title" = "隐藏 Floating Button？";
+"oeg_bubble_hide_checkbox" = "本次登录期间不再显示";
+"oeg_bubble_hide_note" = "若不勾选，按钮将在 10 分钟后自动重新显示。";
+"oeg_bubble_hide_confirm" = "隐藏";
+"oeg_bubble_hide_cancel" = "取消";

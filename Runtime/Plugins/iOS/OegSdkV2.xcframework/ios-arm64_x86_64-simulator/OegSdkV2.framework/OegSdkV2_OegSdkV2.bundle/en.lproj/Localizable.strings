@@ -1,0 +1,201 @@
+/* OEG SDK - English Localization */
+
+/* Login Screen */
+"oeg_login" = "Login";
+"oeg_register" = "Register";
+"oeg_username" = "Username";
+"oeg_password" = "Password";
+"oeg_forgot_password" = "Forgot password?";
+"oeg_create_account" = "Create new account";
+"oeg_has_account" = "Already have an account?";
+"oeg_or_login_with" = "Or login with";
+"oeg_play_now" = "Play Now";
+"oeg_remember_me" = "Remember me";
+"oeg_password_strength_weak" = "Weak";
+"oeg_password_strength_medium" = "Fair";
+"oeg_password_strength_strong" = "Strong";
+
+/* Dashboard */
+"oeg_dashboard" = "Dashboard";
+"oeg_guest" = "Guest";
+"oeg_guest_account" = "Guest Account";
+"oeg_not_set" = "Not set";
+"oeg_update_information" = "Update Information";
+"oeg_change_password" = "Change Password";
+"oeg_test_push" = "Push Notification";
+"oeg_test_iap" = "iAP";
+
+/* Change Password */
+"oeg_current_password" = "Current Password";
+"oeg_new_password" = "New Password";
+"oeg_confirm_new_password" = "Confirm New Password";
+"oeg_confirm" = "Confirm";
+"oeg_password_mismatch" = "Passwords do not match";
+"oeg_fill_all_fields" = "Please fill in all fields";
+"oeg_password_changed_success" = "Password changed successfully";
+"oeg_password_invalid_length" = "Password must be 6–100 characters";
+"oeg_username_too_short" = "Username must be at least 6 characters";
+"oeg_username_invalid_length" = "Username must be between 6 and 12 characters";
+"oeg_username_invalid_chars" = "Username can only contain letters (a-z), numbers, and underscore (_)";
+"oeg_password_too_short" = "Password must be at least 6 characters";
+"oeg_password_complexity" = "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character";
+
+/* Update Profile */
+"oeg_update_profile" = "Update Information";
+"oeg_fullname" = "Full Name";
+"oeg_email" = "Email";
+"oeg_phone" = "Phone Number";
+"oeg_birthday" = "Birthday (dd/MM/yyyy)";
+"oeg_address" = "Address";
+"oeg_id_number" = "ID Number";
+"oeg_update" = "Update";
+"oeg_update_success" = "Update successful";
+
+/* Profile Hub */
+"oeg_account" = "Account";
+"oeg_logout" = "Logout";
+"oeg_user" = "User";
+"oeg_unknown" = "Unknown";
+"oeg_version" = "Version";
+
+/* Gender */
+"oeg_gender" = "Gender:";
+"oeg_gender_male" = "Male";
+"oeg_gender_female" = "Female";
+"oeg_gender_other" = "Other";
+
+/* Age Warning */
+"oeg_age_warning" = "PLAYING GAMES FOR MORE THAN 180 MINUTES PER DAY IS BAD FOR YOUR HEALTH";
+"oeg_age_restriction_title" = "Age Restriction";
+"oeg_age_restriction_message" = "You must be at least 18 years old to use this service.";
+
+/* Dashboard Sections */
+"oeg_account_section" = "Account";
+"oeg_services_section" = "Services";
+"oeg_danger_zone" = "Danger Zone";
+
+/* Dashboard Actions */
+"oeg_change_language" = "Change Language";
+"oeg_select_language" = "Select Language";
+"oeg_delete_account" = "Delete Account";
+"oeg_delete_account_confirm" = "Are you sure you want to delete your account? This action cannot be undone.";
+"oeg_sdk_version" = "SDK Version";
+
+/* Dashboard Modules */
+"oeg_support_title" = "Support";
+"oeg_giftcode_title" = "Giftcode";
+"oeg_select_function_left" = "Select a feature from the left";
+
+/* Email Verification */
+"oeg_verify" = "Verify";
+"oeg_check" = "Check";
+"oeg_verified" = "Verified";
+"oeg_email_link_sent_message" = "Check your email and follow the instructions to verify your account";
+
+/* Delete Account Popup */
+"oeg_confirm_delete" = "Confirm Delete";
+"oeg_cancel" = "Cancel";
+
+/* Update Profile Validation */
+"oeg_fill_fullname" = "Please enter full name";
+"oeg_fill_email" = "Please enter email";
+"oeg_invalid_email" = "Invalid email address";
+"oeg_fill_phone" = "Please enter phone number";
+"oeg_fill_birthday" = "Please enter birthday";
+
+/* Age Restriction */
+"oeg_age_too_young" = "You are not old enough to participate in this game.";
+
+/* Error Messages */
+"oeg_login_failed" = "Login failed. Please try again.";
+"oeg_unexpected_error" = "An unexpected error occurred. Please try again.";
+"oeg_username_already_exists" = "Username already exists. Please choose a different username.";
+"oeg_incorrect_credentials" = "Incorrect username or password.";
+"oeg_network_error" = "Unable to connect. Please check your internet connection.";
+"oeg_server_unavailable" = "Server is temporarily unavailable. Please try again later.";
+"oeg_too_many_attempts" = "Too many attempts. Please wait a moment.";
+"oeg_service_not_ready" = "Service not ready. Please restart the app.";
+"oeg_operation_cancelled" = "Operation cancelled.";
+"oeg_otp_send_failed" = "Failed to send OTP. Please try again.";
+"oeg_deletion_already_pending" = "Your account already has a pending deletion request.";
+"oeg_deletion_guest_not_allowed" = "Guest accounts cannot request deletion.";
+
+/* Labels */
+"oeg_user_id_label" = "ID: %@";
+
+/* Forgot Password */
+"oeg_forgot_password_desc" = "Enter your email address and we'll send you a link to reset your password.";
+"oeg_forgot_password_success" = "Password reset link has been sent to your email.";
+"oeg_forgot_password_check_inbox" = "Please check your inbox and follow the instructions.";
+"oeg_send_reset_link" = "Send Reset Link";
+
+/* General */
+"oeg_notification" = "Notification";
+"oeg_ok" = "OK";
+
+/* Session */
+"oeg_session_expired_message" = "Your session has expired. Please log in again.";
+
+/* Terms */
+"oeg_terms_agree_prefix" = "I have read and agree to the ";
+"oeg_terms_of_service" = "Terms of Service and Privacy Policy (basic data processing purposes)";
+"oeg_privacy_optional_prefix" = "I agree to the ";
+"oeg_privacy_optional_policy" = "Privacy Policy (optional data processing purposes)";
+"oeg_consent_master" = "I have read and agree to the terms";
+
+/* Email Verification Alert */
+"oeg_email_verify_title" = "Email Verification";
+
+/* OTP Verify Screen */
+"oeg_verify_email_title" = "Verify Email";
+"oeg_verify_otp_title" = "Verify OTP";
+"oeg_verify_email_desc" = "Enter the verification code sent to your email address.";
+"oeg_verify_phone_desc" = "Enter the verification code sent to your phone number.";
+"oeg_send_otp" = "Send OTP Code";
+"oeg_verify_success" = "Verification successful!";
+"oeg_resend_code" = "Resend code";
+"oeg_otp_countdown" = "Haven't received a code? Resend in %ds";
+
+/* Maintain Popup */
+"oeg_maintain_refresh" = "Refresh";
+"oeg_maintain_go_website" = "Go to Website";
+"oeg_maintain_checking" = "Checking...";
+"oeg_maintain_start_in" = "Maintenance will start in %@";
+
+/* Force Update Popup */
+"oeg_force_update_message" = "A new version (%@) is available. Please update to continue playing.";
+"oeg_force_update_now" = "Update now";
+"oeg_force_update_continue_old" = "Continue with old version";
+"oeg_bubble_hide_title" = "Hide Floating Button?";
+"oeg_bubble_hide_checkbox" = "Don't show again during this login session";
+"oeg_bubble_hide_note" = "If unchecked, it will reappear after 10 minutes.";
+"oeg_bubble_hide_confirm" = "Hide";
+"oeg_bubble_hide_cancel" = "Cancel";
+"oeg_time_minutes" = "%d min";
+"oeg_time_seconds" = "%d sec";
+
+/* Link Account */
+"oeg_link_account" = "Link Account";
+"oeg_link_account_iap_warning" = "You are using a guest account and have not linked it yet. There is a risk of losing account information. Please link your OEG ID account to continue.";
+"oeg_link_account_guest_prompt" = "Do you want to link your guest account with an OEG account?";
+"oeg_link" = "Link";
+"oeg_skip" = "Skip";
+"oeg_continue_payment" = "Continue Payment";
+
+/* Update Profile Results */
+"oeg_update_success_pw_error" = "Update successful but password error: %@";
+"oeg_email_verified_success" = "Email has been verified.";
+"oeg_phone_verified_success" = "Phone number has been verified.";
+
+/* Guest Account Deletion */
+"oeg_delete_guest_title" = "Delete Guest Account";
+"oeg_delete_guest_message" = "Are you sure you want to delete this guest account? It will be deleted immediately.";
+"oeg_delete" = "Delete";
+
+/* Deletion Popup */
+"oeg_delete_account_warning_title" = "Delete Account";
+"oeg_delete_account_final_title" = "Confirm Account Deletion";
+"oeg_delete_account_final_message" = "Are you sure you want to delete your account? All data will be permanently deleted after 30 days.";
+"oeg_pending_deletion_title" = "Pending Account Deletion";
+"oeg_pending_deletion_message" = "Your account is scheduled for deletion on %@. Continuing will cancel the deletion request.";
+"oeg_continue_cancel_deletion" = "Continue & Cancel Deletion";

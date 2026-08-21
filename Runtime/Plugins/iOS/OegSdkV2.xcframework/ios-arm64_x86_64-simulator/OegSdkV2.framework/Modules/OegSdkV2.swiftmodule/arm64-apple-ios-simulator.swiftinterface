@@ -1,0 +1,1957 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.3.3 effective-5.10 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -module-name OegSdkV2 -package-name ios
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
+import AdjustSdk
+import AppTrackingTransparency
+import AuthenticationServices
+import Combine
+import CoreMotion
+import DeveloperToolsSupport
+import FirebaseAnalytics
+import FirebaseCore
+import Foundation
+import Foundation/*.Bundle*/
+import Foundation/*.ProcessInfo*/
+import Foundation/*.URL*/
+import GoogleSignIn
+import Security
+import StoreKit
+import Swift
+import SwiftUI
+import UIKit
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public enum AccountError : Swift.Error {
+  case alreadyPending
+  case noPendingDeletion
+  case guestNotAllowed
+  case unauthorized
+  case networkError(Swift.String)
+  case serverError(Swift.String)
+  case unknown(Swift.String)
+}
+public protocol AccountManagementRepository {
+  func requestDeletion(token: Swift.String) async throws
+  func cancelDeletion(token: Swift.String) async throws
+  func getAccountStatus(token: Swift.String) async throws -> OegSdkV2.AccountStatus
+}
+public struct AccountStatus {
+  public let status: Swift.String
+  public let scheduledAt: Swift.String?
+  public let daysRemaining: Swift.Int?
+  public init(status: Swift.String, scheduledAt: Swift.String?, daysRemaining: Swift.Int?)
+}
+public enum WarningTextProvider {
+  public static func getWarningPoints(languageCode: Swift.String) -> [Swift.String]
+}
+@_hasMissingDesignatedInitializers @available(macOS 10.15, iOS 13.0, *)
+final public class OEGAccount {
+  public static let shared: OegSdkV2.OEGAccount
+  final public func requestDeletion(callback: @escaping (Swift.Result<Swift.Void, OegSdkV2.AccountError>) -> Swift.Void)
+  final public func cancelDeletion(callback: @escaping (Swift.Result<Swift.Void, OegSdkV2.AccountError>) -> Swift.Void)
+  final public func getAccountStatus(callback: @escaping (Swift.Result<OegSdkV2.AccountStatus, OegSdkV2.AccountError>) -> Swift.Void)
+  @objc deinit
+}
+public protocol AnalyticsTracker : Swift.Sendable {
+  func logEvent(name: Swift.String, parameters: [Swift.String : Swift.String]?)
+  func logPurchase(price: Swift.Double, currency: Swift.String, transactionId: Swift.String?, productId: Swift.String?)
+  func logRevenue(name: Swift.String, revenue: Swift.Double, currency: Swift.String, orderId: Swift.String?, parameters: [Swift.String : Swift.String]?)
+  func setTrackingEnabled(_ enabled: Swift.Bool)
+}
+extension OegSdkV2.AnalyticsTracker {
+  public func logRevenue(name: Swift.String, revenue: Swift.Double, currency: Swift.String, orderId: Swift.String?, parameters: [Swift.String : Swift.String]?)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class OEGAnalytics : ObjectiveC.NSObject {
+  @objc public static let shared: OegSdkV2.OEGAnalytics
+  public func configure(tracker: any OegSdkV2.AnalyticsTracker)
+  @objc public enum Environment : Swift.Int {
+    case sandbox
+    case production
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public func initialize(appToken: Swift.String, environment: OegSdkV2.OEGAnalytics.Environment = .sandbox, eventTokenMap: [Swift.String : Swift.String] = [:])
+  @objc public func logEvent(_ eventNameOrToken: Swift.String, parameters: [Swift.String : Swift.String]? = nil)
+  @objc public func logPurchase(eventToken: Swift.String, price: Swift.Double, currency: Swift.String, transactionId: Swift.String? = nil, productId: Swift.String? = nil, parameters: [Swift.String : Swift.String]? = nil)
+  @objc public func logRevenue(_ eventNameOrToken: Swift.String, revenue: Swift.Double, currency: Swift.String, orderId: Swift.String? = nil, parameters: [Swift.String : Swift.String]? = nil)
+  @objc public func setTrackingEnabled(_ enabled: Swift.Bool)
+  public func isInitialized() -> Swift.Bool
+  public func setEventTokenMapping(_ mapping: [Swift.String : Swift.String])
+  public func onResume()
+  public func onPause()
+  @objc(trackEventToken:parameters:) public func trackEventToken(_ eventToken: Swift.String, parameters: [Swift.String : Swift.String]? = nil)
+  @objc(trackEventToken:revenue:currency:transactionId:parameters:) public func trackEventToken(_ eventToken: Swift.String, revenue: Swift.Double, currency: Swift.String?, transactionId: Swift.String?, parameters: [Swift.String : Swift.String]? = nil)
+  @objc deinit
+}
+final public class AuthDependencyContainer {
+  public init(repository: any OegSdkV2.AuthRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public var loginUseCase: OegSdkV2.LoginUseCase {
+    get
+    set
+  }
+  final public var registerUseCase: OegSdkV2.RegisterUseCase {
+    get
+    set
+  }
+  final public var playNowUseCase: OegSdkV2.PlayNowUseCase {
+    get
+    set
+  }
+  final public var socialLoginUseCase: OegSdkV2.SocialLoginUseCase {
+    get
+    set
+  }
+  final public var mergeAccountUseCase: OegSdkV2.MergeAccountUseCase {
+    get
+    set
+  }
+  final public var fetchUserInfoUseCase: OegSdkV2.FetchUserInfoUseCase {
+    get
+    set
+  }
+  final public var changePasswordUseCase: OegSdkV2.ChangePasswordUseCase {
+    get
+    set
+  }
+  final public var forgotPasswordUseCase: OegSdkV2.ForgotPasswordUseCase {
+    get
+    set
+  }
+  final public var updateProfileUseCase: OegSdkV2.UpdateProfileUseCase {
+    get
+    set
+  }
+  final public var checkVerificationUseCase: OegSdkV2.CheckVerificationUseCase {
+    get
+    set
+  }
+  final public var requestOtpUseCase: OegSdkV2.RequestOtpUseCase {
+    get
+    set
+  }
+  final public var verifyOtpUseCase: OegSdkV2.VerifyOtpUseCase {
+    get
+    set
+  }
+  @objc deinit
+}
+public enum VerificationStatus : Swift.Sendable {
+  case verified
+  case notVerified
+  case error(Swift.Int, Swift.String)
+}
+public enum OtpResult : Swift.Sendable {
+  case success(Swift.Int)
+  case verified
+  case error(Swift.Int, Swift.String)
+}
+extension Foundation.NSNotification.Name {
+  public static let OEGUserDidUpdate: Foundation.Notification.Name
+  public static let OEGUserDidLogout: Foundation.Notification.Name
+}
+public enum OEGError : Swift.Error, Foundation.LocalizedError, Swift.Sendable {
+  case networkError(any Swift.Error)
+  case authFailed(Swift.String)
+  case invalidResponse
+  case decodingError(any Swift.Error)
+  case invalidCredentials
+  case userCancelled
+  case sdkNotInitialized
+  case invalidURL(Swift.String)
+  case httpError(Swift.Int, Swift.String)
+  case missingData(Swift.String)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var formattedCode: Swift.String {
+    get
+  }
+  public var userMessage: Swift.String {
+    get
+  }
+}
+public protocol LoginRepository : Swift.Sendable {
+  var currentUser: OegSdkV2.AuthUser? { get }
+  func login(_ request: OegSdkV2.AuthRequest) async throws -> (OegSdkV2.AuthUser, OegSdkV2.LoginMetadata?)
+  func logout()
+}
+public protocol ProfileRepository : Swift.Sendable {
+  func updateProfile(_ request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthUser
+  func getProfile(_ request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthUser
+}
+public protocol AccountRepository : Swift.Sendable {
+  func forgotPassword(_ request: OegSdkV2.AuthRequest) async throws
+  func changePassword(_ request: OegSdkV2.AuthRequest) async throws
+  func logout(token: Swift.String) async
+  func syncGameRole(token: Swift.String, gameId: Swift.Int, serverId: Swift.String, serverName: Swift.String?, roleId: Swift.String, roleName: Swift.String?, level: Swift.Int?) async
+}
+public protocol VerificationRepository : Swift.Sendable {
+  func checkEmailVerification(_ request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.VerificationStatus
+  func requestOtp(_ request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.OtpResult
+  func verifyOtp(_ request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.OtpResult
+}
+public protocol AuthRepository : OegSdkV2.AccountRepository, OegSdkV2.LoginRepository, OegSdkV2.ProfileRepository, OegSdkV2.VerificationRepository {
+}
+public struct DeviceInfo : Swift.Codable, Swift.Sendable {
+  public let osId: Swift.Int
+  public let deviceId: Swift.String
+  public let sdkId: Swift.String
+  public let gameId: Swift.Int
+  public let packageName: Swift.String
+  public let gameVersion: Swift.String
+  public init(osId: Swift.Int = ApiEndpoints.Platform.iosId, deviceId: Swift.String, sdkId: Swift.String, gameId: Swift.Int, packageName: Swift.String, gameVersion: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct RegisterConsents : Swift.Sendable {
+  public let privacyBasic: Swift.Bool
+  public let privacyOptional: Swift.Bool
+  public init(privacyBasic: Swift.Bool, privacyOptional: Swift.Bool)
+}
+public enum SocialProvider : Swift.String, Swift.Codable, Swift.Sendable {
+  case google
+  case apple
+  case facebook
+  case tiktok
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum AuthRequest : Swift.Sendable {
+  case login(username: Swift.String, password: Swift.String, deviceInfo: OegSdkV2.DeviceInfo)
+  case register(fullname: Swift.String, username: Swift.String, password: Swift.String, consents: OegSdkV2.RegisterConsents, deviceInfo: OegSdkV2.DeviceInfo)
+  case playNow(deviceInfo: OegSdkV2.DeviceInfo)
+  case playNow2(deviceInfo: OegSdkV2.DeviceInfo)
+  case socialLogin(provider: OegSdkV2.SocialProvider, accessToken: Swift.String, authorizationCode: Swift.String?, nonce: Swift.String?, codeVerifier: Swift.String?, deviceInfo: OegSdkV2.DeviceInfo)
+  case merge(uuid: Swift.String, username: Swift.String, password: Swift.String, fullname: Swift.String?, email: Swift.String?, deviceInfo: OegSdkV2.DeviceInfo)
+  case mergeSocial(uuid: Swift.String, provider: OegSdkV2.SocialProvider, accessToken: Swift.String, deviceInfo: OegSdkV2.DeviceInfo)
+  case linkIdPass(token: Swift.String, username: Swift.String, password: Swift.String, fullname: Swift.String?, email: Swift.String?, deviceInfo: OegSdkV2.DeviceInfo)
+  case forgotPassword(email: Swift.String, deviceInfo: OegSdkV2.DeviceInfo)
+  case changePassword(token: Swift.String, oldPass: Swift.String, newPass: Swift.String, deviceInfo: OegSdkV2.DeviceInfo)
+  case updateProfile(token: Swift.String, fullname: Swift.String?, displayName: Swift.String?, email: Swift.String?, phone: Swift.String?, birthday: Swift.String?, gender: Swift.Int?, address: Swift.String?, idNo: Swift.String?, idDate: Swift.String?, idAddress: Swift.String?, country: Swift.String?, province: Swift.String?, avatar: Swift.String?, deviceInfo: OegSdkV2.DeviceInfo)
+  case getProfile(token: Swift.String)
+  case checkEmailVerification(token: Swift.String)
+  case requestEmailOtp(token: Swift.String, deviceInfo: OegSdkV2.DeviceInfo)
+  case requestPhoneOtp(token: Swift.String, phone: Swift.String?, deviceInfo: OegSdkV2.DeviceInfo)
+  case verifyOtp(token: Swift.String, otp: Swift.String, deviceInfo: OegSdkV2.DeviceInfo)
+}
+public enum AuthResult : Swift.Sendable {
+  case success(OegSdkV2.AuthUser, OegSdkV2.LoginMetadata?)
+  case error(Swift.Int, Swift.String)
+  public static func success(_ user: OegSdkV2.AuthUser) -> OegSdkV2.AuthResult
+  public static func from(error: any Swift.Error) -> OegSdkV2.AuthResult
+}
+public struct AuthUser : Swift.Codable, Swift.Equatable, Swift.Sendable {
+  public let userId: Swift.String
+  public let username: Swift.String?
+  public let displayName: Swift.String?
+  public let email: Swift.String?
+  public let avatar: Swift.String?
+  public let phone: Swift.String?
+  public let uuid: Swift.String
+  public let token: Swift.String
+  public let isPlayNow: Swift.Bool
+  public let fullname: Swift.String?
+  public let birthday: Swift.String?
+  public let gender: Swift.Int?
+  public let address: Swift.String?
+  public let idNo: Swift.String?
+  public let idDate: Swift.String?
+  public let idAddress: Swift.String?
+  public let country: Swift.String?
+  public let province: Swift.String?
+  public let emailVerified: Swift.Bool?
+  public let phoneVerified: Swift.Bool?
+  public let accountStatus: Swift.String?
+  public let loginType: OegSdkV2.LoginType
+  public let hasIdPass: Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+  public var isGuest: Swift.Bool {
+    get
+  }
+  public var isSocialLogin: Swift.Bool {
+    get
+  }
+  public var canLinkOegId: Swift.Bool {
+    get
+  }
+  public var isPendingDelete: Swift.Bool {
+    get
+  }
+  public static let empty: OegSdkV2.AuthUser
+  public init(userId: Swift.String, username: Swift.String?, displayName: Swift.String?, email: Swift.String?, avatar: Swift.String?, phone: Swift.String?, uuid: Swift.String, token: Swift.String, isPlayNow: Swift.Bool = false, fullname: Swift.String? = nil, birthday: Swift.String? = nil, gender: Swift.Int? = nil, address: Swift.String? = nil, idNo: Swift.String? = nil, idDate: Swift.String? = nil, idAddress: Swift.String? = nil, country: Swift.String? = nil, province: Swift.String? = nil, emailVerified: Swift.Bool? = nil, phoneVerified: Swift.Bool? = nil, accountStatus: Swift.String? = nil, loginType: OegSdkV2.LoginType = .unknown, hasIdPass: Swift.Bool = false)
+  public static func == (a: OegSdkV2.AuthUser, b: OegSdkV2.AuthUser) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct LoginMetadata : Swift.Sendable {
+  public let accountStatus: Swift.String
+  public let deleteScheduledAt: Swift.String?
+  public let isMaintain: Swift.Bool
+  public let maintainMessage: Swift.String?
+  public let maintainMessageEn: Swift.String?
+  public let maintainRedirectUrl: Swift.String?
+  public let maintainEndTime: Swift.String?
+  public let isNewUser: Swift.Bool
+  public let forceUpdate: OegSdkV2.ForceUpdateInfo?
+  public init(accountStatus: Swift.String, deleteScheduledAt: Swift.String?, isMaintain: Swift.Bool, maintainMessage: Swift.String?, maintainMessageEn: Swift.String? = nil, maintainRedirectUrl: Swift.String?, maintainEndTime: Swift.String? = nil, isNewUser: Swift.Bool = false, forceUpdate: OegSdkV2.ForceUpdateInfo? = nil)
+}
+public enum LoginType : Swift.String, Swift.Codable, Swift.Sendable {
+  case password
+  case playNow
+  case google
+  case facebook
+  case tiktok
+  case apple
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MaintainGuardResult {
+  case proceed
+  case blocked(OegSdkV2.MaintainInfo)
+}
+public enum MaintainGuard {
+  public static func evaluate(_ metadata: OegSdkV2.LoginMetadata) -> OegSdkV2.MaintainGuardResult
+}
+public struct MaintainInfo {
+  public let message: Swift.String?
+  public let messageEn: Swift.String?
+  public let redirectUrl: Swift.String?
+  public let endTime: Foundation.Date?
+  public init(message: Swift.String?, messageEn: Swift.String? = nil, redirectUrl: Swift.String?, endTime: Foundation.Date? = nil)
+}
+extension OegSdkV2.MaintainInfo {
+  public func localizedMessage(preferredLanguage: Swift.String = Locale.current.languageCode ?? "en") -> Swift.String
+}
+public struct OEGGameRole : Swift.Codable, Swift.Equatable, Swift.Sendable {
+  public let serverId: Swift.String
+  public let serverName: Swift.String?
+  public let roleId: Swift.String
+  public let roleName: Swift.String?
+  public let level: Swift.Int?
+  public init(serverId: Swift.String, serverName: Swift.String? = nil, roleId: Swift.String, roleName: Swift.String? = nil, level: Swift.Int? = nil)
+  public static func == (a: OegSdkV2.OEGGameRole, b: OegSdkV2.OEGGameRole) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum PostLoginAction {
+  case showForceUpdatePopup(OegSdkV2.ForceUpdateDecision)
+  case showMaintainPopup(OegSdkV2.MaintainInfo)
+  case showCancellationPopup(scheduledAt: Swift.String)
+  case proceedToLinkAccount
+}
+public struct PostLoginOrchestrator {
+  public init(maintainEvaluator: @escaping (OegSdkV2.LoginMetadata) -> OegSdkV2.MaintainGuardResult = MaintainGuard.evaluate, forceUpdateEvaluator: @escaping (OegSdkV2.LoginMetadata) -> OegSdkV2.ForceUpdateDecision = PostLoginOrchestrator.defaultForceUpdateEvaluator)
+  public func evaluate(_ metadata: OegSdkV2.LoginMetadata?) -> OegSdkV2.PostLoginAction
+  public func evaluateAfterForceUpdate(_ metadata: OegSdkV2.LoginMetadata) -> OegSdkV2.PostLoginAction
+  public static func defaultForceUpdateEvaluator(_ metadata: OegSdkV2.LoginMetadata) -> OegSdkV2.ForceUpdateDecision
+}
+public protocol TokenProvider : Swift.Sendable {
+  var token: Swift.String? { get }
+  var userUUID: Swift.String? { get }
+}
+final public class ChangePasswordUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.AccountRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class CheckVerificationUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.VerificationRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.VerificationStatus
+  @objc deinit
+}
+final public class FetchUserInfoUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.ProfileRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(token: Swift.String) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class ForgotPasswordUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.AccountRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class LoginUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.LoginRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class MergeAccountUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.LoginRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class PlayNowUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.LoginRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class RegisterUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.LoginRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class RequestOtpUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.VerificationRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.OtpResult
+  @objc deinit
+}
+final public class SocialLoginUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.LoginRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class UpdateProfileUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.ProfileRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.AuthResult
+  @objc deinit
+}
+final public class VerifyOtpUseCase : Swift.Sendable {
+  public init(repository: any OegSdkV2.VerificationRepository, logger: OegSdkV2.OEGLogger = .shared)
+  final public func execute(request: OegSdkV2.AuthRequest) async throws -> OegSdkV2.OtpResult
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(macOS 10.15, iOS 13.0, *)
+final public class OEGAuth : OegSdkV2.TokenProvider {
+  public static let shared: OegSdkV2.OEGAuth
+  final public func configure(baseUrl: Swift.String, gameId: Swift.String)
+  final public func initialize(baseURL: Swift.String, gameId: Swift.Int, packageName: Swift.String, gameVersion: Swift.String = "1.0.0")
+  final public var gameRole: OegSdkV2.OEGGameRole? {
+    get
+  }
+  final public func login(username: Swift.String, password: Swift.String, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func register(fullname: Swift.String, username: Swift.String, password: Swift.String, consents: OegSdkV2.RegisterConsents = RegisterConsents(privacyBasic: false, privacyOptional: false), callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func playNow(callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func socialLogin(provider: OegSdkV2.SocialProvider, accessToken: Swift.String, authorizationCode: Swift.String? = nil, nonce: Swift.String? = nil, codeVerifier: Swift.String? = nil, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func merge(uuid: Swift.String, username: Swift.String, password: Swift.String, fullname: Swift.String? = nil, email: Swift.String? = nil, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func mergeSocial(uuid: Swift.String, provider: OegSdkV2.SocialProvider, accessToken: Swift.String, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func linkOegId(username: Swift.String, password: Swift.String, fullname: Swift.String? = nil, email: Swift.String? = nil, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func forgotPassword(email: Swift.String, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func changePassword(oldPass: Swift.String, newPass: Swift.String, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func updateProfile(fullname: Swift.String? = nil, displayName: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, birthday: Swift.String? = nil, gender: Swift.Int? = nil, address: Swift.String? = nil, idNo: Swift.String? = nil, idDate: Swift.String? = nil, idAddress: Swift.String? = nil, country: Swift.String? = nil, province: Swift.String? = nil, avatar: Swift.String? = nil, callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func fetchUserInfo(callback: @escaping (OegSdkV2.AuthResult) -> Swift.Void)
+  final public func checkEmailVerification(callback: @escaping (OegSdkV2.VerificationStatus) -> Swift.Void)
+  final public func requestEmailOtp(callback: @escaping (OegSdkV2.OtpResult) -> Swift.Void)
+  @available(iOS 13.0, macOS 10.15, *)
+  final public func requestPhoneOtp(phone: Swift.String? = nil, callback: @escaping (OegSdkV2.OtpResult) -> Swift.Void)
+  @available(iOS 13.0, macOS 10.15, *)
+  final public func verifyOtp(otp: Swift.String, callback: @escaping (OegSdkV2.OtpResult) -> Swift.Void)
+  final public var currentUser: OegSdkV2.AuthUser? {
+    get
+  }
+  final public func getCurrentUser() -> OegSdkV2.AuthUser?
+  final public var deviceInfoPublic: OegSdkV2.DeviceInfo? {
+    get
+  }
+  final public func getDeviceInfo() -> OegSdkV2.DeviceInfo
+  final public var token: Swift.String? {
+    get
+  }
+  final public var userUUID: Swift.String? {
+    get
+  }
+  final public var isLoggedIn: Swift.Bool {
+    get
+  }
+  final public func shouldMergeAccount() -> Swift.Bool
+  final public func shouldUpdateProfile(requireVerified: Swift.Bool = false) -> Swift.Bool
+  final public func isEmailVerified() -> Swift.Bool
+  final public func isPhoneVerified() -> Swift.Bool
+  final public func needsVerification() -> Swift.Bool
+  final public func getConfig() -> OegSdkV2.SdkConfig?
+  final public func logout(reason: Swift.String = "manual", callback: ((Swift.Bool) -> Swift.Void)? = nil)
+  final public func deleteGuestAccount()
+  @objc deinit
+}
+extension OegSdkV2.OEGAuth {
+  final public func login(username: Swift.String, password: Swift.String) async throws -> OegSdkV2.AuthUser
+  final public func register(fullname: Swift.String, username: Swift.String, password: Swift.String, consents: OegSdkV2.RegisterConsents = RegisterConsents(privacyBasic: false, privacyOptional: false)) async throws -> OegSdkV2.AuthUser
+  final public func playNow() async throws -> OegSdkV2.AuthUser
+  final public func forgotPassword(email: Swift.String) async throws
+  final public func changePassword(oldPass: Swift.String, newPass: Swift.String) async throws
+  final public func updateProfile(fullname: Swift.String? = nil, displayName: Swift.String? = nil, email: Swift.String? = nil, phone: Swift.String? = nil, birthday: Swift.String? = nil, gender: Swift.Int? = nil, address: Swift.String? = nil, idNo: Swift.String? = nil, idDate: Swift.String? = nil, idAddress: Swift.String? = nil, country: Swift.String? = nil, province: Swift.String? = nil, avatar: Swift.String? = nil) async throws -> OegSdkV2.AuthUser
+  final public func fetchUserInfo() async throws -> OegSdkV2.AuthUser
+  final public func checkEmailVerification() async throws -> OegSdkV2.VerificationStatus
+  final public func requestEmailOtp() async throws -> OegSdkV2.OtpResult
+  final public func requestPhoneOtp(phone: Swift.String? = nil) async throws -> OegSdkV2.OtpResult
+  final public func verifyOtp(otp: Swift.String) async throws -> OegSdkV2.OtpResult
+  final public func socialLogin(provider: OegSdkV2.SocialProvider, accessToken: Swift.String, authorizationCode: Swift.String? = nil, nonce: Swift.String? = nil, codeVerifier: Swift.String? = nil) async throws -> OegSdkV2.AuthUser
+  final public func setGameRole(serverId: Swift.String, serverName: Swift.String? = nil, roleId: Swift.String, roleName: Swift.String? = nil, level: Swift.Int? = nil)
+}
+public class SdkIdProvider : @unchecked Swift.Sendable {
+  public init(secureStorage: OegSdkV2.SecureStorage = SecureStorage())
+  public func getPersistentSdkId() -> Swift.String
+  public func resetSdkId()
+  @objc deinit
+}
+@objc public protocol OEGCallback {
+  @objc func onSuccess(payload: Swift.String)
+  @objc func onError(code: Swift.Int, message: Swift.String)
+}
+public enum OEGLogLevel : Swift.Int, Swift.Comparable {
+  case debug
+  case info
+  case warning
+  case error
+  public var description: Swift.String {
+    get
+  }
+  public static func < (lhs: OegSdkV2.OEGLogLevel, rhs: OegSdkV2.OEGLogLevel) -> Swift.Bool
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum OEGLogCategory : Swift.String {
+  case auth
+  case iap
+  case push
+  case tracking
+  case network
+  case general
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class OEGLogger {
+  public static let shared: OegSdkV2.OEGLogger
+  final public var isEnabled: Swift.Bool
+  final public var minimumLogLevel: OegSdkV2.OEGLogLevel
+  final public var enabledCategories: Swift.Set<OegSdkV2.OEGLogCategory>?
+  final public func initSentry(dsn: Swift.String, environment: Swift.String = "production")
+  final public func setUserId(_ userId: Swift.String?)
+  final public func setLogLevel(_ level: OegSdkV2.OEGLogLevel)
+  final public func enable()
+  final public func disable()
+  final public func captureException(_ error: any Swift.Error)
+  final public func captureMessage(_ message: Swift.String, level: OegSdkV2.OEGLogLevel = .error)
+  final public func addBreadcrumb(message: Swift.String, category: OegSdkV2.OEGLogCategory = .general, level: OegSdkV2.OEGLogLevel = .info)
+  final public func enableCategories(_ categories: [OegSdkV2.OEGLogCategory])
+  final public func enableAllCategories()
+  final public func logAuth(event: Swift.String, params: [Swift.String : Any] = [:])
+  final public func logIAP(event: Swift.String, params: [Swift.String : Any] = [:])
+  final public func logPush(event: Swift.String, params: [Swift.String : Any] = [:])
+  final public func logTracking(event: Swift.String, params: [Swift.String : Any] = [:])
+  final public func logNetwork(url: Swift.String, method: Swift.String, statusCode: Swift.Int? = nil, error: (any Swift.Error)? = nil, duration: Foundation.TimeInterval? = nil)
+  final public func logError(_ error: any Swift.Error, context: Swift.String, category: OegSdkV2.OEGLogCategory = .general)
+  final public func debug(_ message: Swift.String, category: OegSdkV2.OEGLogCategory = .general, metadata: [Swift.String : Any] = [:])
+  final public func info(_ message: Swift.String, category: OegSdkV2.OEGLogCategory = .general, metadata: [Swift.String : Any] = [:])
+  final public func warning(_ message: Swift.String, category: OegSdkV2.OEGLogCategory = .general, metadata: [Swift.String : Any] = [:])
+  final public func error(_ message: Swift.String, category: OegSdkV2.OEGLogCategory = .general, metadata: [Swift.String : Any] = [:])
+  @objc deinit
+}
+public enum ApiEndpoints {
+  public enum Auth {
+    public static let v2Login: Swift.String
+    public static let v2LoginSNS: Swift.String
+    public static let login: Swift.String
+    public static let register: Swift.String
+    public static let playNow: Swift.String
+    public static let playNow2: Swift.String
+    public static let socialLogin: Swift.String
+    public static let merge: Swift.String
+    public static let mergeSocial: Swift.String
+    public static let linkIdPass: Swift.String
+    public static let forgotPassword: Swift.String
+  }
+  public enum User {
+    public static let updateProfile: Swift.String
+    public static let v2UserMe: Swift.String
+    public static let changePassword: Swift.String
+    public static let verifyEmailStatus: Swift.String
+    public static let requestEmailOtp: Swift.String
+    public static let requestPhoneOtp: Swift.String
+    public static let verifyOtp: Swift.String
+    public static let v2RequestPhoneOtp: Swift.String
+    public static let v2VerifyPhoneOtp: Swift.String
+    public static let v2GameRole: Swift.String
+  }
+  public enum Payment {
+    public static let verifyPurchase: Swift.String
+    public static let productInfo: Swift.String
+    public static let staticsLevel: Swift.String
+  }
+  public enum Push {
+    public static let registerToken: Swift.String
+    public static let deactivateToken: Swift.String
+  }
+  public enum App {
+    public static let config: Swift.String
+    public static let v2Config: Swift.String
+  }
+  public enum Method {
+    public static let get: Swift.String
+    public static let post: Swift.String
+    public static let put: Swift.String
+  }
+  public enum Headers {
+    public static let authorization: Swift.String
+    public static let contentType: Swift.String
+    public static let jsonType: Swift.String
+    public static func bearer(_ token: Swift.String) -> Swift.String
+  }
+  public enum Platform {
+    public static let iosId: Swift.Int
+  }
+  public enum Defaults {
+    public static let baseUrl: Swift.String
+    public static let googleWebClientId: Swift.String
+  }
+}
+@available(macOS 10.15, iOS 13.0, *)
+open class NetworkClient : @unchecked Swift.Sendable {
+  public init(baseURL: Swift.String, gameId: Swift.Int = 0, session: Foundation.URLSession = .shared, logger: OegSdkV2.OEGLogger = .shared, isVietnamese: @escaping () -> Swift.Bool = {
+             
+            Locale.preferredLanguages.first?.hasPrefix("vi") ?? false
+        })
+  open func request<T>(endpoint: Swift.String, method: Swift.String = ApiEndpoints.Method.post, body: (any Swift.Encodable)? = nil, headers: [Swift.String : Swift.String] = [:], keyDecodingStrategy: Foundation.JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase, keyEncodingStrategy: Foundation.JSONEncoder.KeyEncodingStrategy = .convertToSnakeCase) async throws -> T where T : Swift.Decodable
+  open func get<T>(endpoint: Swift.String, queryItems: [Foundation.URLQueryItem] = [], headers: [Swift.String : Swift.String] = [:], keyDecodingStrategy: Foundation.JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase) async throws -> T where T : Swift.Decodable
+  @objc deinit
+}
+open class SecureStorage : @unchecked Swift.Sendable {
+  public init(service: Swift.String = "com.oeg.frameworks", logger: OegSdkV2.OEGLogger = .shared)
+  open func save(_ data: Foundation.Data, forKey key: Swift.String) throws
+  open func load(forKey key: Swift.String) throws -> Foundation.Data
+  open func delete(forKey key: Swift.String)
+  open func saveUser(_ user: OegSdkV2.AuthUser?) throws
+  open func saveLastUsername(_ username: Swift.String)
+  open func loadUser() -> OegSdkV2.AuthUser?
+  open func getLastUsername() -> Swift.String?
+  public func getDeviceId() -> Swift.String
+  @objc deinit
+}
+@available(macOS 10.15, iOS 13.0, *)
+final public class ConfigStore : Foundation.ObservableObject {
+  @Combine.Published<OegSdkV2.SdkConfig> @_projectedValueProperty($currentConfig) final public var currentConfig: OegSdkV2.SdkConfig {
+    get
+  }
+  final public var $currentConfig: Combine.Published<OegSdkV2.SdkConfig>.Publisher {
+    get
+  }
+  public init(repository: any OegSdkV2.RemoteConfigRepository, cache: OegSdkV2.ConfigCache = ConfigCache(), deviceInfo: OegSdkV2.DeviceInfo?)
+  final public func fetchRemoteConfig()
+  final public func updateCoreConfig(gameId: Swift.Int)
+  @available(iOS 13.0, macOS 10.15, *)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+final public class ConfigCache {
+  public init(userDefaults: Foundation.UserDefaults = .standard)
+  final public func saveConfig(_ config: OegSdkV2.SdkConfig)
+  final public func loadConfig() -> OegSdkV2.SdkConfig?
+  final public var isExpired: Swift.Bool {
+    get
+  }
+  final public func clear()
+  @objc deinit
+}
+@available(macOS 10.15, iOS 13.0, *)
+final public class RemoteConfigRepositoryImpl : OegSdkV2.RemoteConfigRepository {
+  public init(networkClient: OegSdkV2.NetworkClient)
+  final public func fetchConfig(deviceInfo: OegSdkV2.DeviceInfo) async throws -> OegSdkV2.SdkConfig
+  @objc deinit
+}
+public protocol RemoteConfigRepository : Swift.Sendable {
+  func fetchConfig(deviceInfo: OegSdkV2.DeviceInfo) async throws -> OegSdkV2.SdkConfig
+}
+public struct SdkConfig : Swift.Codable {
+  public let core: OegSdkV2.CoreConfig
+  public let logging: OegSdkV2.LoggingConfig
+  public let sns: OegSdkV2.SnsConfig
+  public let tracking: OegSdkV2.TrackingConfig
+  public let featureFlags: [Swift.String : Swift.Bool]
+  public init(core: OegSdkV2.CoreConfig = CoreConfig(), logging: OegSdkV2.LoggingConfig = LoggingConfig(), sns: OegSdkV2.SnsConfig = SnsConfig(), tracking: OegSdkV2.TrackingConfig = TrackingConfig(), featureFlags: [Swift.String : Swift.Bool] = [:])
+  public init(from decoder: any Swift.Decoder) throws
+  public static func load() -> OegSdkV2.SdkConfig
+  public func mergedWithRemote(_ remote: OegSdkV2.SdkConfig) -> OegSdkV2.SdkConfig
+  public var userInfoFullnameRequired: Swift.Bool {
+    get
+  }
+  public var userInfoBirthdayRequired: Swift.Bool {
+    get
+  }
+  public var userInfoEmailRequired: Swift.Bool {
+    get
+  }
+  public var userInfoPhoneRequired: Swift.Bool {
+    get
+  }
+  public var userInfoAutoPopup: Swift.Bool {
+    get
+  }
+  public var userInfoUpdateRequired: Swift.Bool {
+    get
+  }
+  public var loginVisibilityFB: Swift.Bool {
+    get
+  }
+  public var loginVisibilityGG: Swift.Bool {
+    get
+  }
+  public var loginVisibilityAppleID: Swift.Bool {
+    get
+  }
+  public var loginVisibilityPlaynow: Swift.Bool {
+    get
+  }
+  public var loginVisibilityIDPass: Swift.Bool {
+    get
+  }
+  public var loginVisibilityTK: Swift.Bool {
+    get
+  }
+  public var isBanner18Enabled: Swift.Bool {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum SdkEnvironment {
+  public static let devBaseURL: Swift.String
+  public static let prodBaseURL: Swift.String
+}
+public struct CoreConfig : Swift.Codable {
+  public let gameId: Swift.Int
+  public let apiBaseUrl: Swift.String
+  public let userInfoFullnameRequired: Swift.Bool
+  public let userInfoBirthdayRequired: Swift.Bool
+  public let userInfoEmailRequired: Swift.Bool
+  public let userInfoPhoneRequired: Swift.Bool
+  public let notificationChannelId: Swift.String
+  public let notificationTitle: Swift.String
+  public let debugEnv: Swift.Bool
+  public let userInfoAutoPopup: Swift.Bool
+  public let enableIdPass: Swift.Bool
+  public let fullFormMerge: Swift.Bool
+  public let verifyOtp: Swift.Bool
+  public init(gameId: Swift.Int = 0, apiBaseUrl: Swift.String? = nil, userInfoFullnameRequired: Swift.Bool = false, userInfoBirthdayRequired: Swift.Bool = false, userInfoEmailRequired: Swift.Bool = false, userInfoPhoneRequired: Swift.Bool = false, notificationChannelId: Swift.String = "oeg_sdk_channel", notificationTitle: Swift.String = "Notification", debugEnv: Swift.Bool = false, userInfoAutoPopup: Swift.Bool = false, enableIdPass: Swift.Bool = true, fullFormMerge: Swift.Bool = true, verifyOtp: Swift.Bool = false)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct LoggingConfig : Swift.Codable {
+  public let sentryDsn: Swift.String?
+  public let enableTimber: Swift.Bool?
+  public init(sentryDsn: Swift.String? = nil, enableTimber: Swift.Bool? = true)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct SnsConfig : Swift.Codable {
+  public let facebookAppId: Swift.String?
+  public let facebookClientToken: Swift.String?
+  public let fbLoginProtocolScheme: Swift.String?
+  public let googleWebClientId: Swift.String?
+  public let tiktokClientKey: Swift.String?
+  public let enableFacebook: Swift.Bool
+  public let enableGoogle: Swift.Bool
+  public let enableApple: Swift.Bool
+  public let enablePlayNow: Swift.Bool
+  public let enableTikTok: Swift.Bool
+  public init(facebookAppId: Swift.String? = nil, facebookClientToken: Swift.String? = nil, fbLoginProtocolScheme: Swift.String? = nil, googleWebClientId: Swift.String? = nil, tiktokClientKey: Swift.String? = nil, enableFacebook: Swift.Bool = true, enableGoogle: Swift.Bool = true, enableApple: Swift.Bool = true, enablePlayNow: Swift.Bool = true, enableTikTok: Swift.Bool = true)
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct TrackingConfig : Swift.Codable {
+  public let adjustAppToken: Swift.String?
+  public let adjustEnvironment: Swift.String
+  public let eventTokenMapping: [Swift.String : Swift.String]
+  public let firebaseEnabled: Swift.Bool
+  public let firebaseEvents: [Swift.String]
+  public init(adjustAppToken: Swift.String? = nil, adjustEnvironment: Swift.String = "sandbox", eventTokenMapping: [Swift.String : Swift.String] = [:], firebaseEnabled: Swift.Bool = true, firebaseEvents: [Swift.String] = [])
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct BundleAppVersionProvider : OegSdkV2.AppVersionProvider {
+  public init(bundle: Foundation.Bundle = .main)
+  public func currentBuildNumber() -> Swift.Int?
+}
+public protocol AppVersionProvider {
+  func currentBuildNumber() -> Swift.Int?
+}
+public enum ForceUpdateDecision : Swift.Equatable {
+  case proceed
+  case softWarning(OegSdkV2.ForceUpdateInfo)
+  case hardBlock(OegSdkV2.ForceUpdateInfo)
+  public static func == (a: OegSdkV2.ForceUpdateDecision, b: OegSdkV2.ForceUpdateDecision) -> Swift.Bool
+}
+public enum ForceUpdateGuard {
+  public static func evaluate(_ info: OegSdkV2.ForceUpdateInfo, currentBuildNumber: Swift.Int) -> OegSdkV2.ForceUpdateDecision
+}
+public struct ForceUpdateInfo : Swift.Equatable {
+  public let enabled: Swift.Bool
+  public let minBuildNumber: Swift.Int?
+  public let minVersionName: Swift.String?
+  public let whitelisted: Swift.Bool
+  public let appStoreId: Swift.Int64?
+  public init(enabled: Swift.Bool, minBuildNumber: Swift.Int?, minVersionName: Swift.String?, whitelisted: Swift.Bool, appStoreId: Swift.Int64?)
+  public static func == (a: OegSdkV2.ForceUpdateInfo, b: OegSdkV2.ForceUpdateInfo) -> Swift.Bool
+}
+public enum PollerState : Swift.String {
+  case running, paused, stopped
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_Concurrency.MainActor final public class MaintainPoller {
+  @_Concurrency.MainActor public static let bannerThresholdSeconds: Swift.Int
+  @_Concurrency.MainActor public static let minIntervalSeconds: Swift.Int
+  @_Concurrency.MainActor final public let events: _Concurrency.AsyncStream<OegSdkV2.MaintainPollerEvent>
+  @_Concurrency.MainActor final public var state: OegSdkV2.PollerState {
+    get
+  }
+  @_Concurrency.MainActor public init(repository: any OegSdkV2.MaintainStatusRepository, gameId: Swift.Int, userIdProvider: @escaping () -> Swift.Int?, appVersionProvider: any OegSdkV2.AppVersionProvider = BundleAppVersionProvider())
+  @_Concurrency.MainActor final public func start(intervalSeconds: Swift.Int = 60)
+  @_Concurrency.MainActor final public func stop()
+  @_Concurrency.MainActor final public func pause()
+  @_Concurrency.MainActor final public func resume()
+  @_Concurrency.MainActor final public func setInterval(seconds: Swift.Int)
+  @_Concurrency.MainActor final public func triggerImmediatePoll()
+  @_Concurrency.MainActor final public func evaluateStatus(_ status: OegSdkV2.MaintainStatus) -> OegSdkV2.MaintainPollerEvent
+  @objc deinit
+}
+public enum MaintainPollerEvent {
+  case forceUpdateRequired(OegSdkV2.ForceUpdateDecision)
+  case kickOut(info: OegSdkV2.MaintainInfo, endTime: Foundation.Date?)
+  case showBanner(message: Swift.String?, messageEn: Swift.String?, secondsUntilStart: Swift.Int, startTime: Foundation.Date?, endTime: Foundation.Date?)
+  case dismissBanner
+}
+public struct MaintainStatus {
+  public let isActive: Swift.Bool
+  public let message: Swift.String?
+  public let messageEn: Swift.String?
+  public let redirectUrl: Swift.String?
+  public let secondsUntilStart: Swift.Int?
+  public let startTime: Foundation.Date?
+  public let endTime: Foundation.Date?
+  public var forceUpdate: OegSdkV2.ForceUpdateInfo?
+}
+public protocol MaintainStatusRepository {
+  func fetchStatus(gameId: Swift.Int, userId: Swift.Int?) async throws -> OegSdkV2.MaintainStatus
+}
+public struct ServerVerifyResult : Swift.Codable, Swift.Sendable {
+  public let success: Swift.Bool
+  public let message: Swift.String?
+  public let transactionId: Swift.String?
+  public let code: Swift.Int?
+  public var isVerified: Swift.Bool {
+    get
+  }
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct GameData : Swift.Codable, Swift.Sendable {
+  public let serverId: Swift.String
+  public let characterId: Swift.String
+  public let characterName: Swift.String
+  public let level: Swift.Int
+  public let extraData: Swift.String?
+  public init(serverId: Swift.String, characterId: Swift.String, characterName: Swift.String, level: Swift.Int = 1, extraData: Swift.String? = nil)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct PurchaseInfo : Swift.Codable, Swift.Sendable {
+  public let productId: Swift.String
+  public let orderId: Swift.String
+  public let purchaseToken: Swift.String
+  public let purchaseTime: Foundation.TimeInterval
+  public let quantity: Swift.Int
+  public let signature: Swift.String?
+  public let originalJson: Swift.String?
+  public let price: Swift.Double
+  public let currencyCode: Swift.String
+  public init(productId: Swift.String, orderId: Swift.String, purchaseToken: Swift.String, purchaseTime: Foundation.TimeInterval, quantity: Swift.Int = 1, signature: Swift.String? = nil, originalJson: Swift.String? = nil, price: Swift.Double = 0.0, currencyCode: Swift.String = "")
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public enum PurchaseResult : Swift.Sendable {
+  case success(OegSdkV2.PurchaseInfo)
+  case cancelled
+  case pending
+  case failed(any Swift.Error)
+  case unknown
+}
+public enum PaymentError : Swift.Error, Foundation.LocalizedError {
+  case productsNotFound
+  case paymentCancelled
+  case paymentInvalid
+  case cloudServicePermissionDenied
+  case cloudServiceNetworkConnectionFailed
+  case cloudServiceRevoked
+  case privacyAcknowledgementRequired
+  case unauthorizedRequestData
+  case invalidOfferIdentifier
+  case invalidSignature
+  case missingOfferParams
+  case invalidOfferPrice
+  case unknown
+  case notInitialized
+  case verificationFailed(Swift.String)
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public protocol PaymentRepository : Swift.Sendable {
+  func verifyPurchase(authToken: Swift.String, gameData: OegSdkV2.GameData, purchaseInfo: OegSdkV2.PurchaseInfo, gameId: Swift.Int) async throws -> OegSdkV2.ServerVerifyResult
+}
+public enum PaymentResult : Swift.Sendable {
+  case success(transactionId: Swift.String, productId: Swift.String, verified: Swift.Bool)
+  case error(code: Swift.Int, message: Swift.String)
+}
+public struct PendingTransactionEntry : Swift.Codable, Swift.Equatable {
+  public let transactionId: Swift.String
+  public let productId: Swift.String
+  public let receipt: Swift.String
+  public let purchaseTime: Foundation.TimeInterval
+  public let userUUID: Swift.String
+  public let savedAt: Foundation.TimeInterval
+  public let serverID: Swift.String
+  public let roleID: Swift.String
+  public let levels: Swift.String
+  public let accountID: Swift.String
+  public let extInfo: Swift.String
+  public init(transactionId: Swift.String, productId: Swift.String, receipt: Swift.String, purchaseTime: Foundation.TimeInterval, userUUID: Swift.String, savedAt: Foundation.TimeInterval = Date().timeIntervalSince1970, serverID: Swift.String = "", roleID: Swift.String = "", levels: Swift.String = "", accountID: Swift.String = "", extInfo: Swift.String = "")
+  public static func == (a: OegSdkV2.PendingTransactionEntry, b: OegSdkV2.PendingTransactionEntry) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public protocol PendingTransactionStoreProtocol : AnyObject {
+  func save(_ entry: OegSdkV2.PendingTransactionEntry)
+  func save(_ entry: OegSdkV2.PendingTransactionEntry, completion: (() -> Swift.Void)?)
+  func all() -> [OegSdkV2.PendingTransactionEntry]
+  func remove(transactionId: Swift.String)
+  func entries(forUserUUID uuid: Swift.String) -> [OegSdkV2.PendingTransactionEntry]
+}
+extension OegSdkV2.PendingTransactionStoreProtocol {
+  public func save(_ entry: OegSdkV2.PendingTransactionEntry, completion: (() -> Swift.Void)?)
+}
+public enum RestoreResult {
+  case success
+  case alreadyGranted
+  case networkError(any Swift.Error)
+  case serverError(Swift.Int, Swift.String?)
+  case authError
+  case noItems
+  case alreadyProcessing
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(macOS 10.15, iOS 13.0, *)
+@objc public class OEGPayment : ObjectiveC.NSObject {
+  @objc public static let shared: OegSdkV2.OEGPayment
+  public func initialize(repository: (any OegSdkV2.PaymentRepository)? = nil, tokenProvider: (any OegSdkV2.TokenProvider)?, gameId: Swift.Int, pendingStore: (any OegSdkV2.PendingTransactionStoreProtocol)? = nil)
+  public func purchase(productId: Swift.String, completion: @escaping (OegSdkV2.PurchaseResult) -> Swift.Void)
+  public func purchaseAndVerify(productId: Swift.String, gameData: OegSdkV2.GameData, completion: @escaping (OegSdkV2.PurchaseResult, OegSdkV2.ServerVerifyResult?) -> Swift.Void)
+  public func verifyPurchase(productId: Swift.String, receipt: Swift.String, transactionId: Swift.String?, gameData: OegSdkV2.GameData, completion: @escaping (OegSdkV2.ServerVerifyResult) -> Swift.Void)
+  public func restorePurchases(gameData: OegSdkV2.GameData, callback: @escaping (OegSdkV2.RestoreResult) -> Swift.Void)
+  public func checkAndProcessPendingPurchases()
+  public func hasPendingPurchasesForCurrentUser() -> Swift.Bool
+  @objc deinit
+}
+extension OegSdkV2.OEGPayment : StoreKit.SKPaymentTransactionObserver, StoreKit.SKProductsRequestDelegate {
+  @objc dynamic public func productsRequest(_ request: StoreKit.SKProductsRequest, didReceive response: StoreKit.SKProductsResponse)
+  @objc dynamic public func request(_ request: StoreKit.SKRequest, didFailWithError error: any Swift.Error)
+  @objc dynamic public func paymentQueue(_ queue: StoreKit.SKPaymentQueue, updatedTransactions transactions: [StoreKit.SKPaymentTransaction])
+}
+@objc public enum OEGActionType : Swift.Int, @unchecked Swift.Sendable {
+  case register = 0
+  case loginOEGID
+  case loginFacebook
+  case loginGoogle
+  case loginApple
+  case playnow
+  case logout
+  case profile
+  case changePassword
+  case forgotPassword
+  case verifyEmail
+  case verifyPhone
+  case close
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum OEGIAPStatus : Swift.Int, @unchecked Swift.Sendable {
+  case purchasing = 0
+  case purchased
+  case restored
+  case failed
+  case requestError
+  case verified
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public typealias OEGAccountCallback = (OegSdkV2.OEGActionType, Any?, Swift.Bool, Foundation.NSError?) -> Swift.Void
+public typealias OEGIAPCallback = (OegSdkV2.OEGIAPStatus, Swift.String, Foundation.NSError?) -> Swift.Void
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(macOS 10.15, iOS 13.0, *)
+@objc public class OegSdkCore : ObjectiveC.NSObject {
+  @_inheritsConvenienceInitializers @objc public class Builder : ObjectiveC.NSObject {
+    @objc override dynamic public init()
+    @objc public func setGameId(_ gameId: Swift.Int) -> OegSdkV2.OegSdkCore.Builder
+    @objc public func setApiBaseUrl(_ url: Swift.String) -> OegSdkV2.OegSdkCore.Builder
+    @objc public func setDebugEnv(_ enabled: Swift.Bool) -> OegSdkV2.OegSdkCore.Builder
+    @objc public func setSentryDsn(_ dsn: Swift.String) -> OegSdkV2.OegSdkCore.Builder
+    @objc public func setAdjustConfig(appToken: Swift.String, environment: Swift.String) -> OegSdkV2.OegSdkCore.Builder
+    @objc public func setMaintainPollingInterval(_ seconds: Swift.Int) -> OegSdkV2.OegSdkCore.Builder
+    @objc public func build()
+    @objc deinit
+  }
+  @objc public static let shared: OegSdkV2.OegSdkCore
+  public static let version: Swift.String
+  public var config: OegSdkV2.SdkConfig? {
+    get
+  }
+  @objc public var isInitialized: Swift.Bool {
+    get
+  }
+  public func initialize(config: OegSdkV2.SdkConfig? = nil)
+  public var remoteConfig: OegSdkV2.SdkConfig? {
+    get
+  }
+  public var activeConfig: OegSdkV2.SdkConfig {
+    get
+  }
+  public func refreshConfigAsync() async
+  @objc public func checkInitialized() -> Swift.Bool
+  @objc public static func setGameRole(serverId: Swift.String, serverName: Swift.String? = nil, roleId: Swift.String, roleName: Swift.String? = nil, level: Swift.Int = 0)
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let OEGConfigDidUpdate: Foundation.Notification.Name
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(macOS 10.14, iOS 10.0, *)
+@objc final public class OEGPush : ObjectiveC.NSObject {
+  @objc public static let shared: OegSdkV2.OEGPush
+  final public func initialize(tokenProvider: (any OegSdkV2.TokenProvider)?)
+  @objc final public func requestAuthorization(completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  @objc final public func requestNotificationPermission(completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc final public func setDeviceToken(_ token: Swift.String)
+  @objc final public func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Foundation.Data)
+  @objc final public func registerForPushNotifications(application: UIKit.UIApplication)
+  @objc final public func didRegisterWithToken(_ deviceToken: Foundation.Data)
+  @objc weak final public var delegate: (any OegSdkV2.OEGPushDelegate)?
+  @objc final public func handleRemoteNotification(_ userInfo: [Swift.AnyHashable : Any])
+  @objc final public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc deinit
+}
+@objc public protocol OEGPushDelegate {
+  @objc optional func oegPushDidReceiveNotification(userInfo: [Swift.AnyHashable : Any])
+  @objc optional func oegPushDidUpdateToken(_ token: Swift.String)
+}
+extension Foundation.NSNotification.Name {
+  public static let OEGPushNotificationReceived: Foundation.Notification.Name
+}
+public struct OEGValidator {
+  public static let usernameMinLength: Swift.Int
+  public static let usernameMaxLength: Swift.Int
+  public static func validateUsername(_ username: Swift.String) -> OegSdkV2.ValidationResult
+  public static let passwordMinLength: Swift.Int
+  public static let passwordMaxLength: Swift.Int
+  public static func validatePassword(_ password: Swift.String) -> OegSdkV2.ValidationResult
+  public static let fullnameMinLength: Swift.Int
+  public static let fullnameMaxLength: Swift.Int
+  public static func validateFullname(_ fullname: Swift.String) -> OegSdkV2.ValidationResult
+  public static func validateEmail(_ email: Swift.String?) -> OegSdkV2.ValidationResult
+  public static func validatePhone(_ phone: Swift.String?) -> OegSdkV2.ValidationResult
+  public static let productIdMaxLength: Swift.Int
+  public static func validateProductId(_ productId: Swift.String) -> OegSdkV2.ValidationResult
+  public static func validatePurchaseToken(_ token: Swift.String) -> OegSdkV2.ValidationResult
+  public static func validateGameData(serverId: Swift.String, roleId: Swift.String) -> OegSdkV2.ValidationResult
+  public static func validateAccessToken(_ token: Swift.String) -> OegSdkV2.ValidationResult
+}
+public struct SdkErrorCode {
+  public static let invalidUsername: Swift.Int
+  public static let invalidPassword: Swift.Int
+  public static let invalidFullname: Swift.Int
+  public static let invalidEmail: Swift.Int
+  public static let invalidPhone: Swift.Int
+  public static let invalidProductId: Swift.Int
+  public static let invalidPurchaseToken: Swift.Int
+  public static let invalidServerId: Swift.Int
+  public static let invalidRoleId: Swift.Int
+  public static let phoneNotSet: Swift.Int
+  public static let invalidOtp: Swift.Int
+  public static let invalidAccessToken: Swift.Int
+  public static let notLoggedIn: Swift.Int
+  public static let sessionExpired: Swift.Int
+  public static let accountMergeRequired: Swift.Int
+  public static let guestNotAllowed: Swift.Int
+  public static let alreadyPending: Swift.Int
+  public static let noPendingDeletion: Swift.Int
+  public static let purchaseCancelled: Swift.Int
+  public static let purchaseAlreadyOwned: Swift.Int
+  public static let networkTimeout: Swift.Int
+  public static let networkUnavailable: Swift.Int
+  public static let serverError: Swift.Int
+  public static let clientError: Swift.Int
+  public static let unauthorized: Swift.Int
+  public static let forbidden: Swift.Int
+  public static let notFound: Swift.Int
+  public static let conflict: Swift.Int
+  public static let unexpectedError: Swift.Int
+}
+public enum ValidationResult : Swift.Sendable {
+  case valid
+  case invalid(code: Swift.Int, message: Swift.String)
+  public var isValid: Swift.Bool {
+    get
+  }
+  public func toAuthError() -> OegSdkV2.AuthResult?
+  public func toPaymentError() -> OegSdkV2.PaymentResult?
+  public func toOtpError() -> OegSdkV2.OtpResult?
+}
+@available(macOS 10.15, iOS 13.0, *)
+public class LoginViewModel : Foundation.ObservableObject {
+  @Combine.Published<Swift.Bool> @_projectedValueProperty($isLoading) public var isLoading: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $isLoading: Combine.Published<Swift.Bool>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  @Combine.Published<Swift.String?> @_projectedValueProperty($errorMessage) public var errorMessage: Swift.String? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $errorMessage: Combine.Published<Swift.String?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init()
+  public func login(request: OegSdkV2.AuthRequest, completion: @escaping (Swift.Result<OegSdkV2.AuthUser, any Swift.Error>) -> Swift.Void)
+  @available(iOS 13.0, macOS 10.15, *)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+public enum VerifyType {
+  case email
+  case phone
+  public static func == (a: OegSdkV2.VerifyType, b: OegSdkV2.VerifyType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(macOS 14.0, iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct DashboardSideMenuView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var onLogout: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onPayment: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onRequestPush: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onLinkOegId: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var canLinkOegId: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public init(selectedMenu: SwiftUICore.Binding<OegSdkV2.DashboardMenuOption?>, isLandscape: Swift.Bool, showResetPassword: SwiftUICore.Binding<Swift.Bool>, showUpdateProfile: SwiftUICore.Binding<Swift.Bool>, showLanguagePicker: SwiftUICore.Binding<Swift.Bool>, showDeleteConfirm: SwiftUICore.Binding<Swift.Bool>, selectedLanguage: SwiftUICore.Binding<OegSdkV2.SdkLanguage>, onLogout: (() -> Swift.Void)? = nil, onPayment: (() -> Swift.Void)? = nil, onRequestPush: (() -> Swift.Void)? = nil, onLinkOegId: (() -> Swift.Void)? = nil, canLinkOegId: Swift.Bool = false)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV221DashboardSideMenuViewV4bodyQrvp", 0) __
+}
+@available(macOS 14.0, iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct DashboardAccountSectionView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV227DashboardAccountSectionViewV4bodyQrvp", 0) __
+}
+@available(macOS 14.0, iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct DashboardServicesSectionView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var onPayment: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onRequestPush: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV228DashboardServicesSectionViewV4bodyQrvp", 0) __
+}
+@available(macOS 14.0, iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct DashboardDangerZoneView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var onLogout: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onDeleteAccount: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var isGuest: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public init(showDeleteConfirm: SwiftUICore.Binding<Swift.Bool>, onLogout: (() -> Swift.Void)? = nil, onDeleteAccount: (() -> Swift.Void)? = nil, isGuest: Swift.Bool = false)
+  @_Concurrency.MainActor @preconcurrency public static func shouldShowDeleteButton(isPlayNow: Swift.Bool) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV223DashboardDangerZoneViewV4bodyQrvp", 0) __
+}
+public enum DashboardMenuOption {
+  case info
+  case password
+  case support
+  case none
+  public static func == (a: OegSdkV2.DashboardMenuOption, b: OegSdkV2.DashboardMenuOption) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(macOS 14.0, iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct DashboardView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var onLogout: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onPayment: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onRequestPush: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onDismiss: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onDeleteAccount: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onLinkOegId: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public init(onDismiss: (() -> Swift.Void)? = nil, onLogout: (() -> Swift.Void)? = nil, onPayment: (() -> Swift.Void)? = nil, onRequestPush: (() -> Swift.Void)? = nil, onDeleteAccount: (() -> Swift.Void)? = nil, onLinkOegId: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV213DashboardViewV4bodyQrvp", 0) __
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class ForgotPasswordViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_Concurrency.MainActor @preconcurrency public struct LoginSwiftUIView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var onLoginSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onRegisterSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onPlayNowSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onSocialLoginSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onClose: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var onForgotPassword: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var isMergeAccount: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var isLinkIdPass: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var onLinkIdPassSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public init(viewModel: OegSdkV2.LoginViewModel, isSessionExpired: Swift.Bool = false, isMergeAccount: Swift.Bool = false, isLinkIdPass: Swift.Bool = false, onLinkIdPassSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)? = nil, onLoginSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)? = nil, onRegisterSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)? = nil, onPlayNowSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)? = nil, onSocialLoginSuccess: ((OegSdkV2.AuthUser) -> Swift.Void)? = nil, onClose: (() -> Swift.Void)? = nil, onForgotPassword: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV216LoginSwiftUIViewV4bodyQrvp", 0) __
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class LoginViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var callback: ((Swift.Int, Any?, Swift.Bool, (any Swift.Error)?) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var isMergeAccount: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var isLinkIdPass: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var isLogin: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public init(isSessionExpired: Swift.Bool = false)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class ProfileViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var callback: OegSdkV2.OEGAccountCallback?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class ResetPasswordViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var callback: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class UpdateProfileViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var callback: ((OegSdkV2.AuthUser?, (any Swift.Error)?) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var isRequired: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class VerifyViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var verifyType: OegSdkV2.VerifyType
+  @_Concurrency.MainActor @preconcurrency public var phone: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public var preSentOtpExpiresIn: Swift.Int?
+  @_Concurrency.MainActor @preconcurrency public var onVerified: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@available(iOS 14.0, *)
+public enum AgeWarningHelper {
+  public static func inject(into viewController: UIKit.UIViewController)
+}
+@available(iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct AgeWarningBanner : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV216AgeWarningBannerV4bodyQrvp", 0) __
+}
+@available(iOS 14.0, *)
+@_Concurrency.MainActor @preconcurrency public struct AgeRestrictionView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var onDismiss: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public init(onDismiss: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @available(iOS 14.0, *)
+  public typealias Body = @_opaqueReturnTypeOf("$s8OegSdkV218AgeRestrictionViewV4bodyQrvp", 0) __
+}
+extension UIKit.UIColor {
+  convenience public init(hex: Swift.String)
+}
+@available(macOS 14.0, iOS 14.0, *)
+extension SwiftUICore.Color {
+  public init(hex: Swift.String)
+}
+@available(macOS 14.0, iOS 14.0, *)
+public enum OEGColors {
+  public static let background: SwiftUICore.Color
+  public static let modalBackground: SwiftUICore.Color
+  public static let inputBackground: SwiftUICore.Color
+  public static let backgroundAlt: SwiftUICore.Color
+  public static let surfacePrimary: SwiftUICore.Color
+  public static let surfaceSecondary: SwiftUICore.Color
+  public static let surfaceButton: SwiftUICore.Color
+  public static let divider: SwiftUICore.Color
+  public static let accent: SwiftUICore.Color
+  public static let border: SwiftUICore.Color
+  public static let placeholder: SwiftUICore.Color
+  public static let primaryButton: SwiftUICore.Color
+  public static let textPrimary: SwiftUICore.Color
+  public static let textSecondary: SwiftUICore.Color
+  public static let textLink: SwiftUICore.Color
+  public static let error: SwiftUICore.Color
+  public static let success: SwiftUICore.Color
+  public static let warning: SwiftUICore.Color
+}
+public enum OEGLayout {
+  public static let cornerRadiusSmall: CoreFoundation.CGFloat
+  public static let cornerRadiusMedium: CoreFoundation.CGFloat
+  public static let cornerRadiusLarge: CoreFoundation.CGFloat
+  public static let inputHeight: CoreFoundation.CGFloat
+  public static let inputPaddingH: CoreFoundation.CGFloat
+  public static let iconSmall: CoreFoundation.CGFloat
+  public static let iconMedium: CoreFoundation.CGFloat
+  public static let iconLarge: CoreFoundation.CGFloat
+  public static let cardPadding: CoreFoundation.CGFloat
+  public static let modalWidth: CoreFoundation.CGFloat
+  public static let maxFormWidth: CoreFoundation.CGFloat
+  public static let modalMaxHeight: CoreFoundation.CGFloat
+  public static let shellMaxHeightRatio: CoreFoundation.CGFloat
+  public static let avatarSmall: CoreFoundation.CGFloat
+  public static let avatarLarge: CoreFoundation.CGFloat
+  public static let spacingXS: CoreFoundation.CGFloat
+  public static let spacingS: CoreFoundation.CGFloat
+  public static let spacingM: CoreFoundation.CGFloat
+  public static let spacingL: CoreFoundation.CGFloat
+  public static let spacingXL: CoreFoundation.CGFloat
+  public static let spacingXXL: CoreFoundation.CGFloat
+  public static let spacingSection: CoreFoundation.CGFloat
+  public static let shellBannerTopInset: CoreFoundation.CGFloat
+  public static let shellBannerBottomSpacing: CoreFoundation.CGFloat
+  public static let shellOuterPadding: CoreFoundation.CGFloat
+  public static let shellCardTopPadding: CoreFoundation.CGFloat
+  public static let logoHeight: CoreFoundation.CGFloat
+  public static let genderPickerWidth: CoreFoundation.CGFloat
+  public static let loadingScale: CoreFoundation.CGFloat
+  public static let loadingOverlayOpacity: Swift.Double
+}
+@available(macOS 14.0, iOS 14.0, *)
+public enum OEGFonts {
+  public static let caption: SwiftUICore.Font
+  public static let captionBold: SwiftUICore.Font
+  public static let body: SwiftUICore.Font
+  public static let bodyBold: SwiftUICore.Font
+  public static let headline: SwiftUICore.Font
+  public static let iconFont: SwiftUICore.Font
+  public static let title: SwiftUICore.Font
+  public static let largeTitle: SwiftUICore.Font
+}
+@available(macOS 14.0, iOS 14.0, *)
+public enum SdkLanguage : Swift.String, Swift.CaseIterable, Swift.Identifiable {
+  case english
+  case vietnamese
+  public var id: Swift.String {
+    get
+  }
+  public var displayName: Swift.String {
+    get
+  }
+  public var flag: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias AllCases = [OegSdkV2.SdkLanguage]
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias ID = Swift.String
+  @available(iOS 14.0, macOS 14.0, *)
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [OegSdkV2.SdkLanguage] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum OEGStrings {
+  public static var login: Swift.String {
+    get
+  }
+  public static var register: Swift.String {
+    get
+  }
+  public static var username: Swift.String {
+    get
+  }
+  public static var password: Swift.String {
+    get
+  }
+  public static var forgotPassword: Swift.String {
+    get
+  }
+  public static var createAccount: Swift.String {
+    get
+  }
+  public static var hasAccount: Swift.String {
+    get
+  }
+  public static var orLoginWith: Swift.String {
+    get
+  }
+  public static var playNow: Swift.String {
+    get
+  }
+  public static var rememberMe: Swift.String {
+    get
+  }
+  public static var passwordStrengthWeak: Swift.String {
+    get
+  }
+  public static var passwordStrengthMedium: Swift.String {
+    get
+  }
+  public static var passwordStrengthStrong: Swift.String {
+    get
+  }
+  public static var dashboard: Swift.String {
+    get
+  }
+  public static var guest: Swift.String {
+    get
+  }
+  public static var guestAccount: Swift.String {
+    get
+  }
+  public static var notSet: Swift.String {
+    get
+  }
+  public static var updateInformation: Swift.String {
+    get
+  }
+  public static var changePassword: Swift.String {
+    get
+  }
+  public static var testPush: Swift.String {
+    get
+  }
+  public static var testIAP: Swift.String {
+    get
+  }
+  public static var currentPassword: Swift.String {
+    get
+  }
+  public static var newPassword: Swift.String {
+    get
+  }
+  public static var confirmNewPassword: Swift.String {
+    get
+  }
+  public static var confirm: Swift.String {
+    get
+  }
+  public static var passwordMismatch: Swift.String {
+    get
+  }
+  public static var fillAllFields: Swift.String {
+    get
+  }
+  public static var passwordChangedSuccess: Swift.String {
+    get
+  }
+  public static var passwordInvalidLength: Swift.String {
+    get
+  }
+  public static var usernameTooShort: Swift.String {
+    get
+  }
+  public static var usernameInvalidLength: Swift.String {
+    get
+  }
+  public static var usernameInvalidChars: Swift.String {
+    get
+  }
+  public static var passwordTooShort: Swift.String {
+    get
+  }
+  public static var passwordComplexity: Swift.String {
+    get
+  }
+  public static var updateProfile: Swift.String {
+    get
+  }
+  public static var fullname: Swift.String {
+    get
+  }
+  public static var email: Swift.String {
+    get
+  }
+  public static var phone: Swift.String {
+    get
+  }
+  public static var birthday: Swift.String {
+    get
+  }
+  public static var address: Swift.String {
+    get
+  }
+  public static var idNumber: Swift.String {
+    get
+  }
+  public static var update: Swift.String {
+    get
+  }
+  public static var updateSuccess: Swift.String {
+    get
+  }
+  public static var account: Swift.String {
+    get
+  }
+  public static var logout: Swift.String {
+    get
+  }
+  public static var user: Swift.String {
+    get
+  }
+  public static var unknown: Swift.String {
+    get
+  }
+  public static var version: Swift.String {
+    get
+  }
+  public static var gender: Swift.String {
+    get
+  }
+  public static var genderMale: Swift.String {
+    get
+  }
+  public static var genderFemale: Swift.String {
+    get
+  }
+  public static var genderOther: Swift.String {
+    get
+  }
+  public static var ageWarning: Swift.String {
+    get
+  }
+  public static var ageRestrictionTitle: Swift.String {
+    get
+  }
+  public static var ageRestrictionMessage: Swift.String {
+    get
+  }
+  public static var accountSection: Swift.String {
+    get
+  }
+  public static var servicesSection: Swift.String {
+    get
+  }
+  public static var dangerZone: Swift.String {
+    get
+  }
+  public static var changeLanguage: Swift.String {
+    get
+  }
+  public static var selectLanguage: Swift.String {
+    get
+  }
+  public static var deleteAccount: Swift.String {
+    get
+  }
+  public static var deleteAccountConfirm: Swift.String {
+    get
+  }
+  public static var sdkVersion: Swift.String {
+    get
+  }
+  public static var supportTitle: Swift.String {
+    get
+  }
+  public static var giftcodeTitle: Swift.String {
+    get
+  }
+  public static var selectFunctionLeft: Swift.String {
+    get
+  }
+  public static var verify: Swift.String {
+    get
+  }
+  public static var check: Swift.String {
+    get
+  }
+  public static var verified: Swift.String {
+    get
+  }
+  public static var emailLinkSentMessage: Swift.String {
+    get
+  }
+  public static var confirmDelete: Swift.String {
+    get
+  }
+  public static var cancel: Swift.String {
+    get
+  }
+  public static var fillFullname: Swift.String {
+    get
+  }
+  public static var fillEmail: Swift.String {
+    get
+  }
+  public static var invalidEmail: Swift.String {
+    get
+  }
+  public static var fillPhone: Swift.String {
+    get
+  }
+  public static var fillBirthday: Swift.String {
+    get
+  }
+  public static var ageTooYoung: Swift.String {
+    get
+  }
+  public static var loginFailed: Swift.String {
+    get
+  }
+  public static var unexpectedError: Swift.String {
+    get
+  }
+  public static var usernameAlreadyExists: Swift.String {
+    get
+  }
+  public static var incorrectCredentials: Swift.String {
+    get
+  }
+  public static var networkError: Swift.String {
+    get
+  }
+  public static var serverUnavailable: Swift.String {
+    get
+  }
+  public static var tooManyAttempts: Swift.String {
+    get
+  }
+  public static var serviceNotReady: Swift.String {
+    get
+  }
+  public static var operationCancelled: Swift.String {
+    get
+  }
+  public static var otpSendFailed: Swift.String {
+    get
+  }
+  public static var deletionAlreadyPending: Swift.String {
+    get
+  }
+  public static var deletionGuestNotAllowed: Swift.String {
+    get
+  }
+  public static func userIdLabel(_ id: Swift.String) -> Swift.String
+  public static var forgotPasswordDesc: Swift.String {
+    get
+  }
+  public static var forgotPasswordSuccess: Swift.String {
+    get
+  }
+  public static var forgotPasswordCheckInbox: Swift.String {
+    get
+  }
+  public static var sendResetLink: Swift.String {
+    get
+  }
+  public static var notification: Swift.String {
+    get
+  }
+  public static var ok: Swift.String {
+    get
+  }
+  public static var sessionExpiredMessage: Swift.String {
+    get
+  }
+  public static var termsAgreePrefix: Swift.String {
+    get
+  }
+  public static var termsOfService: Swift.String {
+    get
+  }
+  public static var privacyOptionalPrefix: Swift.String {
+    get
+  }
+  public static var privacyOptionalPolicy: Swift.String {
+    get
+  }
+  public static var consentMaster: Swift.String {
+    get
+  }
+  public static var emailVerifyTitle: Swift.String {
+    get
+  }
+  public static var verifyEmailTitle: Swift.String {
+    get
+  }
+  public static var verifyOtpTitle: Swift.String {
+    get
+  }
+  public static var verifyEmailDesc: Swift.String {
+    get
+  }
+  public static var verifyPhoneDesc: Swift.String {
+    get
+  }
+  public static var sendOtp: Swift.String {
+    get
+  }
+  public static var verifySuccess: Swift.String {
+    get
+  }
+  public static var resendCode: Swift.String {
+    get
+  }
+  public static func otpCountdown(_ seconds: Swift.Int) -> Swift.String
+  public static var maintainRefresh: Swift.String {
+    get
+  }
+  public static var maintainGoWebsite: Swift.String {
+    get
+  }
+  public static var maintainChecking: Swift.String {
+    get
+  }
+  public static func maintainStartIn(_ countdown: Swift.String) -> Swift.String
+  public static func timeMinutes(_ mins: Swift.Int) -> Swift.String
+  public static func timeSeconds(_ secs: Swift.Int) -> Swift.String
+  public static func forceUpdateMessage(_ versionName: Swift.String) -> Swift.String
+  public static var forceUpdateNow: Swift.String {
+    get
+  }
+  public static var forceUpdateContinueOld: Swift.String {
+    get
+  }
+  public static var bubbleHideTitle: Swift.String {
+    get
+  }
+  public static var bubbleHideCheckbox: Swift.String {
+    get
+  }
+  public static var bubbleHideNote: Swift.String {
+    get
+  }
+  public static var bubbleHideConfirm: Swift.String {
+    get
+  }
+  public static var bubbleHideCancel: Swift.String {
+    get
+  }
+  public static var linkAccount: Swift.String {
+    get
+  }
+  public static var linkAccountIapWarning: Swift.String {
+    get
+  }
+  public static var linkAccountGuestPrompt: Swift.String {
+    get
+  }
+  public static var link: Swift.String {
+    get
+  }
+  public static var skip: Swift.String {
+    get
+  }
+  public static var continuePayment: Swift.String {
+    get
+  }
+  public static func updateSuccessPwError(_ msg: Swift.String) -> Swift.String
+  public static var emailVerifiedSuccess: Swift.String {
+    get
+  }
+  public static var phoneVerifiedSuccess: Swift.String {
+    get
+  }
+  public static var deleteGuestTitle: Swift.String {
+    get
+  }
+  public static var deleteGuestMessage: Swift.String {
+    get
+  }
+  public static var delete: Swift.String {
+    get
+  }
+  public static var deleteAccountWarningTitle: Swift.String {
+    get
+  }
+  public static var deleteAccountFinalTitle: Swift.String {
+    get
+  }
+  public static var deleteAccountFinalMessage: Swift.String {
+    get
+  }
+  public static var pendingDeletionTitle: Swift.String {
+    get
+  }
+  public static func pendingDeletionMessage(_ date: Swift.String) -> Swift.String
+  public static var continueCancelDeletion: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 14.0, *)
+public class FloatingBubbleManager {
+  public static let shared: OegSdkV2.FloatingBubbleManager
+  public var isVisible: Swift.Bool {
+    get
+  }
+  public var onBubbleTapped: (() -> Swift.Void)?
+  public var customIcon: UIKit.UIImage?
+  public func show()
+  public func hide()
+  public func forceShow()
+  public func resetHideState()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 14.0, *)
+final public class MaintainBannerManager {
+  public static let shared: OegSdkV2.MaintainBannerManager
+  final public var isVisible: Swift.Bool {
+    get
+  }
+  final public var triggerImmediatePollCallback: (() -> Swift.Void)?
+  final public func show(message: Swift.String?, messageEn: Swift.String?, secondsUntilStart: Swift.Int)
+  final public func dismiss()
+  final public func updateCountdown(secondsUntilStart: Swift.Int)
+  final public func pauseCountdown()
+  final public func resumeCountdown()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 14.0, *)
+final public class MaintainKickOutHandler {
+  public static let shared: OegSdkV2.MaintainKickOutHandler
+  final public var onMaintenanceKickOut: ((OegSdkV2.MaintainInfo) -> Swift.Void)?
+  final public func start(poller: OegSdkV2.MaintainPoller)
+  final public func stop()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class OEGManager : ObjectiveC.NSObject {
+  @objc public static let sharedManager: OegSdkV2.OEGManager
+  @objc public class func getAPIToken() -> Swift.String?
+  @objc public class func getAPIUUID() -> Swift.String?
+  @objc public class func isPlayNow() -> Swift.Bool
+  @objc public class func getUserId() -> Swift.String?
+  @objc public class func getCurrentUser() -> [Swift.String : Any]?
+  @objc public class func getDeviceInfo() -> [Swift.String : Any]
+  @objc(showLoginWithCallback:) public func showLogin(callback: @escaping OegSdkV2.OEGAccountCallback)
+  @objc(showLoginWithViewController:callback:) public func showLogin(viewController: UIKit.UIViewController?, callback: @escaping OegSdkV2.OEGAccountCallback)
+  @objc(showProfileWithCallback:) public func showProfile(callback: @escaping OegSdkV2.OEGAccountCallback)
+  @objc(showProfileWithViewController:callback:) public func showProfile(viewController: UIKit.UIViewController?, callback: @escaping OegSdkV2.OEGAccountCallback)
+  @objc(showProfileWithViewController:isMergeAccount:callback:) public func showProfile(viewController: UIKit.UIViewController?, isMergeAccount: Swift.Bool, callback: @escaping OegSdkV2.OEGAccountCallback)
+  @objc(showResetPasswordWithCallback:) public func showResetPassword(callback: @escaping OegSdkV2.OEGAccountCallback)
+  @objc(showResetPasswordWithViewController:callback:) public func showResetPassword(viewController: UIKit.UIViewController?, callback: @escaping OegSdkV2.OEGAccountCallback)
+  @objc public func logout()
+  @objc(isIAP:) public func isIAP(_ level: Swift.Int32) -> Swift.Bool
+  @objc(inAppPurchaseWithServerID:roleID:levels:accountID:productID:extInfo:callback:) public func inAppPurchase(serverID: Swift.String, roleID: Swift.String, levels: Swift.String, accountID: Swift.String?, productID: Swift.String?, extInfo: Swift.String, callback: @escaping OegSdkV2.OEGIAPCallback)
+  @objc(handleDidFinishLaunchingWithOptions:) public class func handleDidFinishLaunching(options: [UIKit.UIApplication.LaunchOptionsKey : Any]?)
+  @objc public class func handleDidBecomeActive()
+  @objc public class func handleWillResignActive()
+  @objc public class func handleDidEnterBackground()
+  @objc public class func handleWillEnterForeground()
+  @objc public class func handleWillTerminate()
+  @objc(handleOpenURL:options:) public class func handleOpenURL(_ url: Foundation.URL, options: [UIKit.UIApplication.OpenURLOptionsKey : Any]) -> Swift.Bool
+  @discardableResult
+  @objc(handleContinueUserActivity:) public class func handleContinueUserActivity(_ userActivity: Foundation.NSUserActivity) -> Swift.Bool
+  @objc(registerForRemoteNotifications:) public class func registerForRemoteNotifications(_ application: UIKit.UIApplication)
+  @objc(handleDidRegisterForRemoteNotificationsWithDeviceToken:) public class func handleDidRegisterForRemoteNotifications(deviceToken: Foundation.Data)
+  @objc(handleRemoteNotification:) public class func handleRemoteNotification(_ userInfo: [Swift.AnyHashable : Any])
+  @objc(logEvent:withValues:) public func logEvent(_ eventName: Swift.String, values: [Swift.String : Any]?)
+  @objc(logEvent:withValues:revenue:currency:orderId:) public func logEvent(_ eventName: Swift.String, values: [Swift.String : Any]?, revenue: Swift.Double, currency: Swift.String, orderId: Swift.String?)
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let OEGSDKWillPresentLoginUI: Foundation.Notification.Name
+  public static let OEGSDKDidDismissLoginUI: Foundation.Notification.Name
+}
+extension OegSdkV2.OEGAnalytics.Environment : Swift.Equatable {}
+extension OegSdkV2.OEGAnalytics.Environment : Swift.Hashable {}
+extension OegSdkV2.OEGAnalytics.Environment : Swift.RawRepresentable {}
+extension OegSdkV2.SocialProvider : Swift.Equatable {}
+extension OegSdkV2.SocialProvider : Swift.Hashable {}
+extension OegSdkV2.SocialProvider : Swift.RawRepresentable {}
+extension OegSdkV2.LoginType : Swift.Equatable {}
+extension OegSdkV2.LoginType : Swift.Hashable {}
+extension OegSdkV2.LoginType : Swift.RawRepresentable {}
+extension OegSdkV2.OEGLogLevel : Swift.Hashable {}
+extension OegSdkV2.OEGLogLevel : Swift.RawRepresentable {}
+extension OegSdkV2.OEGLogCategory : Swift.Equatable {}
+extension OegSdkV2.OEGLogCategory : Swift.Hashable {}
+extension OegSdkV2.OEGLogCategory : Swift.RawRepresentable {}
+extension OegSdkV2.PollerState : Swift.Equatable {}
+extension OegSdkV2.PollerState : Swift.Hashable {}
+extension OegSdkV2.PollerState : Swift.RawRepresentable {}
+extension OegSdkV2.MaintainPoller : Swift.Sendable {}
+extension OegSdkV2.OEGActionType : Swift.Equatable {}
+extension OegSdkV2.OEGActionType : Swift.Hashable {}
+extension OegSdkV2.OEGActionType : Swift.RawRepresentable {}
+extension OegSdkV2.OEGIAPStatus : Swift.Equatable {}
+extension OegSdkV2.OEGIAPStatus : Swift.Hashable {}
+extension OegSdkV2.OEGIAPStatus : Swift.RawRepresentable {}
+extension OegSdkV2.VerifyType : Swift.Equatable {}
+extension OegSdkV2.VerifyType : Swift.Hashable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.DashboardSideMenuView : Swift.Sendable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.DashboardAccountSectionView : Swift.Sendable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.DashboardServicesSectionView : Swift.Sendable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.DashboardDangerZoneView : Swift.Sendable {}
+extension OegSdkV2.DashboardMenuOption : Swift.Equatable {}
+extension OegSdkV2.DashboardMenuOption : Swift.Hashable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.DashboardView : Swift.Sendable {}
+extension OegSdkV2.LoginSwiftUIView : Swift.Sendable {}
+@available(iOS 14.0, *)
+extension OegSdkV2.AgeWarningBanner : Swift.Sendable {}
+@available(iOS 14.0, *)
+extension OegSdkV2.AgeRestrictionView : Swift.Sendable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.SdkLanguage : Swift.Equatable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.SdkLanguage : Swift.Hashable {}
+@available(macOS 14.0, iOS 14.0, *)
+extension OegSdkV2.SdkLanguage : Swift.RawRepresentable {}
