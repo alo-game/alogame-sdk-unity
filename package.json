@@ -1,11 +1,11 @@
 {
     "name": "com.alogame.sdk",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "displayName": "Alogame SDK",
     "description": "Unity port of the Alogame native SDK bridge (Auth/Payment/Analytics/Push/Account) for Android and iOS games. Mirrors the alogame-sdk (Egret/Cocos) TypeScript API 1:1 over the same native bridge glue (OEGBridge.kt / OEGBridge.swift).",
     "unity": "2022.3",
     "documentationUrl": "https://sdk-docs.oeg.vn/docs/bridge/install",
-    "changelogUrl": "https://gitlab.oeg.vn/alogame-tech/sdk/oeg-sdk/-/blob/main/v2/unity/AlogameSDK/CHANGELOG.md",
+    "changelogUrl": "https://github.com/alo-game/alogame-sdk-unity/blob/main/CHANGELOG.md",
     "keywords": [
         "sdk",
         "alogame",

@@ -2,7 +2,26 @@
 
 All notable changes to this package are documented here.
 
-## [0.1.0] - Unreleased
+## [0.1.1] - 2026-08-22
+
+Packaging only — no runtime, C#, or native change. The package contents are byte-identical
+to 0.1.0 apart from this file and `package.json`'s two rewritten fields.
+
+- **`changelogUrl` now points at the published copy.** It pointed at the source repo,
+  `gitlab.oeg.vn/alogame-tech/sdk/oeg-sdk`, which is not publicly readable — it 302s to the
+  sign-in page. (The `gitlab.oeg.vn/release/*` projects *are* public; the source repo is the
+  exception.) Unity renders this URL as the **Changelog** link in Package Manager, where every
+  reader is a game developer outside the org, so it now points at
+  `github.com/alo-game/alogame-sdk-unity/blob/main/CHANGELOG.md`. `deploy_unity_upm.sh` rewrites
+  it at release time, the same way it already rewrote the README's install URL, and refuses to
+  publish if any `gitlab.oeg.vn` reference survives in `package.json`.
+- 0.1.0 shipped with its heading still marked `Unreleased`; it is now dated.
+- **Fixed `deploy_unity_upm.sh --retag`.** It pushed the tag alone, leaving the default branch
+  on the previous commit — so a retag moved `0.1.0` to the new package while anyone browsing
+  the repo, or installing from `main` rather than a tag, still got the old one. Both modes now
+  push `HEAD` with the tag.
+
+## [0.1.0] - 2026-08-21
 
 Initial Unity port of the Alogame native SDK — mirrors `alogame-sdk` (Egret/Cocos) 1:1:
 `AlogameSDK`, `AlogameAuth`, `AlogamePayment`, `AlogameAnalytics`, `AlogamePush`,
