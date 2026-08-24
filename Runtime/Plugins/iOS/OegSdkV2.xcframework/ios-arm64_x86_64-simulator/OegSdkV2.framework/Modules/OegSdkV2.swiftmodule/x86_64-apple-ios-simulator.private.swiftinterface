@@ -1391,6 +1391,7 @@ public enum OEGFonts {
 public enum SdkLanguage : Swift.String, Swift.CaseIterable, Swift.Identifiable {
   case english
   case vietnamese
+  case chinese
   public var id: Swift.String {
     get
   }
@@ -1866,6 +1867,9 @@ final public class MaintainKickOutHandler {
   final public var onMaintenanceKickOut: ((OegSdkV2.MaintainInfo) -> Swift.Void)?
   final public func start(poller: OegSdkV2.MaintainPoller)
   final public func stop()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class AlogameManager : OegSdkV2.OEGManager {
   @objc deinit
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class OEGManager : ObjectiveC.NSObject {

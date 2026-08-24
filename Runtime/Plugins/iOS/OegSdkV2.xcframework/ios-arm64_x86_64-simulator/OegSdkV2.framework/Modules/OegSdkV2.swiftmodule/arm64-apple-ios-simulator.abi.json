@@ -51409,6 +51409,43 @@
           },
           {
             "kind": "Var",
+            "name": "chinese",
+            "printedName": "chinese",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OegSdkV2.SdkLanguage.Type) -> OegSdkV2.SdkLanguage",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SdkLanguage",
+                    "printedName": "OegSdkV2.SdkLanguage",
+                    "usr": "s:8OegSdkV20B8LanguageO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OegSdkV2.SdkLanguage.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SdkLanguage",
+                        "printedName": "OegSdkV2.SdkLanguage",
+                        "usr": "s:8OegSdkV20B8LanguageO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OegSdkV20B8LanguageO7chineseyA2CmF",
+            "mangledName": "$s8OegSdkV20B8LanguageO7chineseyA2CmF",
+            "moduleName": "OegSdkV2"
+          },
+          {
+            "kind": "Var",
             "name": "id",
             "printedName": "id",
             "children": [
@@ -59043,6 +59080,98 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AlogameManager",
+        "printedName": "AlogameManager",
+        "declKind": "Class",
+        "usr": "c:@M@OegSdkV2@objc(cs)AlogameManager",
+        "mangledName": "$s8OegSdkV214AlogameManagerC",
+        "moduleName": "OegSdkV2",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:@M@OegSdkV2@objc(cs)OEGManager",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "OegSdkV2.OEGManager",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
         "declKind": "Import",
@@ -59086,8 +59215,8 @@
             "static": true,
             "declAttributes": [
               "HasInitialValue",
-              "Final",
               "HasStorage",
+              "Final",
               "AccessControl",
               "ObjC",
               "RawDocComment"
@@ -65828,35 +65957,35 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 14171,
+      "offset": 15119,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 18362,
+      "offset": 19310,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 18415,
+      "offset": 19363,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 18460,
+      "offset": 19408,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 18661,
+      "offset": 19609,
       "length": 5,
       "value": "false"
     },
@@ -66598,16 +66727,23 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/LanguagePickerView.swift",
       "kind": "StringLiteral",
-      "offset": 427,
+      "offset": 690,
       "length": 4,
       "value": "\"en\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/LanguagePickerView.swift",
       "kind": "StringLiteral",
-      "offset": 454,
+      "offset": 717,
       "length": 4,
       "value": "\"vi\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/LanguagePickerView.swift",
+      "kind": "StringLiteral",
+      "offset": 741,
+      "length": 9,
+      "value": "\"zh-Hans\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/OEGLanguageManager.swift",

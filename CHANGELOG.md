@@ -2,6 +2,83 @@
 
 All notable changes to this package are documented here.
 
+## [0.1.2] - 2026-08-24
+
+First release since 0.1.0 to change the native binaries. 0.1.0 and 0.1.1 both shipped the
+**1.3.17** natives; this ships Android **1.4.3** and iOS **1.4.1**.
+
+The two platform versions differ on purpose. Everything between 1.4.1 and 1.4.3 is Android-only —
+a layout fix and ProGuard rules — so the iOS `.xcframework` has no corresponding build. Android
+1.4.2 is skipped here: it exists as a published release but predates the ProGuard rules below,
+and a minified game cannot use it.
+
+### Fixed — minified (R8) builds could not use the SDK at all
+
+Four separate faults, none visible in a non-minified build, each hiding the next. Found by
+building the sample with `minifyRelease` on and running it on a device; the first two also hit
+plain native games, and were reported from production.
+
+- **Retrofit's generic return type was stripped.** R8 full mode — the default since AGP 8.0 —
+  drops a generic signature when the referenced type is not itself kept, so `Call<T>` reached
+  Retrofit as a raw `Class` and the first API call died:
+  `ClassCastException: java.lang.Class cannot be cast to java.lang.reflect.ParameterizedType`,
+  through `java.lang.reflect.Proxy.invoke`. Retrofit 2.9.0 ships its own rules but predates full
+  mode and lacks the three keeps upstream added afterwards. They now ship in the SDK's `.aar`, so
+  no game has to know the SDK uses Retrofit. Confirmed by removing only those three lines and
+  reproducing the exact stack.
+- **The SDK's own response envelopes lost their generics too.** `ConfigApiResponse<T>` and
+  `AuthApiResponse<T>` are in `…data.response`, which the existing rules did not cover (they
+  covered `…data.dto`). Gson then parsed the payload into a `LinkedTreeMap` and the call site
+  threw a bare, message-less `ClassCastException`. This one only surfaced *after* the Retrofit
+  fix — it is the very next failure on the same request.
+- **`AlogameUnityBridge` was removed outright.** It is reached only by name, from C#
+  (`new AndroidJavaClass("com.alogame.unity.AlogameUnityBridge")`), so R8 sees no caller.
+  `Initialize()` threw `ClassNotFoundException` and every later SDK call was a silent no-op. The
+  Android build post-processor now emits `alogame-proguard.txt` and registers it on
+  `consumerProguardFiles`, handling both the Groovy and Kotlin-DSL forms.
+- **Keeping `OEGBridge` then broke the build itself.** It carries the Egret entry point, and
+  Egret is a `compileOnly` dependency, so a Cocos or Unity game has no such class — R8 treats a
+  missing class as a hard error, not a warning. The bridge now ships `-dontwarn org.egret.**`.
+
+Also: `bridge/build.gradle.kts` had declared `consumerProguardFiles("consumer-rules.pro")` for a
+file that never existed. Gradle does not fail on that, it just ships an `.aar` with no rules — so
+the engine bridge had never contributed a single keep rule. The file now exists.
+
+### Fixed — Android auth screen
+
+- **The Login/Sign Up tab row no longer moves between tabs.** Native 1.4.2 anchored both screens
+  to `top|center_horizontal`, but Register's root was the `ScrollView`, and `fillViewport="true"`
+  stretches a ScrollView's direct child to the full viewport — which made that `layout_gravity`
+  inert and let the shared stage style re-centre the taller card. Register's nesting now mirrors
+  Login's. Measured on a 1080x2400 screen: the selected-tab pill starts at y=318 on both tabs,
+  where it previously jumped by roughly 340px. iOS never had this.
+
+### Known — `ShowLoginUI()` differs by platform
+
+On iOS the returned `Task` completes when the login flow finishes and carries the signed-in user.
+On Android it completes as soon as the screen is *launched*, with no user attached, so
+`result.Success` is `false` while the login screen is still open. The Android bridge is
+fire-and-forget (`OEGHelper.showLogin` takes a callback parameter it never invokes), and unifying
+it needs `onActivityResult` plumbing that Unity's `GameActivity` makes awkward. Until then, do not
+read an Android `ShowLoginUI()` result as the outcome of the login — poll `GetCurrentUser()` or
+`IsLoggedIn()`.
+
+### Verified
+
+- Android, minified release build (`minifyRelease`, R8 full mode), Unity 6000.5.6f1, IL2CPP
+  arm64, on an Android 16 (API 36) arm64 emulator with `game_id 52`: SDK init, remote config
+  fetch, Adjust event with a token from that config, and `OEGLoginActivity` on screen — zero
+  `ClassCastException`, `ClassNotFoundException` or `FATAL EXCEPTION` in logcat.
+- Android, non-minified: same path, plus both auth tabs measured for the layout fix.
+- iOS was not rebuilt for this release; its binary is unchanged from 0.1.1's 1.4.1.
+
+### Still to verify
+
+- iOS against these changes — nothing here touches it, but it has not been re-run.
+- Android on physical hardware (emulator only so far).
+- Purchase and floating-button flows end to end, on either platform.
+- Landscape orientation for the auth screen fix.
+
 ## [0.1.1] - 2026-08-22
 
 Packaging only — no runtime, C#, or native change. The package contents are byte-identical

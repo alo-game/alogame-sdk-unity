@@ -374,125 +374,10 @@ extern "C" {
 #if defined(__OBJC__)
 
 @class NSString;
-@class NSBundle;
-@class NSCoder;
-SWIFT_CLASS("_TtC8OegSdkV228ForgotPasswordViewController")
-@interface ForgotPasswordViewController : UIViewController
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC8OegSdkV219LoginViewController")
-@interface LoginViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
-
-/// Action types returned in OEGAccountCallback
-/// Matches legacy OEGManager.h enum values exactly
-typedef SWIFT_ENUM(NSInteger, OEGActionType, open) {
-  OEGActionTypeRegister = 0,
-  OEGActionTypeLoginOEGID = 1,
-  OEGActionTypeLoginFacebook = 2,
-  OEGActionTypeLoginGoogle = 3,
-  OEGActionTypeLoginApple = 4,
-  OEGActionTypePlaynow = 5,
-  OEGActionTypeLogout = 6,
-  OEGActionTypeProfile = 7,
-  OEGActionTypeChangePassword = 8,
-  OEGActionTypeForgotPassword = 9,
-  OEGActionTypeVerifyEmail = 10,
-  OEGActionTypeVerifyPhone = 11,
-  OEGActionTypeClose = 12,
-};
-
-SWIFT_ENUM_FWD_DECL(NSInteger, Environment)
-/// OEG Analytics SDK - Adjust Integration
-/// Matches Android’s <code>OEGAnalytics</code> public API structure.
-SWIFT_CLASS("_TtC8OegSdkV212OEGAnalytics")
-@interface OEGAnalytics : NSObject
-/// Shared singleton instance
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OEGAnalytics * _Nonnull shared;)
-+ (OEGAnalytics * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-/// Initialize Adjust SDK
-/// \param appToken Adjust App Token
-///
-/// \param environment Sandbox or Production
-///
-/// \param eventTokenMap Optional mapping of event names to tokens
-///
-- (void)initializeWithAppToken:(NSString * _Nonnull)appToken environment:(enum Environment)environment eventTokenMap:(NSDictionary<NSString *, NSString *> * _Nonnull)eventTokenMap;
-/// Track an event
-/// \param eventNameOrToken Event name (from mapping) or direct token
-///
-/// \param parameters Optional callback parameters
-///
-- (void)logEvent:(NSString * _Nonnull)eventNameOrToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Track a purchase/revenue event
-/// \param eventToken Adjust event token
-///
-/// \param price Amount
-///
-/// \param currency Currency code (USD, VND)
-///
-/// \param transactionId Unique transaction ID
-///
-/// \param productId Product ID
-///
-- (void)logPurchaseWithEventToken:(NSString * _Nonnull)eventToken price:(double)price currency:(NSString * _Nonnull)currency transactionId:(NSString * _Nullable)transactionId productId:(NSString * _Nullable)productId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Track an event that carries revenue, keyed on the event’s own token.
-/// Use for recharge / web_store / custom revenue events (e.g. first_recharge) where the game
-/// dev must set the real Adjust revenue — passing the amount as a plain parameter does NOT count.
-/// \param eventNameOrToken Event name (from mapping) or direct token — this is the Adjust event that records the revenue
-///
-/// \param revenue Amount (must be > 0 to be recorded)
-///
-/// \param currency ISO 4217 code (e.g. “VND”, “USD”)
-///
-/// \param orderId Unique order/transaction id for deduplication
-///
-/// \param parameters Optional extra callback parameters
-///
-- (void)logRevenue:(NSString * _Nonnull)eventNameOrToken revenue:(double)revenue currency:(NSString * _Nonnull)currency orderId:(NSString * _Nullable)orderId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Enable/disable tracking (GDPR compliance)
-- (void)setTrackingEnabled:(BOOL)enabled;
-/// Legacy backward compatible method for tracking events with parameters
-- (void)trackEventToken:(NSString * _Nonnull)eventToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Legacy backward compatible method for tracking revenue with parameters
-- (void)trackEventToken:(NSString * _Nonnull)eventToken revenue:(double)revenue currency:(NSString * _Nullable)currency transactionId:(NSString * _Nullable)transactionId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-@end
-
-/// Adjust environment enum
-typedef SWIFT_ENUM(NSInteger, Environment, open) {
-  EnvironmentSandbox = 0,
-  EnvironmentProduction = 1,
-};
-
-/// Protocol for Unity/Native callbacks.
-/// Designed to be implemented by native bridges.
-/// Matches Android’s <code>OEGCallback</code> interface.
-SWIFT_PROTOCOL("_TtP8OegSdkV211OEGCallback_")
-@protocol OEGCallback
-- (void)onSuccessWithPayload:(NSString * _Nonnull)payload;
-- (void)onErrorWithCode:(NSInteger)code message:(NSString * _Nonnull)message;
-@end
-
-/// IAP status returned in OEGIAPCallback
-/// Matches legacy OEGManager.h enum values exactly
-typedef SWIFT_ENUM(NSInteger, OEGIAPStatus, open) {
-  OEGIAPStatusPurchasing = 0,
-  OEGIAPStatusPurchased = 1,
-  OEGIAPStatusRestored = 2,
-  OEGIAPStatusFailed = 3,
-  OEGIAPStatusRequestError = 4,
-  OEGIAPStatusVerified = 5,
-};
-
+SWIFT_ENUM_FWD_DECL(NSInteger, OEGActionType)
 @class NSError;
+@class UIViewController;
+SWIFT_ENUM_FWD_DECL(NSInteger, OEGIAPStatus)
 @class NSURL;
 @class NSUserActivity;
 @class UIApplication;
@@ -647,6 +532,141 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OEGManager *
 ///
 - (void)logEvent:(NSString * _Nonnull)eventName withValues:(NSDictionary<NSString *, id> * _Nullable)values revenue:(double)revenue currency:(NSString * _Nonnull)currency orderId:(NSString * _Nullable)orderId;
 @end
+
+/// Alogame-branded entry point for new games. Identical to <code>OEGManager</code> — every method is
+/// inherited, nothing is reimplemented — so behavior never drifts between the two names.
+/// <code>OEGManager</code> keeps working unchanged for existing integrations; this class exists only to
+/// give new games an Alogame-branded symbol to call instead.
+/// <h2>Usage (Objective-C)</h2>
+/// \code
+/// [[AlogameManager sharedManager] showLoginWithCallback:^(OEGActionType type, id response, BOOL success, NSError *error) {
+///     if (success) {
+///         NSLog(@"Logged in!");
+///     }
+/// }];
+///
+/// \endcode
+SWIFT_CLASS("_TtC8OegSdkV214AlogameManager")
+@interface AlogameManager : OEGManager
+@end
+
+@class NSBundle;
+@class NSCoder;
+SWIFT_CLASS("_TtC8OegSdkV228ForgotPasswordViewController")
+@interface ForgotPasswordViewController : UIViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC8OegSdkV219LoginViewController")
+@interface LoginViewController : UIViewController
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+/// Action types returned in OEGAccountCallback
+/// Matches legacy OEGManager.h enum values exactly
+typedef SWIFT_ENUM(NSInteger, OEGActionType, open) {
+  OEGActionTypeRegister = 0,
+  OEGActionTypeLoginOEGID = 1,
+  OEGActionTypeLoginFacebook = 2,
+  OEGActionTypeLoginGoogle = 3,
+  OEGActionTypeLoginApple = 4,
+  OEGActionTypePlaynow = 5,
+  OEGActionTypeLogout = 6,
+  OEGActionTypeProfile = 7,
+  OEGActionTypeChangePassword = 8,
+  OEGActionTypeForgotPassword = 9,
+  OEGActionTypeVerifyEmail = 10,
+  OEGActionTypeVerifyPhone = 11,
+  OEGActionTypeClose = 12,
+};
+
+SWIFT_ENUM_FWD_DECL(NSInteger, Environment)
+/// OEG Analytics SDK - Adjust Integration
+/// Matches Android’s <code>OEGAnalytics</code> public API structure.
+SWIFT_CLASS("_TtC8OegSdkV212OEGAnalytics")
+@interface OEGAnalytics : NSObject
+/// Shared singleton instance
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OEGAnalytics * _Nonnull shared;)
++ (OEGAnalytics * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Initialize Adjust SDK
+/// \param appToken Adjust App Token
+///
+/// \param environment Sandbox or Production
+///
+/// \param eventTokenMap Optional mapping of event names to tokens
+///
+- (void)initializeWithAppToken:(NSString * _Nonnull)appToken environment:(enum Environment)environment eventTokenMap:(NSDictionary<NSString *, NSString *> * _Nonnull)eventTokenMap;
+/// Track an event
+/// \param eventNameOrToken Event name (from mapping) or direct token
+///
+/// \param parameters Optional callback parameters
+///
+- (void)logEvent:(NSString * _Nonnull)eventNameOrToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Track a purchase/revenue event
+/// \param eventToken Adjust event token
+///
+/// \param price Amount
+///
+/// \param currency Currency code (USD, VND)
+///
+/// \param transactionId Unique transaction ID
+///
+/// \param productId Product ID
+///
+- (void)logPurchaseWithEventToken:(NSString * _Nonnull)eventToken price:(double)price currency:(NSString * _Nonnull)currency transactionId:(NSString * _Nullable)transactionId productId:(NSString * _Nullable)productId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Track an event that carries revenue, keyed on the event’s own token.
+/// Use for recharge / web_store / custom revenue events (e.g. first_recharge) where the game
+/// dev must set the real Adjust revenue — passing the amount as a plain parameter does NOT count.
+/// \param eventNameOrToken Event name (from mapping) or direct token — this is the Adjust event that records the revenue
+///
+/// \param revenue Amount (must be > 0 to be recorded)
+///
+/// \param currency ISO 4217 code (e.g. “VND”, “USD”)
+///
+/// \param orderId Unique order/transaction id for deduplication
+///
+/// \param parameters Optional extra callback parameters
+///
+- (void)logRevenue:(NSString * _Nonnull)eventNameOrToken revenue:(double)revenue currency:(NSString * _Nonnull)currency orderId:(NSString * _Nullable)orderId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Enable/disable tracking (GDPR compliance)
+- (void)setTrackingEnabled:(BOOL)enabled;
+/// Legacy backward compatible method for tracking events with parameters
+- (void)trackEventToken:(NSString * _Nonnull)eventToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Legacy backward compatible method for tracking revenue with parameters
+- (void)trackEventToken:(NSString * _Nonnull)eventToken revenue:(double)revenue currency:(NSString * _Nullable)currency transactionId:(NSString * _Nullable)transactionId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+@end
+
+/// Adjust environment enum
+typedef SWIFT_ENUM(NSInteger, Environment, open) {
+  EnvironmentSandbox = 0,
+  EnvironmentProduction = 1,
+};
+
+/// Protocol for Unity/Native callbacks.
+/// Designed to be implemented by native bridges.
+/// Matches Android’s <code>OEGCallback</code> interface.
+SWIFT_PROTOCOL("_TtP8OegSdkV211OEGCallback_")
+@protocol OEGCallback
+- (void)onSuccessWithPayload:(NSString * _Nonnull)payload;
+- (void)onErrorWithCode:(NSInteger)code message:(NSString * _Nonnull)message;
+@end
+
+/// IAP status returned in OEGIAPCallback
+/// Matches legacy OEGManager.h enum values exactly
+typedef SWIFT_ENUM(NSInteger, OEGIAPStatus, open) {
+  OEGIAPStatusPurchasing = 0,
+  OEGIAPStatusPurchased = 1,
+  OEGIAPStatusRestored = 2,
+  OEGIAPStatusFailed = 3,
+  OEGIAPStatusRequestError = 4,
+  OEGIAPStatusVerified = 5,
+};
 
 /// OEG Payment SDK - StoreKit Integration
 /// Provides in-app purchase functionality using StoreKit 2 (iOS 15+) or StoreKit 1 fallback.
@@ -1177,125 +1197,10 @@ extern "C" {
 #if defined(__OBJC__)
 
 @class NSString;
-@class NSBundle;
-@class NSCoder;
-SWIFT_CLASS("_TtC8OegSdkV228ForgotPasswordViewController")
-@interface ForgotPasswordViewController : UIViewController
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC8OegSdkV219LoginViewController")
-@interface LoginViewController : UIViewController
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
-- (void)viewDidLoad;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
-@end
-
-/// Action types returned in OEGAccountCallback
-/// Matches legacy OEGManager.h enum values exactly
-typedef SWIFT_ENUM(NSInteger, OEGActionType, open) {
-  OEGActionTypeRegister = 0,
-  OEGActionTypeLoginOEGID = 1,
-  OEGActionTypeLoginFacebook = 2,
-  OEGActionTypeLoginGoogle = 3,
-  OEGActionTypeLoginApple = 4,
-  OEGActionTypePlaynow = 5,
-  OEGActionTypeLogout = 6,
-  OEGActionTypeProfile = 7,
-  OEGActionTypeChangePassword = 8,
-  OEGActionTypeForgotPassword = 9,
-  OEGActionTypeVerifyEmail = 10,
-  OEGActionTypeVerifyPhone = 11,
-  OEGActionTypeClose = 12,
-};
-
-SWIFT_ENUM_FWD_DECL(NSInteger, Environment)
-/// OEG Analytics SDK - Adjust Integration
-/// Matches Android’s <code>OEGAnalytics</code> public API structure.
-SWIFT_CLASS("_TtC8OegSdkV212OEGAnalytics")
-@interface OEGAnalytics : NSObject
-/// Shared singleton instance
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OEGAnalytics * _Nonnull shared;)
-+ (OEGAnalytics * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-/// Initialize Adjust SDK
-/// \param appToken Adjust App Token
-///
-/// \param environment Sandbox or Production
-///
-/// \param eventTokenMap Optional mapping of event names to tokens
-///
-- (void)initializeWithAppToken:(NSString * _Nonnull)appToken environment:(enum Environment)environment eventTokenMap:(NSDictionary<NSString *, NSString *> * _Nonnull)eventTokenMap;
-/// Track an event
-/// \param eventNameOrToken Event name (from mapping) or direct token
-///
-/// \param parameters Optional callback parameters
-///
-- (void)logEvent:(NSString * _Nonnull)eventNameOrToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Track a purchase/revenue event
-/// \param eventToken Adjust event token
-///
-/// \param price Amount
-///
-/// \param currency Currency code (USD, VND)
-///
-/// \param transactionId Unique transaction ID
-///
-/// \param productId Product ID
-///
-- (void)logPurchaseWithEventToken:(NSString * _Nonnull)eventToken price:(double)price currency:(NSString * _Nonnull)currency transactionId:(NSString * _Nullable)transactionId productId:(NSString * _Nullable)productId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Track an event that carries revenue, keyed on the event’s own token.
-/// Use for recharge / web_store / custom revenue events (e.g. first_recharge) where the game
-/// dev must set the real Adjust revenue — passing the amount as a plain parameter does NOT count.
-/// \param eventNameOrToken Event name (from mapping) or direct token — this is the Adjust event that records the revenue
-///
-/// \param revenue Amount (must be > 0 to be recorded)
-///
-/// \param currency ISO 4217 code (e.g. “VND”, “USD”)
-///
-/// \param orderId Unique order/transaction id for deduplication
-///
-/// \param parameters Optional extra callback parameters
-///
-- (void)logRevenue:(NSString * _Nonnull)eventNameOrToken revenue:(double)revenue currency:(NSString * _Nonnull)currency orderId:(NSString * _Nullable)orderId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Enable/disable tracking (GDPR compliance)
-- (void)setTrackingEnabled:(BOOL)enabled;
-/// Legacy backward compatible method for tracking events with parameters
-- (void)trackEventToken:(NSString * _Nonnull)eventToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-/// Legacy backward compatible method for tracking revenue with parameters
-- (void)trackEventToken:(NSString * _Nonnull)eventToken revenue:(double)revenue currency:(NSString * _Nullable)currency transactionId:(NSString * _Nullable)transactionId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
-@end
-
-/// Adjust environment enum
-typedef SWIFT_ENUM(NSInteger, Environment, open) {
-  EnvironmentSandbox = 0,
-  EnvironmentProduction = 1,
-};
-
-/// Protocol for Unity/Native callbacks.
-/// Designed to be implemented by native bridges.
-/// Matches Android’s <code>OEGCallback</code> interface.
-SWIFT_PROTOCOL("_TtP8OegSdkV211OEGCallback_")
-@protocol OEGCallback
-- (void)onSuccessWithPayload:(NSString * _Nonnull)payload;
-- (void)onErrorWithCode:(NSInteger)code message:(NSString * _Nonnull)message;
-@end
-
-/// IAP status returned in OEGIAPCallback
-/// Matches legacy OEGManager.h enum values exactly
-typedef SWIFT_ENUM(NSInteger, OEGIAPStatus, open) {
-  OEGIAPStatusPurchasing = 0,
-  OEGIAPStatusPurchased = 1,
-  OEGIAPStatusRestored = 2,
-  OEGIAPStatusFailed = 3,
-  OEGIAPStatusRequestError = 4,
-  OEGIAPStatusVerified = 5,
-};
-
+SWIFT_ENUM_FWD_DECL(NSInteger, OEGActionType)
 @class NSError;
+@class UIViewController;
+SWIFT_ENUM_FWD_DECL(NSInteger, OEGIAPStatus)
 @class NSURL;
 @class NSUserActivity;
 @class UIApplication;
@@ -1450,6 +1355,141 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OEGManager *
 ///
 - (void)logEvent:(NSString * _Nonnull)eventName withValues:(NSDictionary<NSString *, id> * _Nullable)values revenue:(double)revenue currency:(NSString * _Nonnull)currency orderId:(NSString * _Nullable)orderId;
 @end
+
+/// Alogame-branded entry point for new games. Identical to <code>OEGManager</code> — every method is
+/// inherited, nothing is reimplemented — so behavior never drifts between the two names.
+/// <code>OEGManager</code> keeps working unchanged for existing integrations; this class exists only to
+/// give new games an Alogame-branded symbol to call instead.
+/// <h2>Usage (Objective-C)</h2>
+/// \code
+/// [[AlogameManager sharedManager] showLoginWithCallback:^(OEGActionType type, id response, BOOL success, NSError *error) {
+///     if (success) {
+///         NSLog(@"Logged in!");
+///     }
+/// }];
+///
+/// \endcode
+SWIFT_CLASS("_TtC8OegSdkV214AlogameManager")
+@interface AlogameManager : OEGManager
+@end
+
+@class NSBundle;
+@class NSCoder;
+SWIFT_CLASS("_TtC8OegSdkV228ForgotPasswordViewController")
+@interface ForgotPasswordViewController : UIViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC8OegSdkV219LoginViewController")
+@interface LoginViewController : UIViewController
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+/// Action types returned in OEGAccountCallback
+/// Matches legacy OEGManager.h enum values exactly
+typedef SWIFT_ENUM(NSInteger, OEGActionType, open) {
+  OEGActionTypeRegister = 0,
+  OEGActionTypeLoginOEGID = 1,
+  OEGActionTypeLoginFacebook = 2,
+  OEGActionTypeLoginGoogle = 3,
+  OEGActionTypeLoginApple = 4,
+  OEGActionTypePlaynow = 5,
+  OEGActionTypeLogout = 6,
+  OEGActionTypeProfile = 7,
+  OEGActionTypeChangePassword = 8,
+  OEGActionTypeForgotPassword = 9,
+  OEGActionTypeVerifyEmail = 10,
+  OEGActionTypeVerifyPhone = 11,
+  OEGActionTypeClose = 12,
+};
+
+SWIFT_ENUM_FWD_DECL(NSInteger, Environment)
+/// OEG Analytics SDK - Adjust Integration
+/// Matches Android’s <code>OEGAnalytics</code> public API structure.
+SWIFT_CLASS("_TtC8OegSdkV212OEGAnalytics")
+@interface OEGAnalytics : NSObject
+/// Shared singleton instance
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OEGAnalytics * _Nonnull shared;)
++ (OEGAnalytics * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Initialize Adjust SDK
+/// \param appToken Adjust App Token
+///
+/// \param environment Sandbox or Production
+///
+/// \param eventTokenMap Optional mapping of event names to tokens
+///
+- (void)initializeWithAppToken:(NSString * _Nonnull)appToken environment:(enum Environment)environment eventTokenMap:(NSDictionary<NSString *, NSString *> * _Nonnull)eventTokenMap;
+/// Track an event
+/// \param eventNameOrToken Event name (from mapping) or direct token
+///
+/// \param parameters Optional callback parameters
+///
+- (void)logEvent:(NSString * _Nonnull)eventNameOrToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Track a purchase/revenue event
+/// \param eventToken Adjust event token
+///
+/// \param price Amount
+///
+/// \param currency Currency code (USD, VND)
+///
+/// \param transactionId Unique transaction ID
+///
+/// \param productId Product ID
+///
+- (void)logPurchaseWithEventToken:(NSString * _Nonnull)eventToken price:(double)price currency:(NSString * _Nonnull)currency transactionId:(NSString * _Nullable)transactionId productId:(NSString * _Nullable)productId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Track an event that carries revenue, keyed on the event’s own token.
+/// Use for recharge / web_store / custom revenue events (e.g. first_recharge) where the game
+/// dev must set the real Adjust revenue — passing the amount as a plain parameter does NOT count.
+/// \param eventNameOrToken Event name (from mapping) or direct token — this is the Adjust event that records the revenue
+///
+/// \param revenue Amount (must be > 0 to be recorded)
+///
+/// \param currency ISO 4217 code (e.g. “VND”, “USD”)
+///
+/// \param orderId Unique order/transaction id for deduplication
+///
+/// \param parameters Optional extra callback parameters
+///
+- (void)logRevenue:(NSString * _Nonnull)eventNameOrToken revenue:(double)revenue currency:(NSString * _Nonnull)currency orderId:(NSString * _Nullable)orderId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Enable/disable tracking (GDPR compliance)
+- (void)setTrackingEnabled:(BOOL)enabled;
+/// Legacy backward compatible method for tracking events with parameters
+- (void)trackEventToken:(NSString * _Nonnull)eventToken parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+/// Legacy backward compatible method for tracking revenue with parameters
+- (void)trackEventToken:(NSString * _Nonnull)eventToken revenue:(double)revenue currency:(NSString * _Nullable)currency transactionId:(NSString * _Nullable)transactionId parameters:(NSDictionary<NSString *, NSString *> * _Nullable)parameters;
+@end
+
+/// Adjust environment enum
+typedef SWIFT_ENUM(NSInteger, Environment, open) {
+  EnvironmentSandbox = 0,
+  EnvironmentProduction = 1,
+};
+
+/// Protocol for Unity/Native callbacks.
+/// Designed to be implemented by native bridges.
+/// Matches Android’s <code>OEGCallback</code> interface.
+SWIFT_PROTOCOL("_TtP8OegSdkV211OEGCallback_")
+@protocol OEGCallback
+- (void)onSuccessWithPayload:(NSString * _Nonnull)payload;
+- (void)onErrorWithCode:(NSInteger)code message:(NSString * _Nonnull)message;
+@end
+
+/// IAP status returned in OEGIAPCallback
+/// Matches legacy OEGManager.h enum values exactly
+typedef SWIFT_ENUM(NSInteger, OEGIAPStatus, open) {
+  OEGIAPStatusPurchasing = 0,
+  OEGIAPStatusPurchased = 1,
+  OEGIAPStatusRestored = 2,
+  OEGIAPStatusFailed = 3,
+  OEGIAPStatusRequestError = 4,
+  OEGIAPStatusVerified = 5,
+};
 
 /// OEG Payment SDK - StoreKit Integration
 /// Provides in-app purchase functionality using StoreKit 2 (iOS 15+) or StoreKit 1 fallback.
