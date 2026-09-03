@@ -180,7 +180,9 @@ namespace Alogame.SDK
 
         // ── Game Role ─────────────────────────────────────────────────────────────
 
-        /// <summary>Report the active game character to the SDK (shown on dashboard, synced to backend).</summary>
+        /// <summary>Report the active game character to the SDK (shown on dashboard, synced to backend).
+        /// Calling this again while a different role is already active fires an `sdk_switch_role`
+        /// analytics event (if configured) — no separate call needed for a direct switch.</summary>
         public static Task SetGameRole(string serverId, string roleId, string serverName = null, string roleName = null, int? level = null)
         {
             return Bridge.AlogameBridge.CallNative("auth.setGameRole", new Dictionary<string, object>
@@ -191,6 +193,16 @@ namespace Alogame.SDK
                 ["roleName"] = roleName,
                 ["level"] = level,
             });
+        }
+
+        /// <summary>Clear the active game character without logging the account out — call when the
+        /// player returns to a server/character-select screen, before the next <see cref="SetGameRole"/>
+        /// call for the newly chosen one. Fires an `sdk_logout_game_role` analytics event (if configured)
+        /// when a role was actually active. The SDK only clears its own state — it does not navigate
+        /// anywhere; move to your own switch-server screen after this completes.</summary>
+        public static Task LogoutGameRole()
+        {
+            return Bridge.AlogameBridge.CallNative("auth.logoutGameRole", null);
         }
     }
 

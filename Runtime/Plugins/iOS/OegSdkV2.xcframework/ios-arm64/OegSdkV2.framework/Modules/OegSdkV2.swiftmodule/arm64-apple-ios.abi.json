@@ -1111,6 +1111,145 @@
       },
       {
         "kind": "Import",
+        "name": "AppsFlyerLib",
+        "printedName": "AppsFlyerLib",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
+      },
+      {
+        "kind": "Import",
+        "name": "AppsFlyerLib",
+        "printedName": "AppsFlyerLib",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AttributionProvider",
+        "printedName": "AttributionProvider",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setPushToken",
+            "printedName": "setPushToken(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OegSdkV219AttributionProviderP12setPushTokenyy10Foundation4DataVF",
+            "mangledName": "$s8OegSdkV219AttributionProviderP12setPushTokenyy10Foundation4DataVF",
+            "moduleName": "OegSdkV2",
+            "genericSig": "<τ_0_0 where τ_0_0 : OegSdkV2.AttributionProvider>",
+            "sugared_genericSig": "<Self where Self : OegSdkV2.AttributionProvider>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "processDeeplink",
+            "printedName": "processDeeplink(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OegSdkV219AttributionProviderP15processDeeplinkyy10Foundation3URLVF",
+            "mangledName": "$s8OegSdkV219AttributionProviderP15processDeeplinkyy10Foundation3URLVF",
+            "moduleName": "OegSdkV2",
+            "genericSig": "<τ_0_0 where τ_0_0 : OegSdkV2.AttributionProvider>",
+            "sugared_genericSig": "<Self where Self : OegSdkV2.AttributionProvider>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:8OegSdkV219AttributionProviderP",
+        "mangledName": "$s8OegSdkV219AttributionProviderP",
+        "moduleName": "OegSdkV2",
+        "genericSig": "<τ_0_0 : Swift.Sendable>",
+        "sugared_genericSig": "<Self : Swift.Sendable>",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -2160,6 +2299,60 @@
             "declAttributes": [
               "AccessControl",
               "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setPushToken",
+            "printedName": "setPushToken(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OegSdkV212OEGAnalyticsC12setPushTokenyy10Foundation4DataVF",
+            "mangledName": "$s8OegSdkV212OEGAnalyticsC12setPushTokenyy10Foundation4DataVF",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "processDeeplink",
+            "printedName": "processDeeplink(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OegSdkV212OEGAnalyticsC15processDeeplinkyy10Foundation3URLVF",
+            "mangledName": "$s8OegSdkV212OEGAnalyticsC15processDeeplinkyy10Foundation3URLVF",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "AccessControl",
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
@@ -16795,6 +16988,46 @@
             ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "logoutGameRole",
+            "printedName": "logoutGameRole(callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OegSdkV27OEGAuthC14logoutGameRole8callbackyyyc_tF",
+            "mangledName": "$s8OegSdkV27OEGAuthC14logoutGameRole8callbackyyyc_tF",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -25483,7 +25716,8 @@
             "moduleName": "OegSdkV2",
             "declAttributes": [
               "HasStorage",
-              "AccessControl"
+              "AccessControl",
+              "RawDocComment"
             ],
             "isLet": true,
             "hasStorage": true,
@@ -25688,9 +25922,504 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "attributionProvider",
+            "printedName": "attributionProvider",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV214TrackingConfigV19attributionProviderSSSgvp",
+            "mangledName": "$s8OegSdkV214TrackingConfigV19attributionProviderSSSgvp",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV214TrackingConfigV19attributionProviderSSSgvg",
+                "mangledName": "$s8OegSdkV214TrackingConfigV19attributionProviderSSSgvg",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "appsflyerDevKey",
+            "printedName": "appsflyerDevKey",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV214TrackingConfigV15appsflyerDevKeySSSgvp",
+            "mangledName": "$s8OegSdkV214TrackingConfigV15appsflyerDevKeySSSgvp",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV214TrackingConfigV15appsflyerDevKeySSSgvg",
+                "mangledName": "$s8OegSdkV214TrackingConfigV15appsflyerDevKeySSSgvg",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "appsflyerAppleAppId",
+            "printedName": "appsflyerAppleAppId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV214TrackingConfigV19appsflyerAppleAppIdSSSgvp",
+            "mangledName": "$s8OegSdkV214TrackingConfigV19appsflyerAppleAppIdSSSgvp",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV214TrackingConfigV19appsflyerAppleAppIdSSSgvg",
+                "mangledName": "$s8OegSdkV214TrackingConfigV19appsflyerAppleAppIdSSSgvg",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "appsflyerEvents",
+            "printedName": "appsflyerEvents",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV214TrackingConfigV15appsflyerEventsSaySSGvp",
+            "mangledName": "$s8OegSdkV214TrackingConfigV15appsflyerEventsSaySSGvp",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV214TrackingConfigV15appsflyerEventsSaySSGvg",
+                "mangledName": "$s8OegSdkV214TrackingConfigV15appsflyerEventsSaySSGvg",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "ResolvedAttributionProvider",
+            "printedName": "ResolvedAttributionProvider",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "adjust",
+                "printedName": "adjust",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(OegSdkV2.TrackingConfig.ResolvedAttributionProvider.Type) -> OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResolvedAttributionProvider",
+                        "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                        "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ResolvedAttributionProvider",
+                            "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                            "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO6adjustyA2EmF",
+                "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO6adjustyA2EmF",
+                "moduleName": "OegSdkV2"
+              },
+              {
+                "kind": "Var",
+                "name": "appsflyer",
+                "printedName": "appsflyer",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(OegSdkV2.TrackingConfig.ResolvedAttributionProvider.Type) -> OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResolvedAttributionProvider",
+                        "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                        "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ResolvedAttributionProvider",
+                            "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                            "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO9appsflyeryA2EmF",
+                "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO9appsflyeryA2EmF",
+                "moduleName": "OegSdkV2"
+              },
+              {
+                "kind": "Var",
+                "name": "none",
+                "printedName": "none",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(OegSdkV2.TrackingConfig.ResolvedAttributionProvider.Type) -> OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ResolvedAttributionProvider",
+                        "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                        "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ResolvedAttributionProvider",
+                            "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                            "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO4noneyA2EmF",
+                "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO4noneyA2EmF",
+                "moduleName": "OegSdkV2"
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResolvedAttributionProvider",
+                    "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                    "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ResolvedAttributionProvider",
+                    "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                    "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO2eeoiySbAE_AEtFZ",
+                "moduleName": "OegSdkV2",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              },
+              {
+                "kind": "Var",
+                "name": "hashValue",
+                "printedName": "hashValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO9hashValueSivp",
+                "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO9hashValueSivp",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO9hashValueSivg",
+                    "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO9hashValueSivg",
+                    "moduleName": "OegSdkV2",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "hash",
+                "printedName": "hash(into:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Hasher",
+                    "printedName": "Swift.Hasher",
+                    "paramValueOwnership": "InOut",
+                    "usr": "s:s6HasherV"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO4hash4intoys6HasherVz_tF",
+                "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO4hash4intoys6HasherVz_tF",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO",
+            "mangledName": "$s8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Copyable",
+                "printedName": "Copyable",
+                "usr": "s:s8CopyableP",
+                "mangledName": "$ss8CopyableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Escapable",
+                "printedName": "Escapable",
+                "usr": "s:s9EscapableP",
+                "mangledName": "$ss9EscapableP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(adjustAppToken:adjustEnvironment:eventTokenMapping:firebaseEnabled:firebaseEvents:)",
+            "printedName": "init(adjustAppToken:adjustEnvironment:eventTokenMapping:firebaseEnabled:firebaseEvents:attributionProvider:appsflyerDevKey:appsflyerAppleAppId:appsflyerEvents:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -25762,11 +26491,71 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8OegSdkV214TrackingConfigV14adjustAppToken0F11Environment05eventH7Mapping15firebaseEnabled0L6EventsACSSSg_SSSDyS2SGSbSaySSGtcfc",
-            "mangledName": "$s8OegSdkV214TrackingConfigV14adjustAppToken0F11Environment05eventH7Mapping15firebaseEnabled0L6EventsACSSSg_SSSDyS2SGSbSaySSGtcfc",
+            "usr": "s:8OegSdkV214TrackingConfigV14adjustAppToken0F11Environment05eventH7Mapping15firebaseEnabled0L6Events19attributionProvider15appsflyerDevKey0q5AppleG2Id0qN0ACSSSg_SSSDyS2SGSbSaySSGA3mOtcfc",
+            "mangledName": "$s8OegSdkV214TrackingConfigV14adjustAppToken0F11Environment05eventH7Mapping15firebaseEnabled0L6Events19attributionProvider15appsflyerDevKey0q5AppleG2Id0qN0ACSSSg_SSSDyS2SGSbSaySSGA3mOtcfc",
             "moduleName": "OegSdkV2",
             "declAttributes": [
               "AccessControl"
@@ -25800,6 +26589,28 @@
             ],
             "throwing": true,
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "resolvedAttributionProvider",
+            "printedName": "resolvedAttributionProvider()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ResolvedAttributionProvider",
+                "printedName": "OegSdkV2.TrackingConfig.ResolvedAttributionProvider",
+                "usr": "s:8OegSdkV214TrackingConfigV27ResolvedAttributionProviderO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OegSdkV214TrackingConfigV27resolvedAttributionProviderAC08ResolvedgH0OyF",
+            "mangledName": "$s8OegSdkV214TrackingConfigV27resolvedAttributionProviderAC08ResolvedgH0OyF",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Function",
@@ -35026,6 +35837,94 @@
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "logoutGameRole",
+            "printedName": "logoutGameRole(callback:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OegSdkV2@objc(cs)OegSdkCore(cm)logoutGameRoleWithCallback:",
+            "mangledName": "$s8OegSdkV20aB4CoreC14logoutGameRole8callbackyyyc_tFZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "objc_name": "logoutGameRoleWithCallback:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getGameRole",
+            "printedName": "getGameRole()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OegSdkV2@objc(cs)OegSdkCore(cm)getGameRole",
+            "mangledName": "$s8OegSdkV20aB4CoreC11getGameRoleSDySSypGSgyFZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -35138,13 +36037,6 @@
         "kind": "Import",
         "name": "UIKit",
         "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "OegSdkV2"
-      },
-      {
-        "kind": "Import",
-        "name": "AdjustSdk",
-        "printedName": "AdjustSdk",
         "declKind": "Import",
         "moduleName": "OegSdkV2"
       },
@@ -59185,13 +60077,6 @@
         "moduleName": "OegSdkV2"
       },
       {
-        "kind": "Import",
-        "name": "AdjustSdk",
-        "printedName": "AdjustSdk",
-        "declKind": "Import",
-        "moduleName": "OegSdkV2"
-      },
-      {
         "kind": "TypeDecl",
         "name": "OEGManager",
         "printedName": "OEGManager",
@@ -60861,6 +61746,91 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "AppsFlyerLib",
+        "printedName": "AppsFlyerLib",
+        "declKind": "Class",
+        "usr": "c:objc(cs)AppsFlyerLib",
+        "moduleName": "AppsFlyerLib",
+        "isOpen": true,
+        "objc_name": "AppsFlyerLib",
+        "declAttributes": [
+          "ObjC",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Name",
         "printedName": "Name",
         "children": [
@@ -61701,70 +62671,112 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AdjustAnalyticsTracker.swift",
       "kind": "BooleanLiteral",
-      "offset": 544,
+      "offset": 565,
       "length": 5,
       "value": "false"
     },
     {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AdjustAnalyticsTracker.swift",
+      "kind": "StringLiteral",
+      "offset": 3145,
+      "length": 18,
+      "value": "\"^[a-zA-Z0-9]{6}$\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1485,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1525,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10433,
+      "length": 2,
+      "value": "45"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10481,
+      "length": 4,
+      "value": "1000"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
+      "kind": "StringLiteral",
+      "offset": 10525,
+      "length": 14,
+      "value": "\"sdk_recharge\""
+    },
+    {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 552,
+      "offset": 1007,
       "length": 21,
       "value": "\"yyyy-MM-dd HH:mm:ss\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 624,
+      "offset": 1079,
       "length": 7,
       "value": "\"GMT+7\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 679,
+      "offset": 1134,
       "length": 13,
       "value": "\"en_US_POSIX\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "IntegerLiteral",
-      "offset": 781,
+      "offset": 1236,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "Array",
-      "offset": 876,
+      "offset": 1331,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "Array",
-      "offset": 926,
+      "offset": 1381,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 4124,
+      "offset": 4583,
       "length": 8,
       "value": "\"manual\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 7642,
+      "offset": 10243,
       "length": 28,
       "value": "\"oeg_sdk_registered_devices\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 7708,
+      "offset": 10309,
       "length": 26,
       "value": "\"oeg_sdk_charged_accounts\""
     },
@@ -63290,371 +64302,406 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 10087,
+      "offset": 10981,
       "length": 33,
       "value": "\"https:\/\/api-sdk.dev.alogame.vn\/\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 10157,
+      "offset": 11051,
       "length": 29,
       "value": "\"https:\/\/api-sdk.alogame.vn\/\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 10891,
+      "offset": 11785,
       "length": 9,
       "value": "\"game_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 10941,
+      "offset": 11835,
       "length": 29,
       "value": "\"user_info_fullname_required\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11011,
+      "offset": 11905,
       "length": 29,
       "value": "\"user_info_birthday_required\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11078,
+      "offset": 11972,
       "length": 26,
       "value": "\"user_info_email_required\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11142,
+      "offset": 12036,
       "length": 26,
       "value": "\"user_info_phone_required\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11206,
+      "offset": 12100,
       "length": 25,
       "value": "\"notification_channel_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11265,
+      "offset": 12159,
       "length": 20,
       "value": "\"notification_title\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11310,
+      "offset": 12204,
       "length": 11,
       "value": "\"debug_env\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11355,
+      "offset": 12249,
       "length": 22,
       "value": "\"user_info_auto_popup\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11406,
+      "offset": 12300,
       "length": 15,
       "value": "\"enable_idpass\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11451,
+      "offset": 12345,
       "length": 17,
       "value": "\"full_form_merge\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 11494,
+      "offset": 12388,
       "length": 12,
       "value": "\"verify_otp\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 11831,
+      "offset": 12725,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 11910,
+      "offset": 12804,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 11958,
+      "offset": 12852,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 12003,
+      "offset": 12897,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 12048,
+      "offset": 12942,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 12095,
+      "offset": 12989,
       "length": 17,
       "value": "\"oeg_sdk_channel\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 12150,
+      "offset": 13044,
       "length": 14,
       "value": "\"Notification\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 12191,
+      "offset": 13085,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 12232,
+      "offset": 13126,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 12268,
+      "offset": 13162,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 12304,
+      "offset": 13198,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 12336,
+      "offset": 13230,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 15095,
+      "offset": 15989,
       "length": 12,
       "value": "\"sentry_dsn\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 15136,
+      "offset": 16030,
       "length": 15,
       "value": "\"enable_timber\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 15227,
+      "offset": 16121,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16090,
+      "offset": 16984,
       "length": 17,
       "value": "\"facebook_app_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16143,
+      "offset": 17037,
       "length": 23,
       "value": "\"facebook_client_token\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16204,
+      "offset": 17098,
       "length": 26,
       "value": "\"fb_login_protocol_scheme\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16264,
+      "offset": 17158,
       "length": 22,
       "value": "\"google_web_client_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16318,
+      "offset": 17212,
       "length": 19,
       "value": "\"tiktok_client_key\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16368,
+      "offset": 17262,
       "length": 17,
       "value": "\"enable_facebook\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16414,
+      "offset": 17308,
       "length": 15,
       "value": "\"enable_google\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16457,
+      "offset": 17351,
       "length": 14,
       "value": "\"enable_apple\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16501,
+      "offset": 17395,
       "length": 16,
       "value": "\"enable_playnow\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 16546,
+      "offset": 17440,
       "length": 15,
       "value": "\"enable_tiktok\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 16827,
+      "offset": 17721,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 16862,
+      "offset": 17756,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 16896,
+      "offset": 17790,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 16932,
+      "offset": 17826,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 16967,
+      "offset": 17861,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 19008,
+      "offset": 20695,
       "length": 18,
       "value": "\"adjust_app_token\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 19060,
+      "offset": 20747,
       "length": 20,
       "value": "\"adjust_environment\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 19114,
+      "offset": 20801,
       "length": 21,
       "value": "\"event_token_mapping\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 19167,
+      "offset": 20854,
       "length": 18,
       "value": "\"firebase_enabled\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 19216,
+      "offset": 20903,
       "length": 17,
       "value": "\"firebase_events\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "StringLiteral",
-      "offset": 19333,
+      "offset": 20956,
+      "length": 22,
+      "value": "\"attribution_provider\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 21010,
+      "length": 19,
+      "value": "\"appsflyer_dev_key\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 21065,
+      "length": 24,
+      "value": "\"appsflyer_apple_app_id\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 21121,
+      "length": 18,
+      "value": "\"appsflyer_events\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 21239,
       "length": 9,
       "value": "\"sandbox\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "Dictionary",
-      "offset": 19390,
+      "offset": 21296,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 19427,
+      "offset": 21333,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
       "kind": "Array",
-      "offset": 19468,
+      "offset": 21374,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Config\/SdkConfig.swift",
+      "kind": "Array",
+      "offset": 21542,
       "length": 2,
       "value": "[]"
     },
@@ -63822,14 +64869,14 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Data\/PaymentRepositoryImpl.swift",
       "kind": "StringLiteral",
-      "offset": 4139,
+      "offset": 4106,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Data\/PaymentRepositoryImpl.swift",
       "kind": "IntegerLiteral",
-      "offset": 4934,
+      "offset": 4901,
       "length": 1,
       "value": "0"
     },
@@ -64158,140 +65205,154 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 3874,
+      "offset": 4324,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4828,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5193,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 17839,
+      "offset": 19904,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 22946,
+      "offset": 29137,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "StringLiteral",
-      "offset": 23274,
+      "offset": 30741,
       "length": 20,
       "value": "\"OEGConfigDidUpdate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 3112,
+      "offset": 3023,
       "length": 43,
       "value": "\"[OEGPush] Cannot sync: SDK not configured\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 3891,
+      "offset": 3802,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 3935,
+      "offset": 3846,
       "length": 9,
       "value": "\"game_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 4055,
+      "offset": 3966,
       "length": 5,
       "value": "\"ios\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 4765,
+      "offset": 4676,
       "length": 41,
       "value": "\"[OEGPush] Token synced (game=\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 4804,
+      "offset": 4715,
       "length": 1,
       "value": "\")\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 4979,
+      "offset": 4890,
       "length": 66,
       "value": "\"[OEGPush] Sync failed (non-fatal): \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 5044,
+      "offset": 4955,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6008,
+      "offset": 5919,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6052,
+      "offset": 5963,
       "length": 9,
       "value": "\"game_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6571,
+      "offset": 6482,
       "length": 8,
       "value": "\"DELETE\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6780,
+      "offset": 6691,
       "length": 46,
       "value": "\"[OEGPush] Token deactivated (game=\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6824,
+      "offset": 6735,
       "length": 1,
       "value": "\")\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6999,
+      "offset": 6910,
       "length": 72,
       "value": "\"[OEGPush] Deactivate failed (non-fatal): \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 7070,
+      "offset": 6981,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 11064,
+      "offset": 11020,
       "length": 29,
       "value": "\"OEGPushNotificationReceived\""
     },
@@ -67084,329 +68145,329 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1374,
+      "offset": 1285,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1892,
+      "offset": 1803,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 21492,
+      "offset": 21403,
       "length": 15,
       "value": "\"FacebookAppID\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 21599,
+      "offset": 21510,
       "length": 23,
       "value": "\"FBSDKCoreKit.Settings\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 21791,
+      "offset": 21702,
       "length": 28,
       "value": "[\"shared\", \"sharedSettings\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22269,
+      "offset": 22180,
       "length": 11,
       "value": "\"setAppID:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22499,
+      "offset": 22410,
       "length": 21,
       "value": "\"FacebookClientToken\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22641,
+      "offset": 22552,
       "length": 17,
       "value": "\"setClientToken:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23116,
+      "offset": 23027,
       "length": 17,
       "value": "\"TikTokClientKey\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23227,
+      "offset": 23138,
       "length": 34,
       "value": "\"TikTokOpenSDKApplicationDelegate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 23357,
+      "offset": 23268,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23760,
+      "offset": 23671,
       "length": 44,
       "value": "\"application:didFinishLaunchingWithOptions:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24270,
+      "offset": 24181,
       "length": 50,
       "value": "\"TikTok SDK initialized (TTKSDKAuthRequest found)\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24486,
+      "offset": 24397,
       "length": 19,
       "value": "\"TTKSDKAuthRequest\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24555,
+      "offset": 24466,
       "length": 74,
       "value": "\"TikTok SDK: TTKSDKAuthRequest not found — SDK may have renamed classes\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 24839,
+      "offset": 24750,
       "length": 64,
       "value": "[\"FBSDKCoreKit.ApplicationDelegate\", \"FBSDKApplicationDelegate\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 25184,
+      "offset": 25095,
       "length": 28,
       "value": "[\"shared\", \"sharedInstance\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 25574,
+      "offset": 25485,
       "length": 44,
       "value": "\"application:didFinishLaunchingWithOptions:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27593,
+      "offset": 27699,
       "length": 34,
       "value": "\"FBSDKCoreKit.ApplicationDelegate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27710,
+      "offset": 27816,
       "length": 8,
       "value": "\"shared\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27792,
+      "offset": 27898,
       "length": 8,
       "value": "\"shared\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27948,
+      "offset": 28054,
       "length": 30,
       "value": "\"application:openURL:options:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 28377,
+      "offset": 28483,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 28554,
+      "offset": 28660,
       "length": 51,
       "value": "\"application:openURL:sourceApplication:annotation:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 29068,
+      "offset": 29174,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 29263,
+      "offset": 29369,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30050,
+      "offset": 30156,
       "length": 58,
       "value": "\"TikTok URL scheme callback handled by TikTokSignInHelper\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 30149,
+      "offset": 30255,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30381,
+      "offset": 30487,
       "length": 18,
       "value": "\"TTKSDKURLHandler\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30464,
+      "offset": 30570,
       "length": 16,
       "value": "\"handleOpenURL:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 30733,
+      "offset": 30839,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31429,
+      "offset": 31535,
       "length": 62,
       "value": "\"TTKSDKURLHandler instance.handleOpenURL returned: \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31490,
+      "offset": 31596,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 31549,
+      "offset": 31655,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31912,
+      "offset": 32018,
       "length": 59,
       "value": "\"TTKSDKURLHandler class.handleOpenURL returned: \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31970,
+      "offset": 32076,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32029,
+      "offset": 32135,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32076,
+      "offset": 32182,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32531,
+      "offset": 32637,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 32965,
+      "offset": 33096,
       "length": 18,
       "value": "\"TTKSDKURLHandler\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 33080,
+      "offset": 33211,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 33493,
+      "offset": 33624,
       "length": 16,
       "value": "\"handleOpenURL:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 33903,
+      "offset": 34034,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34192,
+      "offset": 34323,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34223,
+      "offset": 34354,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 65842,
+      "offset": 65973,
       "length": 26,
       "value": "\"OEGSDKWillPresentLoginUI\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 65929,
+      "offset": 66060,
       "length": 25,
       "value": "\"OEGSDKDidDismissLoginUI\""
     },

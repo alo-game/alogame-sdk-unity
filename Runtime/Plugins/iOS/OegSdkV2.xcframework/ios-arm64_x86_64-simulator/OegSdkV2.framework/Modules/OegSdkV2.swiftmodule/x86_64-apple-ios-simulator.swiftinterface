@@ -4,6 +4,7 @@
 // swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
 import AdjustSdk
 import AppTrackingTransparency
+import AppsFlyerLib
 import AuthenticationServices
 import Combine
 import CoreMotion
@@ -55,6 +56,10 @@ final public class OEGAccount {
   final public func getAccountStatus(callback: @escaping (Swift.Result<OegSdkV2.AccountStatus, OegSdkV2.AccountError>) -> Swift.Void)
   @objc deinit
 }
+public protocol AttributionProvider : Swift.Sendable {
+  func setPushToken(_ token: Foundation.Data)
+  func processDeeplink(_ url: Foundation.URL)
+}
 public protocol AnalyticsTracker : Swift.Sendable {
   func logEvent(name: Swift.String, parameters: [Swift.String : Swift.String]?)
   func logPurchase(price: Swift.Double, currency: Swift.String, transactionId: Swift.String?, productId: Swift.String?)
@@ -81,6 +86,8 @@ extension OegSdkV2.AnalyticsTracker {
   @objc public func logPurchase(eventToken: Swift.String, price: Swift.Double, currency: Swift.String, transactionId: Swift.String? = nil, productId: Swift.String? = nil, parameters: [Swift.String : Swift.String]? = nil)
   @objc public func logRevenue(_ eventNameOrToken: Swift.String, revenue: Swift.Double, currency: Swift.String, orderId: Swift.String? = nil, parameters: [Swift.String : Swift.String]? = nil)
   @objc public func setTrackingEnabled(_ enabled: Swift.Bool)
+  public func setPushToken(_ token: Foundation.Data)
+  public func processDeeplink(_ url: Foundation.URL)
   public func isInitialized() -> Swift.Bool
   public func setEventTokenMapping(_ mapping: [Swift.String : Swift.String])
   public func onResume()
@@ -490,6 +497,7 @@ extension OegSdkV2.OEGAuth {
   final public func verifyOtp(otp: Swift.String) async throws -> OegSdkV2.OtpResult
   final public func socialLogin(provider: OegSdkV2.SocialProvider, accessToken: Swift.String, authorizationCode: Swift.String? = nil, nonce: Swift.String? = nil, codeVerifier: Swift.String? = nil) async throws -> OegSdkV2.AuthUser
   final public func setGameRole(serverId: Swift.String, serverName: Swift.String? = nil, roleId: Swift.String, roleName: Swift.String? = nil, level: Swift.Int? = nil)
+  final public func logoutGameRole(callback: @escaping () -> Swift.Void)
 }
 public class SdkIdProvider : @unchecked Swift.Sendable {
   public init(secureStorage: OegSdkV2.SecureStorage = SecureStorage())
@@ -771,8 +779,21 @@ public struct TrackingConfig : Swift.Codable {
   public let eventTokenMapping: [Swift.String : Swift.String]
   public let firebaseEnabled: Swift.Bool
   public let firebaseEvents: [Swift.String]
-  public init(adjustAppToken: Swift.String? = nil, adjustEnvironment: Swift.String = "sandbox", eventTokenMapping: [Swift.String : Swift.String] = [:], firebaseEnabled: Swift.Bool = true, firebaseEvents: [Swift.String] = [])
+  public let attributionProvider: Swift.String?
+  public let appsflyerDevKey: Swift.String?
+  public let appsflyerAppleAppId: Swift.String?
+  public let appsflyerEvents: [Swift.String]
+  public enum ResolvedAttributionProvider {
+    case adjust, appsflyer, none
+    public static func == (a: OegSdkV2.TrackingConfig.ResolvedAttributionProvider, b: OegSdkV2.TrackingConfig.ResolvedAttributionProvider) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(adjustAppToken: Swift.String? = nil, adjustEnvironment: Swift.String = "sandbox", eventTokenMapping: [Swift.String : Swift.String] = [:], firebaseEnabled: Swift.Bool = true, firebaseEvents: [Swift.String] = [], attributionProvider: Swift.String? = nil, appsflyerDevKey: Swift.String? = nil, appsflyerAppleAppId: Swift.String? = nil, appsflyerEvents: [Swift.String] = [])
   public init(from decoder: any Swift.Decoder) throws
+  public func resolvedAttributionProvider() -> OegSdkV2.TrackingConfig.ResolvedAttributionProvider
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct BundleAppVersionProvider : OegSdkV2.AppVersionProvider {
@@ -1032,6 +1053,8 @@ public typealias OEGIAPCallback = (OegSdkV2.OEGIAPStatus, Swift.String, Foundati
   public func refreshConfigAsync() async
   @objc public func checkInitialized() -> Swift.Bool
   @objc public static func setGameRole(serverId: Swift.String, serverName: Swift.String? = nil, roleId: Swift.String, roleName: Swift.String? = nil, level: Swift.Int = 0)
+  @objc public static func logoutGameRole(callback: @escaping () -> Swift.Void)
+  @objc public static func getGameRole() -> [Swift.String : Any]?
   @objc deinit
 }
 extension Foundation.NSNotification.Name {
@@ -1924,6 +1947,8 @@ extension OegSdkV2.OEGLogLevel : Swift.RawRepresentable {}
 extension OegSdkV2.OEGLogCategory : Swift.Equatable {}
 extension OegSdkV2.OEGLogCategory : Swift.Hashable {}
 extension OegSdkV2.OEGLogCategory : Swift.RawRepresentable {}
+extension OegSdkV2.TrackingConfig.ResolvedAttributionProvider : Swift.Equatable {}
+extension OegSdkV2.TrackingConfig.ResolvedAttributionProvider : Swift.Hashable {}
 extension OegSdkV2.PollerState : Swift.Equatable {}
 extension OegSdkV2.PollerState : Swift.Hashable {}
 extension OegSdkV2.PollerState : Swift.RawRepresentable {}

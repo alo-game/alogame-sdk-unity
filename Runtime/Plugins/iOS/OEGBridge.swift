@@ -106,6 +106,7 @@ public class OEGBridge: NSObject {
         case "auth.requestPhoneOtp":        handleRequestPhoneOtp(params: params, callbackId: callbackId)
         case "auth.verifyOtp":              handleVerifyOtp(params: params, callbackId: callbackId)
         case "auth.setGameRole":            handleSetGameRole(params: params, callbackId: callbackId)
+        case "auth.logoutGameRole":         handleLogoutGameRole(callbackId: callbackId)
         case "auth.showLoginUI":            handleShowLoginUI(callbackId: callbackId)
         case "auth.getCurrentUser":         handleGetCurrentUser(callbackId: callbackId)
         case "auth.isLoggedIn":             handleIsLoggedIn(callbackId: callbackId)
@@ -403,6 +404,16 @@ public class OEGBridge: NSObject {
         OEGAuth.shared.setGameRole(serverId: serverId, serverName: serverName, roleId: roleId, roleName: roleName, level: level)
 #endif
         sendSuccess(callbackId: callbackId, data: [:])
+    }
+
+    private func handleLogoutGameRole(callbackId: String) {
+#if canImport(OegSdkV2)
+        OEGAuth.shared.logoutGameRole {
+            self.sendSuccess(callbackId: callbackId, data: [:])
+        }
+#else
+        sendSuccess(callbackId: callbackId, data: [:])
+#endif
     }
 
     private func handleShowLoginUI(callbackId: String) {

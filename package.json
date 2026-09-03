@@ -1,6 +1,6 @@
 {
     "name": "com.alogame.sdk",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "displayName": "Alogame SDK",
     "description": "Unity port of the Alogame native SDK bridge (Auth/Payment/Analytics/Push/Account) for Android and iOS games. Mirrors the alogame-sdk (Egret/Cocos) TypeScript API 1:1 over the same native bridge glue (OEGBridge.kt / OEGBridge.swift).",
     "unity": "2022.3",

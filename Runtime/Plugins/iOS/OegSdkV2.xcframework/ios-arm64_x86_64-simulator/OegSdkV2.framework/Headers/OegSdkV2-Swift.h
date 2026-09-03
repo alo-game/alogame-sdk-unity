@@ -766,6 +766,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OegSdkCore *
 /// \param level Character level (optional)
 ///
 + (void)setGameRoleWithServerId:(NSString * _Nonnull)serverId serverName:(NSString * _Nullable)serverName roleId:(NSString * _Nonnull)roleId roleName:(NSString * _Nullable)roleName level:(NSInteger)level;
+/// Clear the active Game Character/Role without logging the account out.
+/// This is a convenience method that delegates to OEGAuth.shared.logoutGameRole().
+/// The SDK only clears its own state, then invokes <code>callback</code> — it does not navigate
+/// anywhere. Use the callback to move the game to its own switch-server screen.
++ (void)logoutGameRoleWithCallback:(void (^ _Nonnull)(void))callback;
+/// The active Game Character/Role, as a dictionary — <code>nil</code> if none is set. <code>OEGGameRole</code> is
+/// a Swift struct and can’t be bridged to Objective-C directly, so this is the ObjC-visible
+/// equivalent of reading <code>OEGAuth.gameRole</code> from Swift. Keys: serverId, serverName, roleId,
+/// roleName (all NSString, absent when not provided), level (NSNumber, absent when not set).
++ (NSDictionary<NSString *, id> * _Nullable)getGameRole SWIFT_WARN_UNUSED_RESULT;
 @end
 
 /// Builder for constructing SDK configuration
@@ -1589,6 +1599,16 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) OegSdkCore *
 /// \param level Character level (optional)
 ///
 + (void)setGameRoleWithServerId:(NSString * _Nonnull)serverId serverName:(NSString * _Nullable)serverName roleId:(NSString * _Nonnull)roleId roleName:(NSString * _Nullable)roleName level:(NSInteger)level;
+/// Clear the active Game Character/Role without logging the account out.
+/// This is a convenience method that delegates to OEGAuth.shared.logoutGameRole().
+/// The SDK only clears its own state, then invokes <code>callback</code> — it does not navigate
+/// anywhere. Use the callback to move the game to its own switch-server screen.
++ (void)logoutGameRoleWithCallback:(void (^ _Nonnull)(void))callback;
+/// The active Game Character/Role, as a dictionary — <code>nil</code> if none is set. <code>OEGGameRole</code> is
+/// a Swift struct and can’t be bridged to Objective-C directly, so this is the ObjC-visible
+/// equivalent of reading <code>OEGAuth.gameRole</code> from Swift. Keys: serverId, serverName, roleId,
+/// roleName (all NSString, absent when not provided), level (NSNumber, absent when not set).
++ (NSDictionary<NSString *, id> * _Nullable)getGameRole SWIFT_WARN_UNUSED_RESULT;
 @end
 
 /// Builder for constructing SDK configuration
