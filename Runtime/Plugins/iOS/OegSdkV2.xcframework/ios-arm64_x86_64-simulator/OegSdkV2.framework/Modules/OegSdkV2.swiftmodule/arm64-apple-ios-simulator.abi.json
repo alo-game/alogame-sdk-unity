@@ -19728,7 +19728,8 @@
                 "declAttributes": [
                   "HasInitialValue",
                   "HasStorage",
-                  "AccessControl"
+                  "AccessControl",
+                  "RawDocComment"
                 ],
                 "isLet": true,
                 "hasStorage": true,
@@ -63889,196 +63890,196 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 909,
-      "length": 15,
-      "value": "\"v2\/auth\/merge\""
+      "offset": 1294,
+      "length": 12,
+      "value": "\"auth\/merge\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1020,
+      "offset": 1367,
       "length": 21,
       "value": "\"v2\/auth\/link-idpass\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1143,
+      "offset": 1490,
       "length": 25,
       "value": "\"v2\/user\/forgot-password\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1289,
+      "offset": 1636,
       "length": 12,
       "value": "\"v2\/user\/me\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1386,
+      "offset": 1733,
       "length": 12,
       "value": "\"v2\/user\/me\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1450,
+      "offset": 1797,
       "length": 25,
       "value": "\"v2\/user\/change-password\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1527,
+      "offset": 1874,
       "length": 29,
       "value": "\"v2\/user\/verify-email-status\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1633,
+      "offset": 1980,
       "length": 30,
       "value": "\"v2\/user\/verify-email-request\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 1739,
+      "offset": 2086,
       "length": 18,
       "value": "\"user\/request-otp\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2127,
+      "offset": 2474,
       "length": 17,
       "value": "\"user\/verify-otp\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2230,
+      "offset": 2577,
       "length": 27,
       "value": "\"v2\/user\/request-phone-otp\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2309,
+      "offset": 2656,
       "length": 26,
       "value": "\"v2\/user\/verify-phone-otp\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2387,
+      "offset": 2734,
       "length": 19,
       "value": "\"v2\/user\/game-role\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2515,
+      "offset": 2862,
       "length": 18,
       "value": "\"user\/transferIAP\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2577,
+      "offset": 2924,
       "length": 9,
       "value": "\"product\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2660,
+      "offset": 3007,
       "length": 15,
       "value": "\"statics\/level\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2849,
+      "offset": 3196,
       "length": 15,
       "value": "\"v2\/push\/token\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 2948,
+      "offset": 3295,
       "length": 15,
       "value": "\"v2\/push\/token\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3059,
+      "offset": 3406,
       "length": 8,
       "value": "\"config\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3105,
+      "offset": 3452,
       "length": 11,
       "value": "\"v2\/config\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3219,
+      "offset": 3566,
       "length": 5,
       "value": "\"GET\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3258,
+      "offset": 3605,
       "length": 6,
       "value": "\"POST\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3298,
+      "offset": 3645,
       "length": 5,
       "value": "\"PUT\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3411,
+      "offset": 3758,
       "length": 15,
       "value": "\"Authorization\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3469,
+      "offset": 3816,
       "length": 14,
       "value": "\"Content-Type\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 3526,
+      "offset": 3873,
       "length": 18,
       "value": "\"application\/json\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "IntegerLiteral",
-      "offset": 3822,
+      "offset": 4169,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ApiEndpoints.swift",
       "kind": "StringLiteral",
-      "offset": 4499,
+      "offset": 4846,
       "length": 74,
       "value": "\"922721388751-h8dvfvuqosbs51l66ld0o0cauufqrpvt.apps.googleusercontent.com\""
     },
@@ -67018,35 +67019,35 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 15119,
+      "offset": 16835,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 19310,
+      "offset": 21269,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 19363,
+      "offset": 21322,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 19408,
+      "offset": 21367,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 19609,
+      "offset": 21568,
       "length": 5,
       "value": "false"
     },
@@ -67354,49 +67355,49 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 9809,
+      "offset": 9875,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12237,
+      "offset": 12336,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12271,
+      "offset": 12370,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12304,
+      "offset": 12403,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12338,
+      "offset": 12437,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12371,
+      "offset": 12470,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "IntegerLiteral",
-      "offset": 18210,
+      "offset": 18309,
       "length": 1,
       "value": "6"
     },
@@ -67874,7 +67875,7 @@
       "kind": "FloatLiteral",
       "offset": 7662,
       "length": 4,
-      "value": "56.0"
+      "value": "44.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",

@@ -13,7 +13,7 @@ Requires **Unity 2022.3+**. (The iOS build step adds Swift Package dependencies 
 Window → Package Manager → **+** → **Add package from git URL**:
 
 ```
-https://github.com/alo-game/alogame-sdk-unity.git#0.1.3
+https://github.com/alo-game/alogame-sdk-unity.git#0.1.4
 ```
 
 Everything the SDK needs is inside the package. There is no `.aar` to copy, no

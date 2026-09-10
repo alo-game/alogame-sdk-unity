@@ -91,3 +91,95 @@
 "oeg_bubble_hide_note" = "若不勾选，按钮将在 10 分钟后自动重新显示。";
 "oeg_bubble_hide_confirm" = "隐藏";
 "oeg_bubble_hide_cancel" = "取消";
+
+/* Login / Register validation */
+"oeg_username_invalid_chars" = "用户名只能包含字母（a-z）、数字和下划线（_）";
+"oeg_fill_fullname" = "请输入姓名";
+"oeg_fill_email" = "请输入电子邮箱";
+"oeg_invalid_email" = "电子邮箱格式无效";
+"oeg_fill_phone" = "请输入手机号码";
+"oeg_fill_birthday" = "请输入生日";
+"oeg_age_too_young" = "您的年龄不符合参与此游戏的要求。";
+"oeg_check" = "检查";
+"oeg_verify" = "验证";
+"oeg_verified" = "已验证";
+"oeg_email_link_sent_message" = "请查看您的电子邮箱并按照说明验证您的账户";
+"oeg_cancel" = "取消";
+
+/* Account Deletion */
+"oeg_confirm_delete" = "确认删除";
+"oeg_deletion_already_pending" = "您的账户已有待处理的删除请求。";
+"oeg_deletion_guest_not_allowed" = "游客账号无法请求删除。";
+"oeg_delete_guest_title" = "删除游客账户";
+"oeg_delete_guest_message" = "您确定要删除此游客账户吗？该账户将立即被删除。";
+"oeg_delete" = "删除";
+"oeg_delete_account_warning_title" = "删除账户";
+"oeg_delete_account_final_title" = "确认删除账户";
+"oeg_delete_account_final_message" = "您确定要删除您的账户吗？所有数据将在30天后被永久删除。";
+"oeg_pending_deletion_title" = "账户删除待处理";
+"oeg_pending_deletion_message" = "您的账户计划于 %@ 被删除。继续操作将取消该删除请求。";
+"oeg_continue_cancel_deletion" = "继续并取消删除";
+"oeg_user_id_label" = "ID：%@";
+
+/* Login errors */
+"oeg_login_failed" = "登录失败，请重试。";
+"oeg_incorrect_credentials" = "用户名或密码错误。";
+"oeg_username_already_exists" = "用户名已存在，请选择其他用户名。";
+"oeg_unexpected_error" = "发生意外错误，请重试。";
+"oeg_network_error" = "无法连接，请检查您的网络连接。";
+"oeg_server_unavailable" = "服务器暂时不可用，请稍后重试。";
+"oeg_too_many_attempts" = "尝试次数过多，请稍候。";
+"oeg_service_not_ready" = "服务尚未就绪，请重启应用。";
+"oeg_operation_cancelled" = "操作已取消。";
+"oeg_otp_send_failed" = "验证码发送失败，请重试。";
+"oeg_update_success_pw_error" = "更新成功，但密码错误：%@";
+
+/* Forgot Password */
+"oeg_forgot_password_desc" = "请输入您的电子邮箱地址，我们将发送密码重置链接给您。";
+"oeg_forgot_password_success" = "密码重置链接已发送至您的电子邮箱。";
+"oeg_forgot_password_check_inbox" = "请查看您的收件箱并按照说明操作。";
+"oeg_send_reset_link" = "发送重置链接";
+
+/* Consent / Terms */
+"oeg_notification" = "通知";
+"oeg_ok" = "确定";
+"oeg_session_expired_message" = "您的登录状态已过期，请重新登录。";
+"oeg_terms_agree_prefix" = "我已阅读并同意";
+"oeg_terms_of_service" = "服务条款及隐私政策（基本数据处理用途）";
+"oeg_privacy_optional_prefix" = "我同意";
+"oeg_privacy_optional_policy" = "隐私政策（可选数据处理用途）";
+"oeg_consent_master" = "我已阅读并同意条款";
+
+/* Email / OTP Verification */
+"oeg_email_verify_title" = "邮箱验证";
+"oeg_verify_email_title" = "验证邮箱";
+"oeg_verify_otp_title" = "验证码验证";
+"oeg_verify_email_desc" = "请输入发送至您电子邮箱的验证码。";
+"oeg_verify_phone_desc" = "请输入发送至您手机的验证码。";
+"oeg_send_otp" = "发送验证码";
+"oeg_resend_code" = "重新发送验证码";
+"oeg_otp_countdown" = "没有收到验证码？%d秒后可重新发送";
+"oeg_verify_success" = "验证成功！";
+"oeg_email_verified_success" = "电子邮箱已验证。";
+"oeg_phone_verified_success" = "手机号码已验证。";
+
+/* Maintenance */
+"oeg_maintain_refresh" = "刷新";
+"oeg_maintain_go_website" = "访问官网";
+"oeg_maintain_checking" = "检查中…";
+"oeg_maintain_start_in" = "维护将于 %@ 后开始";
+
+/* Force Update */
+"oeg_force_update_now" = "立即更新";
+"oeg_force_update_continue_old" = "继续使用旧版本";
+"oeg_force_update_message" = "新版本（%@）已发布，请更新后继续游戏。";
+"oeg_time_minutes" = "%d 分钟";
+"oeg_time_seconds" = "%d 秒";
+
+/* Account Linking / IAP */
+"oeg_link_account" = "关联账户";
+"oeg_link_account_iap_warning" = "您目前使用的是尚未关联的游客账号，存在丢失账户信息的风险。请关联您的 OEG ID 账户以继续。";
+"oeg_link_account_guest_prompt" = "您要将游客账号关联到 OEG 账户吗？";
+"oeg_link" = "关联";
+"oeg_continue_payment" = "继续支付";
+"oeg_skip" = "跳过";
