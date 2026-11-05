@@ -27,6 +27,16 @@ public class OEGBridge: NSObject {
     /// Delivers a JSON response string back to the host engine. Set once, by whichever setup path is used.
     private var resultCallback: ((String) -> Void)?
 
+    // `auth.showLoginUI` / `ui.showChangePassword` calls waiting for the SDK UI. OEGManager
+    // keeps the showLogin callback as the session callback for the whole session and calls it
+    // again later (re-login after the dashboard's logout, `.logout`), so the first result
+    // resolves the pending call and later ones become engine events. Main thread only.
+    private var pendingLoginCallbackId: String?
+    private var pendingChangePasswordCallbackId: String?
+    private var purchaseInFlight = false
+    /// Hex APNs token, as the SDK sends it to the backend. OEGPush has no public getter.
+    private var pushTokenHex: String?
+
 #if OEG_EGRET_HOST
     @objc(setupWithNative:)
     public static func setup(with nativeIOS: EgretNativeIOS) {
@@ -41,18 +51,33 @@ public class OEGBridge: NSObject {
             else { return }
             selfBridge.handleJSMessage(msg)
         }
-        bridge.loadConfigAndInitialize()
+        bridge.bootstrap {
+#if canImport(OegSdkV2)
+            OegSdkCore.shared.initialize()
+#endif
+        }
     }
 #endif
 
     /// Engine-agnostic setup for hosts with no EgretNativeIOS instance (e.g. Unity). The
     /// returned instance stays retained by the caller (e.g. the Unity plugin shim); route
     /// messages in via `sendToNative(_:)` and receive responses via `callback`.
+    ///
+    /// Takes the game id like the native `OegSdkCore.Builder().setGameId(_:)`; everything else
+    /// (social credentials, feature flags, tracking) comes from the server's v2/config. No
+    /// `oeg_config.json` is read on this path.
     @objc
-    public static func setupHeadless(callback: @escaping (String) -> Void) -> OEGBridge {
+    public static func setupHeadless(gameId: Int, debugEnv: Bool, callback: @escaping (String) -> Void) -> OEGBridge {
         let bridge = OEGBridge()
         bridge.resultCallback = callback
-        bridge.loadConfigAndInitialize()
+        bridge.bootstrap {
+#if canImport(OegSdkV2)
+            OegSdkCore.Builder()
+                .setGameId(gameId)
+                .setDebugEnv(debugEnv)
+                .build()
+#endif
+        }
         return bridge
     }
 
@@ -62,13 +87,43 @@ public class OEGBridge: NSObject {
         handleJSMessage(jsonString)
     }
 
-    private func loadConfigAndInitialize() {
+    /// `initSdk` is the full SDK bootstrap (OegSdkCore.Builder().build() or
+    /// OegSdkCore.shared.initialize(), both of which wire Auth, Payment, Analytics, Push and
+    /// Account) — calling OEGAuth.shared.initialize() directly (as before) skips the
+    /// Payment/Push/Account wiring, leaving those facades permanently unconfigured. See
+    /// SDK-ALOGAME-BRIDGE-RELEASE-PLAN.md §2.2c. setup(with:) (Egret) still uses the
+    /// oeg_config.json initializer; setupHeadless passes the game id.
+    private func bootstrap(_ initSdk: () -> Void) {
+        initSdk()
 #if canImport(OegSdkV2)
-        // OegSdkCore.shared.initialize() is the full SDK bootstrap (loads oeg_config.json itself,
-        // then wires Auth, Payment, Analytics, Push and Account) — calling OEGAuth.shared.initialize()
-        // directly (as before) skips the Payment/Push/Account wiring, leaving those facades
-        // permanently unconfigured. See SDK-ALOGAME-BRIDGE-RELEASE-PLAN.md §2.2c.
-        OegSdkCore.shared.initialize()
+        // `attributionDelegate` is weak; the host keeps this bridge alive for the whole session
+        // (AlogameUnityBridge.bridge), which is what makes it a valid delegate. A deep link
+        // resolved before this line is held by the SDK and delivered here once.
+        OEGAnalytics.shared.attributionDelegate = self
+        // Same lifetime argument: weak, and the host keeps the bridge alive.
+        OEGPush.shared.delegate = self
+#endif
+    }
+
+    // MARK: - App-delegate forwarding (Unity: AlogameAppDelegateListener.mm)
+
+    /// APNs device token from the app delegate. Unity's app controller receives it, the SDK
+    /// does not hook the app delegate, so the host forwards it here.
+    @objc public func didRegisterPushToken(_ deviceToken: Data) {
+#if canImport(OegSdkV2)
+        OEGPush.shared.didRegisterWithToken(deviceToken)
+#endif
+        let hex = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        pushTokenHex = hex
+        sendEvent("push.tokenRefreshed", data: ["token": hex])
+    }
+
+    /// URL-scheme / universal links the host's app delegate received: social-login callbacks
+    /// (Facebook, Google, TikTok) and attribution links. OEGManager.handleOpenURL also passes
+    /// the link to the attribution provider, so the engine must not forward it again.
+    @objc public func openURL(_ url: URL) {
+#if canImport(OegSdkV2)
+        _ = OEGManager.handleOpenURL(url, options: [:])
 #endif
     }
 
@@ -112,6 +167,11 @@ public class OEGBridge: NSObject {
         case "auth.isLoggedIn":             handleIsLoggedIn(callbackId: callbackId)
         case "ui.showFloatingButton":       handleShowFloatingButton(callbackId: callbackId)
         case "ui.hideFloatingButton":       handleHideFloatingButton(callbackId: callbackId)
+        case "ui.showDashboard":            handleShowDashboard(callbackId: callbackId)
+        case "ui.showChangePassword":       handleShowChangePassword(callbackId: callbackId)
+        case "ui.showUpdateProfile":        handleShowDashboard(callbackId: callbackId)
+        case "auth.linkAloId":              handleLinkAloId(params: params, callbackId: callbackId)
+        case "auth.getGameRole":            handleGetGameRole(callbackId: callbackId)
         case "payment.queryProducts":       handleQueryProducts(params: params, callbackId: callbackId)
         case "payment.purchase":            handlePurchase(params: params, callbackId: callbackId)
         case "payment.restorePurchases":    handleRestorePurchases(params: params, callbackId: callbackId)
@@ -121,6 +181,7 @@ public class OEGBridge: NSObject {
         case "analytics.logRevenue":        handleLogRevenue(params: params, callbackId: callbackId)
         case "analytics.setTrackingEnabled":handleSetTrackingEnabled(params: params, callbackId: callbackId)
         case "analytics.isInitialized":     handleAnalyticsIsInitialized(callbackId: callbackId)
+        case "analytics.processDeeplink":   handleProcessDeeplink(params: params, callbackId: callbackId)
         case "push.requestPermission":      handleRequestPushPermission(callbackId: callbackId)
         case "push.getDeviceToken":         handleGetDeviceToken(callbackId: callbackId)
         case "push.subscribeToTopic":       handleUnsupportedPushTopic(callbackId: callbackId)
@@ -399,7 +460,7 @@ public class OEGBridge: NSObject {
         let roleId     = params["roleId"] as? String ?? ""
         let serverName = params["serverName"] as? String
         let roleName   = params["roleName"] as? String
-        let level      = params["level"] as? Int
+        let level      = (params["level"] as? NSNumber)?.intValue
 #if canImport(OegSdkV2)
         OEGAuth.shared.setGameRole(serverId: serverId, serverName: serverName, roleId: roleId, roleName: roleName, level: level)
 #endif
@@ -416,26 +477,119 @@ public class OEGBridge: NSObject {
 #endif
     }
 
+    /// Resolves when the player is in — after the login screen, or straight away for a stored
+    /// session (OEGManager.showLogin runs the maintain check and the link gates first).
     private func handleShowLoginUI(callbackId: String) {
 #if canImport(OegSdkV2)
         DispatchQueue.main.async {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let rootVC = windowScene.windows.first?.rootViewController else {
-                self.sendError(callbackId: callbackId, code: 500, message: "No root view controller")
-                return
+            if let previous = self.pendingLoginCallbackId {
+                self.sendError(callbackId: previous, code: 409, message: "Superseded by a newer showLoginUI call")
             }
-            OEGManager.sharedManager.showLogin(viewController: rootVC) { [weak self] _, _, success, error in
-                if success, let user = OEGAuth.shared.currentUser {
-                    self?.sendUserSuccess(user, callbackId: callbackId)
-                } else if let e = error {
-                    self?.sendError(callbackId: callbackId, code: e.code, message: e.localizedDescription)
-                } else {
-                    self?.sendError(callbackId: callbackId, code: 400, message: "User cancelled login")
-                }
+            self.pendingLoginCallbackId = callbackId
+            OEGManager.sharedManager.showLogin(viewController: nil) { [weak self] type, _, success, error in
+                DispatchQueue.main.async { self?.handleSessionCallback(type: type, success: success, error: error) }
             }
         }
 #else
         sendSuccess(callbackId: callbackId, data: ["launched": true])
+#endif
+    }
+
+#if canImport(OegSdkV2)
+    /// See `pendingLoginCallbackId`. `.logout` comes from the dashboard's logout, account
+    /// deletion and OEGManager.logout(); a later successful login comes from the login screen
+    /// the SDK shows right after those.
+    private func handleSessionCallback(type: OEGActionType, success: Bool, error: NSError?) {
+        if type == .logout {
+            if let pending = pendingLoginCallbackId {
+                pendingLoginCallbackId = nil
+                sendError(callbackId: pending, code: 401, message: "Logged out")
+            }
+            sendEvent("auth.sessionEnded", data: ["message": "Logged out"])
+            return
+        }
+        let loginTypes: [OEGActionType] = [.register, .loginOEGID, .loginFacebook, .loginGoogle, .loginApple, .playnow]
+        let pending = pendingLoginCallbackId
+        if success, let user = OEGAuth.shared.currentUser {
+            if let pending = pending {
+                pendingLoginCallbackId = nil
+                sendUserSuccess(user, callbackId: pending)
+            } else if loginTypes.contains(type) {
+                sendEvent("auth.loggedIn", data: userDictionary(user))
+            }
+        } else if let pending = pending {
+            pendingLoginCallbackId = nil
+            sendError(callbackId: pending, code: error?.code ?? 400, message: error?.localizedDescription ?? "User cancelled login")
+        }
+    }
+#endif
+
+    /// The account dashboard (profile, link account, change password, logout). Session changes
+    /// made there reach the engine through the showLogin session callback, not this call.
+    private func handleShowDashboard(callbackId: String) {
+#if canImport(OegSdkV2)
+        DispatchQueue.main.async {
+            OEGManager.sharedManager.showProfile(viewController: nil) { _, _, _, _ in }
+            self.sendSuccess(callbackId: callbackId, data: [:])
+        }
+#else
+        sendSuccess(callbackId: callbackId, data: [:])
+#endif
+    }
+
+    private func handleShowChangePassword(callbackId: String) {
+#if canImport(OegSdkV2)
+        DispatchQueue.main.async {
+            if let previous = self.pendingChangePasswordCallbackId {
+                self.sendError(callbackId: previous, code: 409, message: "Superseded by a newer showChangePassword call")
+            }
+            self.pendingChangePasswordCallbackId = callbackId
+            OEGManager.sharedManager.showResetPassword(viewController: nil) { [weak self] _, _, success, error in
+                DispatchQueue.main.async {
+                    guard let self = self, let pending = self.pendingChangePasswordCallbackId else { return }
+                    self.pendingChangePasswordCallbackId = nil
+                    if success {
+                        self.sendSuccess(callbackId: pending, data: ["success": true])
+                    } else {
+                        self.sendError(callbackId: pending, code: error?.code ?? 400, message: error?.localizedDescription ?? "Password not changed")
+                    }
+                }
+            }
+        }
+#else
+        sendSuccess(callbackId: callbackId, data: ["success": true])
+#endif
+    }
+
+    /// Attach an Alo ID (username + password) to the current social/guest account.
+    private func handleLinkAloId(params: [String: Any], callbackId: String) {
+        guard let username = params["username"] as? String, !username.isEmpty,
+              let pass = params["pass"] as? String, !pass.isEmpty else {
+            sendError(callbackId: callbackId, code: 400, message: "Username and password are required")
+            return
+        }
+#if canImport(OegSdkV2)
+        OEGAuth.shared.linkOegId(username: username, password: pass,
+                                 fullname: params["fullname"] as? String,
+                                 email: params["email"] as? String) { [weak self] result in
+            self?.handleAuthResult(result, callbackId: callbackId)
+        }
+#else
+        sendSuccess(callbackId: callbackId, data: ["id": "mock", "username": username])
+#endif
+    }
+
+    private func handleGetGameRole(callbackId: String) {
+#if canImport(OegSdkV2)
+        guard let role = OegSdkCore.getGameRole() else {
+            sendSuccess(callbackId: callbackId, data: ["hasRole": false])
+            return
+        }
+        var data = role
+        data["hasRole"] = true
+        sendSuccess(callbackId: callbackId, data: data)
+#else
+        sendSuccess(callbackId: callbackId, data: ["hasRole": false])
 #endif
     }
 
@@ -467,7 +621,7 @@ public class OEGBridge: NSObject {
         let serverId = d["serverId"] as? String ?? ""
         let roleId = d["roleId"] as? String ?? ""
         let roleName = d["roleName"] as? String ?? roleId
-        let level = d["level"] as? Int ?? 1
+        let level = (d["level"] as? NSNumber)?.intValue ?? 1
         let extInfo = d["extInfo"] as? String
         return GameData(serverId: serverId, characterId: roleId, characterName: roleName, level: level, extraData: extInfo)
     }
@@ -506,34 +660,63 @@ public class OEGBridge: NSObject {
         }
     }
 
+    /// Goes through OEGManager.inAppPurchase — the path native iOS games use — so a guest is
+    /// offered to link the account before paying, the loading overlay shows, and concurrent
+    /// purchases are refused. Its callback reports `.purchasing` first (and again for Ask to
+    /// Buy), then one terminal status.
     private func handlePurchase(params: [String: Any], callbackId: String) {
         guard let productId = params["productId"] as? String, !productId.isEmpty else {
             sendError(callbackId: callbackId, code: 400, message: "productId is required")
             return
         }
 #if canImport(OegSdkV2)
-        let gameData = parseGameData(params["gameData"] as? [String: Any])
-        OEGPayment.shared.purchaseAndVerify(productId: productId, gameData: gameData) { [weak self] result, verify in
-            guard let self else { return }
-            switch result {
-            case .success(let info):
-                if let verify = verify, !verify.success {
-                    self.sendError(callbackId: callbackId, code: verify.code ?? 500, message: verify.message ?? "Purchase verification failed")
-                    return
+        let d = params["gameData"] as? [String: Any] ?? [:]
+        DispatchQueue.main.async {
+            // OEGManager ignores a second purchase without calling back (v2 ≤ 1.5.5), which
+            // would leave this call pending forever — refuse it here instead.
+            guard !self.purchaseInFlight else {
+                self.sendError(callbackId: callbackId, code: 409, message: "Another purchase is in progress")
+                return
+            }
+            self.purchaseInFlight = true
+            var purchasingSeen = 0
+            var finished = false
+            let finish: (Bool, Int, String) -> Void = { [weak self] ok, code, message in
+                guard let self = self, !finished else { return }
+                finished = true
+                self.purchaseInFlight = false
+                if ok {
+                    self.sendSuccess(callbackId: callbackId, data: ["success": true, "productId": productId])
+                } else {
+                    self.sendError(callbackId: callbackId, code: code, message: message)
                 }
-                self.sendSuccess(callbackId: callbackId, data: [
-                    "success": true,
-                    "productId": info.productId,
-                    "transactionId": info.orderId
-                ])
-            case .cancelled:
-                self.sendError(callbackId: callbackId, code: 400, message: "User cancelled purchase")
-            case .pending:
-                self.sendError(callbackId: callbackId, code: 202, message: "Purchase pending")
-            case .failed(let error):
-                self.sendError(callbackId: callbackId, code: 500, message: error.localizedDescription)
-            case .unknown:
-                self.sendError(callbackId: callbackId, code: 500, message: "Unknown purchase result")
+            }
+            let level = (d["level"] as? NSNumber)?.intValue ?? 1
+            OEGManager.sharedManager.inAppPurchase(
+                serverID: d["serverId"] as? String ?? "",
+                roleID: d["roleId"] as? String ?? "",
+                levels: String(level),
+                accountID: nil,
+                productID: productId,
+                extInfo: d["extInfo"] as? String ?? ""
+            ) { status, message, error in
+                DispatchQueue.main.async {
+                    switch status {
+                    case .purchasing:
+                        purchasingSeen += 1
+                        // The second .purchasing is Ask to Buy: terminal for now.
+                        if purchasingSeen >= 2 { finish(false, 202, message) }
+                    case .verified, .restored:
+                        finish(true, 0, message)
+                    case .purchased:
+                        // Paid, server verification pending: the SDK retries in the background.
+                        finish(false, 202, message)
+                    case .failed, .requestError:
+                        finish(false, error?.code ?? 400, message)
+                    @unknown default:
+                        finish(false, 500, message)
+                    }
+                }
             }
         }
 #else
@@ -623,6 +806,20 @@ public class OEGBridge: NSObject {
         sendSuccess(callbackId: callbackId, data: [:])
     }
 
+    /// For engines that receive links themselves (Unity's Application.deepLinkActivated) —
+    /// Unity's own app controller takes `openURL`/`continueUserActivity`, so the SDK's
+    /// `OEGManager.handleOpenURL`/`handleContinueUserActivity` never see them.
+    private func handleProcessDeeplink(params: [String: Any], callbackId: String) {
+        guard let string = params["url"] as? String, let url = URL(string: string) else {
+            sendError(callbackId: callbackId, code: 400, message: "url is required")
+            return
+        }
+#if canImport(OegSdkV2)
+        OEGAnalytics.shared.processDeeplink(url)
+#endif
+        sendSuccess(callbackId: callbackId, data: [:])
+    }
+
     private func handleAnalyticsIsInitialized(callbackId: String) {
 #if canImport(OegSdkV2)
         sendSuccess(callbackId: callbackId, data: ["initialized": OEGAnalytics.shared.isInitialized()])
@@ -647,7 +844,8 @@ public class OEGBridge: NSObject {
     /// didRegisterForRemoteNotifications, not pull-based like Android's getDeviceToken()) — always
     /// returns null until a getter is added to the core SDK. See SDK-ALOGAME-BRIDGE-RELEASE-PLAN.md §2.2c.
     private func handleGetDeviceToken(callbackId: String) {
-        sendSuccess(callbackId: callbackId, data: ["token": NSNull()])
+        // Null until iOS hands the app a token (after push permission is granted).
+        sendSuccess(callbackId: callbackId, data: ["token": (pushTokenHex as Any?) ?? NSNull()])
     }
 
     /// FCM topic subscription has no iOS/APNs equivalent — Android-only.
@@ -750,6 +948,10 @@ public class OEGBridge: NSObject {
     }
 
     private func sendUserSuccess(_ user: AuthUser, callbackId: String) {
+        sendSuccess(callbackId: callbackId, data: userDictionary(user))
+    }
+
+    private func userDictionary(_ user: AuthUser) -> [String: Any] {
         var userData: [String: Any] = [
             "id":           user.uuid,
             "userId":       user.userId,
@@ -775,7 +977,7 @@ public class OEGBridge: NSObject {
         if let ia = user.idAddress { userData["idAddress"] = ia }
         if let c = user.country  { userData["country"] = c }
         if let p = user.province { userData["province"] = p }
-        sendSuccess(callbackId: callbackId, data: userData)
+        return userData
     }
 #endif
 
@@ -801,4 +1003,36 @@ public class OEGBridge: NSObject {
             self?.resultCallback?(jsonStr)
         }
     }
+
+    /// Native-initiated message: carries `event` instead of a `callbackId`, so the engine side
+    /// routes it to its event handlers rather than to a pending call.
+    fileprivate func sendEvent(_ event: String, data: [String: Any]) {
+        let message: [String: Any] = ["event": event, "data": data]
+        // `data(withJSONObject:)` raises an Objective-C exception (not a Swift error) on a
+        // non-JSON value, which `try?` cannot catch — check first.
+        guard JSONSerialization.isValidJSONObject(message) else {
+            NSLog("[Alogame SDK] Dropped native event %@: payload is not valid JSON", event)
+            return
+        }
+        sendToJS(message)
+    }
 }
+
+#if canImport(OegSdkV2)
+extension OEGBridge: OEGPushDelegate {
+    public func oegPushDidReceiveNotification(userInfo: [AnyHashable: Any]) {
+        var data: [String: Any] = [:]
+        for (key, value) in userInfo {
+            let k = "\(key)"
+            data[k] = JSONSerialization.isValidJSONObject([k: value]) ? value : "\(value)"
+        }
+        sendEvent("push.messageReceived", data: data)
+    }
+}
+
+extension OEGBridge: OEGAttributionDelegate {
+    public func oegDidResolveDeepLink(_ data: [String: Any]) {
+        sendEvent("analytics.deepLinkResolved", data: data)
+    }
+}
+#endif

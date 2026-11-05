@@ -24,6 +24,17 @@ namespace Alogame.SDK
         public bool enableTikTokLogin;
         public string tikTokClientKey;
 
+        [Header("iOS — Push Notifications")]
+        [Tooltip("Adds the Push Notifications capability (aps-environment entitlement) and the " +
+                 "remote-notification background mode, and makes Unity forward the APNs token to " +
+                 "the SDK. Leave off until the game's App ID has Push enabled in the Apple Developer " +
+                 "portal: the entitlement makes signing fail with a provisioning profile that lacks it.")]
+        public bool enableIosPushNotifications;
+
+        [Tooltip("aps-environment value: development for debug/dev builds, production for " +
+                 "TestFlight/App Store. Off = production.")]
+        public bool iosPushDevelopmentEnvironment;
+
         [Header("iOS — App Tracking Transparency")]
         [Tooltip("Shown in the iOS tracking-permission dialog. The SDK always requests App " +
                  "Tracking Transparency (Adjust attribution), and iOS terminates the app on the " +

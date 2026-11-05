@@ -78,6 +78,9 @@ namespace Alogame.SDK.Editor
             // Analytics
             "com.adjust.sdk:adjust-android:5.0.0",
             "com.android.installreferrer:installreferrer:2.2",
+            // AppsFlyer is an implementation dependency of the SDK (attribution_provider =
+            // "appsflyer", per game, from server config) — not optional like Facebook/TikTok.
+            "com.appsflyer:af-android-sdk:7.0.1",
 
             // In-app purchase
             "com.android.billingclient:billing-ktx:8.0.0",

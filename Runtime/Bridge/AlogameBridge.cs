@@ -16,12 +16,12 @@ namespace Alogame.SDK.Bridge
 
         public static IBridgeTransport Transport => _transport ??= CreateTransport();
 
-        public static void Initialize()
+        public static void Initialize(int gameId, bool debugEnv)
         {
             if (_initialized) return;
             _initialized = true;
             AlogameCallbackReceiver.EnsureExists();
-            Transport.Initialize();
+            Transport.Initialize(gameId, debugEnv);
         }
 
         public static Task<object> CallNative(string method, Dictionary<string, object> parameters)
@@ -31,7 +31,7 @@ namespace Alogame.SDK.Bridge
             var payload = new Dictionary<string, object>
             {
                 ["method"] = method,
-                ["params"] = parameters ?? new Dictionary<string, object>(),
+                ["params"] = WithoutNulls(parameters) ?? new Dictionary<string, object>(),
                 ["callbackId"] = callbackId,
             };
 
@@ -40,16 +40,66 @@ namespace Alogame.SDK.Bridge
             return tcs.Task;
         }
 
+        /// <summary>
+        /// Omitted optionals are left out instead of sent as JSON null. Android's org.json turns
+        /// null into the string "null" for optString and throws on getInt, so an explicit null
+        /// reached the SDK as text or hung the call. Nested dictionaries (gameData) too.
+        /// </summary>
+        private static Dictionary<string, object> WithoutNulls(Dictionary<string, object> source)
+        {
+            if (source == null) return null;
+            var result = new Dictionary<string, object>(source.Count);
+            foreach (var kvp in source)
+            {
+                if (kvp.Value == null) continue;
+                result[kvp.Key] = kvp.Value is Dictionary<string, object> nested ? WithoutNulls(nested) : kvp.Value;
+            }
+            return result;
+        }
+
         /// <summary>Invoked by <see cref="AlogameCallbackReceiver"/> when native delivers a response.</summary>
         internal static void HandleNativeResult(string json)
         {
             if (Json.Deserialize(json) is not Dictionary<string, object> response) return;
+
+            // Native-initiated events carry `event` instead of a callbackId.
+            if (response.TryGetValue("event", out var ev) && ev is string eventName)
+            {
+                response.TryGetValue("data", out var eventData);
+                DispatchEvent(eventName, eventData as Dictionary<string, object>);
+                return;
+            }
 
             string callbackId = response.TryGetValue("callbackId", out var cb) ? cb as string : null;
             bool success = response.TryGetValue("success", out var s) && s is bool b && b;
             response.TryGetValue("data", out var data);
 
             CallbackRouter.Resolve(callbackId, success, data);
+        }
+
+        private static void DispatchEvent(string eventName, Dictionary<string, object> data)
+        {
+            switch (eventName)
+            {
+                case "analytics.deepLinkResolved":
+                    AlogameAnalytics.DispatchDeepLinkResolved(data ?? new Dictionary<string, object>());
+                    break;
+                case "auth.loggedIn":
+                    AlogameAuth.DispatchLoggedIn(AuthUser.FromJson(data));
+                    break;
+                case "auth.sessionEnded":
+                    AlogameAuth.DispatchSessionEnded(JsonField.Str(data, "message"));
+                    break;
+                case "push.messageReceived":
+                    AlogamePush.DispatchMessageReceived(data ?? new Dictionary<string, object>());
+                    break;
+                case "push.tokenRefreshed":
+                    AlogamePush.DispatchTokenRefreshed(JsonField.Str(data, "token"));
+                    break;
+                default:
+                    Debug.LogWarning($"[Alogame SDK] Unknown native event '{eventName}' ignored.");
+                    break;
+            }
         }
 
         private static IBridgeTransport CreateTransport()

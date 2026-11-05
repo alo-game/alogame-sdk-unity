@@ -178,41 +178,72 @@ namespace Alogame.SDK.Editor
             root.SetString("NSUserTrackingUsageDescription", trackingDescription);
             Debug.Log("[Alogame SDK] Set NSUserTrackingUsageDescription (required — the SDK requests ATT).");
 
-            if (settings == null || !(settings.enableFacebookLogin || settings.enableTikTokLogin))
+            if (settings != null && settings.enableFacebookLogin)
             {
-                File.WriteAllText(plistPath, plist.WriteToString());
-                return;
+                if (string.IsNullOrEmpty(settings.facebookAppId) || string.IsNullOrEmpty(settings.facebookClientToken))
+                    Debug.LogError("[Alogame SDK] Facebook login is enabled but facebookAppId / facebookClientToken is empty in AlogameSDKSettings.");
+                else
+                {
+                    root.SetString("FacebookAppID", settings.facebookAppId);
+                    root.SetString("FacebookClientToken", settings.facebookClientToken);
+                    if (root["FacebookDisplayName"] == null) root.SetString("FacebookDisplayName", PlayerSettings.productName);
+                    AddUrlScheme(root, "fb" + settings.facebookAppId);
+                }
+                AddQueriesSchemes(root, "fbapi", "fbauth", "fbauth2", "fbshareextension", "fb-messenger-share-api");
             }
 
-            // Dev-convenience default — tighten to explicit NSExceptionDomains before App Store
-            // submission if the game's backend hosts don't already have valid TLS certs.
-            var ats = root.CreateDict("NSAppTransportSecurity");
-            ats.SetBoolean("NSAllowsArbitraryLoads", true);
-
-            if (settings.enableTikTokLogin)
+            if (settings != null && settings.enableTikTokLogin)
             {
-                var queriesSchemes = root.CreateArray("LSApplicationQueriesSchemes");
-                queriesSchemes.AddString("tiktokopensdk");
-                queriesSchemes.AddString("tiktoksharesdk");
-                queriesSchemes.AddString("snssdk1180");
-                queriesSchemes.AddString("snssdk1233");
-
-                if (!string.IsNullOrEmpty(settings.tikTokClientKey))
+                if (string.IsNullOrEmpty(settings.tikTokClientKey))
+                    Debug.LogError("[Alogame SDK] TikTok login is enabled but tikTokClientKey is empty in AlogameSDKSettings.");
+                else
+                {
                     root.SetString("TikTokClientKey", settings.tikTokClientKey);
+                    AddUrlScheme(root, settings.tikTokClientKey);
+                }
+                AddQueriesSchemes(root, "tiktokopensdk", "tiktoksharesdk", "snssdk1180", "snssdk1233");
             }
 
-            string urlScheme = settings.enableTikTokLogin ? settings.tikTokClientKey : settings.facebookAppId;
-            if (!string.IsNullOrEmpty(urlScheme))
-            {
-                var urlTypes = root.CreateArray("CFBundleURLTypes");
-                var urlTypeDict = urlTypes.AddDict();
-                var schemes = urlTypeDict.CreateArray("CFBundleURLSchemes");
-                schemes.AddString(urlScheme);
-            }
+            // Google: the scheme is GoogleService-Info.plist's REVERSED_CLIENT_ID. That file is
+            // copied into the app by AlogameIosPostprocessBuild, which also adds the scheme
+            // (it needs the file path); nothing to do here.
 
             File.WriteAllText(plistPath, plist.WriteToString());
-            Debug.Log("[Alogame SDK] Injected Info.plist entries for enabled social providers.");
+            Debug.Log("[Alogame SDK] Info.plist updated.");
 #endif
         }
+
+#if UNITY_IOS
+        /// <summary>
+        /// Appends to CFBundleURLTypes instead of replacing it — the game and other plugins
+        /// (Google, Firebase, deep links) keep their own schemes. Idempotent across re-exports.
+        /// </summary>
+        internal static void AddUrlScheme(PlistElementDict root, string scheme)
+        {
+            var urlTypes = root["CFBundleURLTypes"]?.AsArray() ?? root.CreateArray("CFBundleURLTypes");
+            foreach (var entry in urlTypes.values)
+            {
+                var schemes = entry.AsDict()?["CFBundleURLSchemes"]?.AsArray();
+                if (schemes == null) continue;
+                foreach (var existing in schemes.values)
+                    if (existing.AsString() == scheme) return;
+            }
+            var dict = urlTypes.AddDict();
+            dict.SetString("CFBundleURLName", scheme);
+            dict.CreateArray("CFBundleURLSchemes").AddString(scheme);
+        }
+
+        private static void AddQueriesSchemes(PlistElementDict root, params string[] schemes)
+        {
+            var array = root["LSApplicationQueriesSchemes"]?.AsArray() ?? root.CreateArray("LSApplicationQueriesSchemes");
+            foreach (var scheme in schemes)
+            {
+                var present = false;
+                foreach (var existing in array.values)
+                    if (existing.AsString() == scheme) { present = true; break; }
+                if (!present) array.AddString(scheme);
+            }
+        }
+#endif
     }
 }

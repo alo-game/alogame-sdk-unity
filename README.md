@@ -13,7 +13,7 @@ Requires **Unity 2022.3+**. (The iOS build step adds Swift Package dependencies 
 Window → Package Manager → **+** → **Add package from git URL**:
 
 ```
-https://github.com/alo-game/alogame-sdk-unity.git#0.1.4
+https://github.com/alo-game/alogame-sdk-unity.git#1.0.0
 ```
 
 Everything the SDK needs is inside the package. There is no `.aar` to copy, no
@@ -21,23 +21,16 @@ Everything the SDK needs is inside the package. There is no `.aar` to copy, no
 
 Two things are still yours to provide:
 
-1. **`oeg_config.json`** — your game's config, from the SDK docs. Put it in
-   `Assets/StreamingAssets/`. Both platforms read it during `AlogameSDK.Initialize()`;
-   without it the SDK initializes into an unconfigured state (`game_id 0`) and every call
-   fails. On iOS the build hook copies it to the app bundle root for you, because the SDK
-   reads it from `Bundle.main` and Unity would otherwise leave it in `Data/Raw/`.
-
-   ```json
-   { "core": { "game_id": 53, "debug_env": true } }
-   ```
-
-   `debug_env` selects the dev backend; `api_base_url` is ignored (the host is derived from
-   `debug_env`).
-2. **Firebase** (only if you use push or Firebase analytics) — add your
-   `google-services.json` / `GoogleService-Info.plist` and apply the
-   `com.google.gms.google-services` Gradle plugin yourself. The SDK deliberately does
-   not apply that plugin: doing so fails the build for every game that ships no Firebase
-   config.
+1. **Your game id**, from your Alogame Operation Manager, passed to
+   `AlogameSDK.Initialize(gameId)`. It is the only value the game passes; social login
+   credentials, feature flags and tracking are configured per game by Alogame on the server
+   and loaded at runtime. No config file is needed (`oeg_config.json` is not read).
+2. **Firebase config files** — put `google-services.json` (Android) and
+   `GoogleService-Info.plist` (iOS) anywhere under `Assets`. The build hooks pick them up:
+   Android gets the Firebase resources the `google-services` Gradle plugin would generate (FCM
+   push, Firebase Analytics); iOS gets the plist in the app bundle plus its
+   `REVERSED_CLIENT_ID` URL scheme (needed by **Google login on iOS**). No Gradle template
+   edits. If the Firebase Unity SDK is in the project, the Android step stands aside for it.
 
 ## Usage
 
@@ -46,23 +39,40 @@ using Alogame.SDK;
 
 async void Start()
 {
-    AlogameSDK.Initialize();          // once, at boot, before any other call
+    AlogameSDK.Initialize(53);        // your game id; once, at boot, before any other call
+    // AlogameSDK.Initialize(53, debugEnv: true);  // dev backend + verbose HTTP logs — never in release
 
-    var login = await AlogameAuth.ShowLoginUI();
-    if (login.Success)
+    // The SDK dashboard (floating button) can log the player out — or delete the account —
+    // on its own, then shows its login screen again. Follow it:
+    AlogameAuth.SessionEnded += _ => ReturnToTitleScreen();
+    AlogameAuth.LoggedIn += user => EnterGame(user);
+
+    try
     {
-        // Report server/role right after login — payment and analytics attribution keys on it.
-        await AlogameAuth.SetGameRole(serverId: "1", roleId: login.User.Uuid, serverName: "S1");
-        await AlogameAnalytics.LogEvent("game_start");
-
-        var purchase = await AlogamePayment.Purchase(
-            "gold_100", new GameData { ServerId = "1", RoleId = login.User.Uuid });
-
-        if (purchase.Success)
-            await AlogameAnalytics.LogRevenue("iap", 0.99, "USD", purchase.TransactionId);
+        // Completes when the player is in: after the login screen, or at once for a stored
+        // session (after the server maintenance check).
+        var login = await AlogameAuth.ShowLoginUI();
+        EnterGame(login.User);
+    }
+    catch (AlogameSdkException e)
+    {
+        Debug.Log($"Login not completed: [{e.Error.Code}] {e.Message}");   // closed, maintenance, ...
     }
 }
+
+async void EnterGame(AuthUser user)
+{
+    // When the player picks a character — payment and analytics attribution key on it.
+    await AlogameAuth.SetGameRole(serverId: "1", roleId: "10001", serverName: "S1", roleName: "Hero", level: 12);
+
+    var purchase = await AlogamePayment.Purchase(
+        "gold_100", new GameData { ServerId = "1", RoleId = "10001", RoleName = "Hero", Level = 12 });
+}
 ```
+
+Every call returns a `Task`. A call the SDK rejects throws `AlogameSdkException`
+(`e.Error.Code`, `e.Message`); a call that resolves returns its result (`AuthResult.User`,
+`PurchaseResult.ProductId`, ...).
 
 See `Samples~/BasicIntegration/LoginSample.cs` for a fuller walkthrough, and
 `unity/SampleGame` in the SDK repo for a project this package is wired into.
@@ -80,12 +90,108 @@ provider's fields. The Editor build hooks then inject that provider's
 `AndroidManifest.xml` / `Info.plist` entries **and** its Gradle coordinate together, so the
 manifest can never reference a class that isn't on the classpath.
 
-Google login needs no such switch — it goes through Credential Manager, which is always on.
+On iOS, enabling a provider also adds its Swift package (`facebook-ios-sdk` → `FacebookLogin`,
+`tiktok-opensdk-ios`), writes `FacebookAppID` / `FacebookClientToken` / `TikTokClientKey` and
+the URL schemes, and the package starts both SDKs at launch and passes their callback URLs to
+the native SDK (`AlogameAppDelegateListener.mm`).
+
+Google login needs no switch. Android uses Credential Manager (always on); iOS needs
+`GoogleService-Info.plist` under `Assets` (see Install).
+
+## Session events
+
+The SDK's own UI can change the session without a call from the game: the dashboard's logout
+and account deletion end it, and the login screen it then shows starts a new one.
+
+| Event | When | Game should |
+|---|---|---|
+| `AlogameAuth.SessionEnded` | logout / account deletion from the SDK dashboard | leave the game, go to the title screen |
+| `AlogameAuth.LoggedIn` | the player logged in again through the SDK UI | enter the game as that user |
+
+Both start working after the first `ShowLoginUI()` call (the SDK attaches its session listener
+there). All events are raised on the main thread.
+
+## SDK screens
+
+| Call | Opens |
+|---|---|
+| `AlogameAuth.ShowLoginUI()` | login / register / guest |
+| `AlogameSDK.ShowDashboard()` | account hub: profile, link account, change password, delete, logout |
+| `AlogameAuth.ShowChangePassword()` | change password |
+| `AlogameAuth.ShowUpdateProfile()` | profile editor (iOS: the dashboard, which contains it) |
+| `AlogameSDK.ShowFloatingButton()` / `HideFloatingButton()` | the floating account button |
+
+`AlogameAuth.LinkAloId(username, pass)` attaches an Alo ID to a guest or social account without
+UI; `AlogameAuth.GetGameRole()` returns the character last set.
+
+## Push notifications
+
+- **Android**: FCM, from `google-services.json` (see Install). Nothing else.
+- **iOS**: tick **Enable iOS Push Notifications** on the `AlogameSDKSettings` asset once the
+  App ID has Push enabled in the Apple Developer portal. The hook then adds the Push capability
+  (`aps-environment`; development or production per the setting), the remote-notification
+  background mode, and turns on Unity's `UNITY_USES_REMOTE_NOTIFICATIONS` so the APNs token
+  reaches the SDK. It is off by default because the entitlement makes signing fail with a
+  provisioning profile that has no push.
+
+Ask for permission when it suits the game: `await AlogamePush.RequestPermission()`. The SDK
+registers the token with the backend and shows Alogame's pushes itself.
+`AlogamePush.MessageReceived` and `AlogamePush.TokenRefreshed` report them to the game.
+
+## Platform differences
+
+| | Android | iOS |
+|---|---|---|
+| `PurchaseResult.TransactionId` | Google order id | null (the native purchase flow does not return it) |
+| `GameData.ServerId` in `Purchase` | must be numeric (the Android purchase API takes an int) | any string |
+| `SocialLogin` `nonce` / `codeVerifier` | ignored | used |
+| `AlogamePush.SubscribeToTopic` | FCM topics | rejects (no APNs equivalent) |
+| `AlogamePush.GetDeviceToken` | FCM token | APNs token (hex), after permission is granted |
+| `ShowUpdateProfile` | profile editor, resolves with the updated user | opens the dashboard |
+
+## Deep links (AppsFlyer OneLink)
+
+Requires AppsFlyer as the game's attribution provider. Subscribe once, early:
+
+```csharp
+AlogameAnalytics.DeepLinkResolved += data =>
+{
+    if (data.TryGetValue("deep_link_value", out var target) && target is string value)
+    {
+        // Route the player, e.g. value = "shop", "event_halloween", "invite"
+    }
+};
+```
+
+A link resolved before you subscribe (a deferred deep link on first launch) is delivered once
+to the first subscriber. Incoming links are forwarded to the SDK for you — on Android
+`Initialize` listens to `Application.deepLinkActivated`; on iOS `AlogameAppDelegateListener.mm`
+passes every opened URL to the native SDK — so the only per-game setup is the domain:
+
+- **Android**: add the SDK's entry activity with your OneLink domain to a custom main manifest
+  (Player Settings → Publishing Settings → Custom Main Manifest):
+  ```xml
+  <activity android:name="vn.oeg.sdk.v2.core.analytics.OneLinkEntryActivity" android:exported="true">
+      <intent-filter android:autoVerify="true">
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+          <data android:scheme="https" android:host="yourgame.onelink.me" />
+      </intent-filter>
+  </activity>
+  ```
+- **iOS**: add `applinks:yourgame.onelink.me` to the app's Associated Domains.
+
+Do not also register `OEGAnalytics.setAttributionListener` / `attributionDelegate` in native
+code: the bridge owns the SDK's single listener.
 
 ## What the build hooks do for you
 
 Everything below is automatic. It is listed because when an iOS or Android build breaks, this
 is the list of things to suspect.
+
+**Android** (`AlogameAndroidGoogleServices`) fails the build early if the minimum API level is
+below 24, and turns `google-services.json` into Firebase resources.
 
 **Android** (`AlogameAndroidPostprocessBuild`) appends the native SDK's ~25 Maven coordinates
 to the generated `build.gradle`. A vendored `.aar` carries no POM, so nothing else would tell
@@ -97,20 +203,24 @@ needed. Without it the APK builds and installs fine, then dies on the first SDK 
 
 - sets `SWIFT_VERSION` on both generated targets — the package ships `.swift` sources, and
   no Unity template target defines a Swift version;
-- adds **GoogleSignIn**, **AdjustSdk** and **FirebaseAnalytics** as Swift Package references,
+- adds **GoogleSignIn**, **FirebaseAnalytics** and **AppsFlyerLib-Static** as Swift Package references,
   because `OegSdkV2.xcframework` is built against them and a vendored xcframework carries no
   dependency manifest. *The first iOS build therefore needs network access* so Xcode can
   resolve them;
 - embeds `OegSdkV2.framework` and sets `LD_RUNPATH_SEARCH_PATHS`. It is a dynamic framework:
   linked-but-not-embedded builds cleanly and then crashes at launch with "Library not
-  loaded". `AdjustSigSdk` is **not** vendored here — the Adjust SPM package already ships it,
-  and having both makes Xcode fail with "Multiple commands produce AdjustSigSdk.framework";
+  loaded". Adjust is not a dependency of the iOS SDK any more, so no Adjust package or
+  `AdjustSigSdk` is added;
 - picks the **device or simulator slice explicitly** to match your build target, rather than
   embedding the whole `.xcframework` — shipping the simulator slice fails App Store validation;
+- copies `GoogleService-Info.plist` into the app and registers its `REVERSED_CLIENT_ID` scheme;
+- adds the Facebook / TikTok packages and `Info.plist` keys when enabled, appending to
+  `CFBundleURLTypes` / `LSApplicationQueriesSchemes` rather than replacing them;
+- with **Enable iOS Push Notifications**: Push capability, background mode,
+  `UNITY_USES_REMOTE_NOTIFICATIONS 1`;
 - writes **`NSUserTrackingUsageDescription`** into `Info.plist`. This is not optional: the SDK
   requests App Tracking Transparency during analytics init, and iOS *terminates* an app that
-  calls it with no usage string. Set your own wording on the `AlogameSDKSettings` asset;
-- copies `oeg_config.json` from StreamingAssets to the app bundle root.
+  calls it with no usage string. Set your own wording on the `AlogameSDKSettings` asset.
 
 ### Known issue: duplicate Objective-C classes
 
@@ -123,7 +233,9 @@ built — nothing in this package can resolve it.
 ## Architecture — why the JSON bridge
 
 C# sends `{method, params, callbackId}` to native and receives `{callbackId, success, data}`
-back. `AlogameUnityBridge.java` / `AlogameUnityBridge.swift` are thin relays (a few lines
+back. Native-initiated events (`auth.loggedIn`, `auth.sessionEnded`, `push.messageReceived`,
+`push.tokenRefreshed`, `analytics.deepLinkResolved`) arrive as `{event, data}` with no
+`callbackId`. `AlogameUnityBridge.java` / `AlogameUnityBridge.swift` are thin relays (a few lines
 each) into `OEGBridge`, the **same** dispatch table the Egret and Cocos wrappers drive.
 
 Binding the native API directly instead would cost more, not less: it would mean one

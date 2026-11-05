@@ -97,6 +97,7 @@
 "oeg_fill_fullname" = "请输入姓名";
 "oeg_fill_email" = "请输入电子邮箱";
 "oeg_invalid_email" = "电子邮箱格式无效";
+"oeg_invalid_phone" = "手机号码格式无效";
 "oeg_fill_phone" = "请输入手机号码";
 "oeg_fill_birthday" = "请输入生日";
 "oeg_age_too_young" = "您的年龄不符合参与此游戏的要求。";
@@ -145,7 +146,9 @@
 "oeg_ok" = "确定";
 "oeg_session_expired_message" = "您的登录状态已过期，请重新登录。";
 "oeg_terms_agree_prefix" = "我已阅读并同意";
-"oeg_terms_of_service" = "服务条款及隐私政策（基本数据处理用途）";
+"oeg_terms_of_service" = "服务条款";
+"oeg_terms_and_privacy_connector" = "及";
+"oeg_privacy_basic_policy" = "隐私政策（基本数据处理用途）";
 "oeg_privacy_optional_prefix" = "我同意";
 "oeg_privacy_optional_policy" = "隐私政策（可选数据处理用途）";
 "oeg_consent_master" = "我已阅读并同意条款";
@@ -173,13 +176,15 @@
 "oeg_force_update_now" = "立即更新";
 "oeg_force_update_continue_old" = "继续使用旧版本";
 "oeg_force_update_message" = "新版本（%@）已发布，请更新后继续游戏。";
+"oeg_force_update_message_no_version" = "新版本已发布，请更新后继续游戏。";
 "oeg_time_minutes" = "%d 分钟";
 "oeg_time_seconds" = "%d 秒";
 
 /* Account Linking / IAP */
 "oeg_link_account" = "关联账户";
-"oeg_link_account_iap_warning" = "您目前使用的是尚未关联的游客账号，存在丢失账户信息的风险。请关联您的 OEG ID 账户以继续。";
-"oeg_link_account_guest_prompt" = "您要将游客账号关联到 OEG 账户吗？";
+"oeg_link_account_iap_warning" = "您目前使用的是尚未关联的游客账号，存在丢失账户信息的风险。请关联您的 ALO ID 账户以继续。";
+"oeg_link_account_guest_prompt" = "您要将游客账号关联到 ALO ID 账户吗？";
+"oeg_link_alo_id" = "关联 ALO ID";
 "oeg_link" = "关联";
 "oeg_continue_payment" = "继续支付";
 "oeg_skip" = "跳过";

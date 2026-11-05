@@ -1097,13 +1097,6 @@
       },
       {
         "kind": "Import",
-        "name": "AdjustSdk",
-        "printedName": "AdjustSdk",
-        "declKind": "Import",
-        "moduleName": "OegSdkV2"
-      },
-      {
-        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -2358,6 +2351,117 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Var",
+            "name": "attributionDelegate",
+            "printedName": "attributionDelegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "(any OegSdkV2.OEGAttributionDelegate)?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OegSdkV2@objc(cs)OEGAnalytics(py)attributionDelegate",
+            "mangledName": "$s8OegSdkV212OEGAnalyticsC19attributionDelegateAA014OEGAttributionF0_pSgvp",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any OegSdkV2.OEGAttributionDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OEGAttributionDelegate",
+                        "printedName": "any OegSdkV2.OEGAttributionDelegate",
+                        "usr": "c:@M@OegSdkV2@objc(pl)OEGAttributionDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OegSdkV2@objc(cs)OEGAnalytics(im)attributionDelegate",
+                "mangledName": "$s8OegSdkV212OEGAnalyticsC19attributionDelegateAA014OEGAttributionF0_pSgvg",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any OegSdkV2.OEGAttributionDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OEGAttributionDelegate",
+                        "printedName": "any OegSdkV2.OEGAttributionDelegate",
+                        "usr": "c:@M@OegSdkV2@objc(pl)OEGAttributionDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OegSdkV2@objc(cs)OEGAnalytics(im)setAttributionDelegate:",
+                "mangledName": "$s8OegSdkV212OEGAnalyticsC19attributionDelegateAA014OEGAttributionF0_pSgvs",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV212OEGAnalyticsC19attributionDelegateAA014OEGAttributionF0_pSgvM",
+                "mangledName": "$s8OegSdkV212OEGAnalyticsC19attributionDelegateAA014OEGAttributionF0_pSgvM",
+                "moduleName": "OegSdkV2",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "isInitialized",
             "printedName": "isInitialized()",
@@ -2691,6 +2795,85 @@
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "OEGAttributionDelegate",
+        "printedName": "OEGAttributionDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "oegDidResolveDeepLink",
+            "printedName": "oegDidResolveDeepLink(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OegSdkV2@objc(pl)OEGAttributionDelegate(im)oegDidResolveDeepLink:",
+            "mangledName": "$s8OegSdkV222OEGAttributionDelegateP21oegDidResolveDeepLinkyySDySSypGF",
+            "moduleName": "OegSdkV2",
+            "genericSig": "<τ_0_0 where τ_0_0 : OegSdkV2.OEGAttributionDelegate>",
+            "sugared_genericSig": "<Self where Self : OegSdkV2.OEGAttributionDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "Optional",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@OegSdkV2@objc(pl)OEGAttributionDelegate",
+        "mangledName": "$s8OegSdkV222OEGAttributionDelegateP",
+        "moduleName": "OegSdkV2",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           }
         ]
       },
@@ -21428,7 +21611,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(baseURL:gameId:session:logger:isVietnamese:)",
+            "printedName": "init(baseURL:gameId:session:logger:isVietnamese:languageCode:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -21481,11 +21664,30 @@
                   }
                 ],
                 "hasDefaultArg": true
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> Swift.String",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "hasDefaultArg": true
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8OegSdkV213NetworkClientC7baseURL6gameId7session6logger12isVietnameseACSS_SiSo12NSURLSessionCAA9OEGLoggerCSbyctcfc",
-            "mangledName": "$s8OegSdkV213NetworkClientC7baseURL6gameId7session6logger12isVietnameseACSS_SiSo12NSURLSessionCAA9OEGLoggerCSbyctcfc",
+            "usr": "s:8OegSdkV213NetworkClientC7baseURL6gameId7session6logger12isVietnamese12languageCodeACSS_SiSo12NSURLSessionCAA9OEGLoggerCSbycSSyctcfc",
+            "mangledName": "$s8OegSdkV213NetworkClientC7baseURL6gameId7session6logger12isVietnamese12languageCodeACSS_SiSo12NSURLSessionCAA9OEGLoggerCSbycSSyctcfc",
             "moduleName": "OegSdkV2",
             "declAttributes": [
               "AccessControl"
@@ -21698,6 +21900,13 @@
             "mangledName": "$ss16SendableMetatypeP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
       },
       {
         "kind": "Import",
@@ -35585,6 +35794,45 @@
           },
           {
             "kind": "Function",
+            "name": "onATTResolved",
+            "printedName": "onATTResolved(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@OegSdkV2@objc(cs)OegSdkCore(im)onATTResolved:",
+            "mangledName": "$s8OegSdkV20aB4CoreC13onATTResolvedyyyycF",
+            "moduleName": "OegSdkV2",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "initialize",
             "printedName": "initialize(config:)",
             "children": [
@@ -36136,6 +36384,60 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Var",
+            "name": "defaultCategoryIdentifier",
+            "printedName": "defaultCategoryIdentifier",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@OegSdkV2@objc(cs)OEGPush(cpy)defaultCategoryIdentifier",
+            "mangledName": "$s8OegSdkV27OEGPushC25defaultCategoryIdentifierSSvpZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@OegSdkV2@objc(cs)OEGPush(cm)defaultCategoryIdentifier",
+                "mangledName": "$s8OegSdkV27OEGPushC25defaultCategoryIdentifierSSvgZ",
+                "moduleName": "OegSdkV2",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "requestAuthorization",
             "printedName": "requestAuthorization(completion:)",
@@ -36561,15 +36863,71 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@OegSdkV2@objc(cs)OEGPush(im)userNotificationCenter:willPresent:withCompletionHandler:",
+            "usr": "c:@CM@OegSdkV2@objc(cs)OEGPush(im)userNotificationCenter:willPresentNotification:withCompletionHandler:",
             "mangledName": "$s8OegSdkV27OEGPushC22userNotificationCenter_11willPresent21withCompletionHandlerySo06UNUserfG0C_So14UNNotificationCySo0N19PresentationOptionsVctF",
             "moduleName": "OegSdkV2",
+            "objc_name": "userNotificationCenter:willPresentNotification:withCompletionHandler:",
             "declAttributes": [
               "Final",
-              "AccessControl",
               "ObjC",
+              "AccessControl",
               "RawDocComment"
             ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "userNotificationCenter",
+            "printedName": "userNotificationCenter(_:didReceive:withCompletionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNUserNotificationCenter",
+                "printedName": "UserNotifications.UNUserNotificationCenter",
+                "usr": "c:objc(cs)UNUserNotificationCenter"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UNNotificationResponse",
+                "printedName": "UserNotifications.UNNotificationResponse",
+                "usr": "c:objc(cs)UNNotificationResponse"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@OegSdkV2@objc(cs)OEGPush(im)userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:",
+            "mangledName": "$s8OegSdkV27OEGPushC22userNotificationCenter_10didReceive21withCompletionHandlerySo06UNUserfG0C_So22UNNotificationResponseCyyctF",
+            "moduleName": "OegSdkV2",
+            "objc_name": "userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
             "funcSelfKind": "NonMutating"
           }
         ],
@@ -55892,6 +56250,48 @@
           },
           {
             "kind": "Var",
+            "name": "invalidPhone",
+            "printedName": "invalidPhone",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV210OEGStringsO12invalidPhoneSSvpZ",
+            "mangledName": "$s8OegSdkV210OEGStringsO12invalidPhoneSSvpZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV210OEGStringsO12invalidPhoneSSvgZ",
+                "mangledName": "$s8OegSdkV210OEGStringsO12invalidPhoneSSvgZ",
+                "moduleName": "OegSdkV2",
+                "static": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "fillPhone",
             "printedName": "fillPhone",
             "children": [
@@ -56935,6 +57335,90 @@
           },
           {
             "kind": "Var",
+            "name": "termsAndPrivacyConnector",
+            "printedName": "termsAndPrivacyConnector",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV210OEGStringsO24termsAndPrivacyConnectorSSvpZ",
+            "mangledName": "$s8OegSdkV210OEGStringsO24termsAndPrivacyConnectorSSvpZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV210OEGStringsO24termsAndPrivacyConnectorSSvgZ",
+                "mangledName": "$s8OegSdkV210OEGStringsO24termsAndPrivacyConnectorSSvgZ",
+                "moduleName": "OegSdkV2",
+                "static": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "privacyBasicPolicy",
+            "printedName": "privacyBasicPolicy",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV210OEGStringsO18privacyBasicPolicySSvpZ",
+            "mangledName": "$s8OegSdkV210OEGStringsO18privacyBasicPolicySSvpZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV210OEGStringsO18privacyBasicPolicySSvgZ",
+                "mangledName": "$s8OegSdkV210OEGStringsO18privacyBasicPolicySSvgZ",
+                "moduleName": "OegSdkV2",
+                "static": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "privacyOptionalPrefix",
             "printedName": "privacyOptionalPrefix",
             "children": [
@@ -57667,6 +58151,48 @@
           },
           {
             "kind": "Var",
+            "name": "forceUpdateMessageNoVersion",
+            "printedName": "forceUpdateMessageNoVersion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV210OEGStringsO27forceUpdateMessageNoVersionSSvpZ",
+            "mangledName": "$s8OegSdkV210OEGStringsO27forceUpdateMessageNoVersionSSvpZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV210OEGStringsO27forceUpdateMessageNoVersionSSvgZ",
+                "mangledName": "$s8OegSdkV210OEGStringsO27forceUpdateMessageNoVersionSSvgZ",
+                "moduleName": "OegSdkV2",
+                "static": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "forceUpdateNow",
             "printedName": "forceUpdateNow",
             "children": [
@@ -58081,6 +58607,48 @@
                 "declKind": "Accessor",
                 "usr": "s:8OegSdkV210OEGStringsO22linkAccountGuestPromptSSvgZ",
                 "mangledName": "$s8OegSdkV210OEGStringsO22linkAccountGuestPromptSSvgZ",
+                "moduleName": "OegSdkV2",
+                "static": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "linkAloId",
+            "printedName": "linkAloId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OegSdkV210OEGStringsO9linkAloIdSSvpZ",
+            "mangledName": "$s8OegSdkV210OEGStringsO9linkAloIdSSvpZ",
+            "moduleName": "OegSdkV2",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OegSdkV210OEGStringsO9linkAloIdSSvgZ",
+                "mangledName": "$s8OegSdkV210OEGStringsO9linkAloIdSSvgZ",
                 "moduleName": "OegSdkV2",
                 "static": true,
                 "accessorKind": "get"
@@ -58717,6 +59285,23 @@
             "mangledName": "$ss9EscapableP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "OegSdkV2"
       },
       {
         "kind": "Import",
@@ -62135,8 +62720,7 @@
           "SynthesizedProtocol",
           "SynthesizedProtocol",
           "SynthesizedProtocol",
-          "SynthesizedProtocol",
-          "Sendable"
+          "SynthesizedProtocol"
         ],
         "isFromExtension": true,
         "isExternal": true,
@@ -62288,7 +62872,6 @@
           "ObjC",
           "SynthesizedProtocol",
           "NonSendable",
-          "Sendable",
           "Dynamic"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
@@ -62565,28 +63148,28 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/resource_bundle_accessor.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/resource_bundle_accessor.swift",
       "kind": "StringLiteral",
       "offset": 307,
       "length": 19,
       "value": "\"OegSdkV2_OegSdkV2\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/resource_bundle_accessor.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/resource_bundle_accessor.swift",
       "kind": "Array",
       "offset": 973,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/resource_bundle_accessor.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/resource_bundle_accessor.swift",
       "kind": "StringLiteral",
       "offset": 1500,
       "length": 9,
       "value": "\".bundle\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/resource_bundle_accessor.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/resource_bundle_accessor.swift",
       "kind": "StringLiteral",
       "offset": 1652,
       "length": 47,
@@ -62670,6 +63253,34 @@
       "value": "\"If this account is used across multiple games, deletion will erase all data in all related games.\""
     },
     {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Account\/Domain\/WarningTextProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 1459,
+      "length": 60,
+      "value": "\"您正在申请删除账户，此过程将持续 30 天。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Account\/Domain\/WarningTextProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 1551,
+      "length": 78,
+      "value": "\"自操作之日起 30 天内，如再次登录，删除流程将被取消。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Account\/Domain\/WarningTextProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 1661,
+      "length": 66,
+      "value": "\"如 30 天内未登录游戏，您的账户将被永久删除。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Account\/Domain\/WarningTextProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 1759,
+      "length": 89,
+      "value": "\"如该账户用于多个游戏，删除将清除所有相关游戏中的全部数据。\""
+    },
+    {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AdjustAnalyticsTracker.swift",
       "kind": "BooleanLiteral",
       "offset": 565,
@@ -62686,37 +63297,37 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
       "kind": "BooleanLiteral",
-      "offset": 1485,
+      "offset": 1294,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
       "kind": "BooleanLiteral",
-      "offset": 1525,
+      "offset": 1334,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
       "kind": "IntegerLiteral",
-      "offset": 10433,
+      "offset": 10075,
       "length": 2,
       "value": "45"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
       "kind": "IntegerLiteral",
-      "offset": 10481,
+      "offset": 10123,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AppsFlyerAnalyticsTracker.swift",
       "kind": "StringLiteral",
-      "offset": 10525,
-      "length": 14,
-      "value": "\"sdk_recharge\""
+      "offset": 10167,
+      "length": 17,
+      "value": "\"af_sdk_recharge\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
@@ -62748,36 +63359,43 @@
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1452,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "Array",
-      "offset": 1331,
+      "offset": 1512,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "Array",
-      "offset": 1381,
+      "offset": 1562,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 4583,
+      "offset": 6295,
       "length": 8,
       "value": "\"manual\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 10243,
+      "offset": 15893,
       "length": 28,
       "value": "\"oeg_sdk_registered_devices\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/AutoTracker.swift",
       "kind": "StringLiteral",
-      "offset": 10309,
+      "offset": 15959,
       "length": 26,
       "value": "\"oeg_sdk_charged_accounts\""
     },
@@ -62827,41 +63445,41 @@
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/FirebaseAnalyticsTracker.swift",
       "kind": "StringLiteral",
       "offset": 4864,
-      "length": 14,
-      "value": "\"sdk_recharge\""
+      "length": 17,
+      "value": "\"af_sdk_recharge\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/FirebaseAnalyticsTracker.swift",
       "kind": "IntegerLiteral",
-      "offset": 4914,
+      "offset": 4917,
       "length": 2,
       "value": "25"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/FirebaseAnalyticsTracker.swift",
       "kind": "IntegerLiteral",
-      "offset": 4950,
+      "offset": 4953,
       "length": 2,
       "value": "40"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/FirebaseAnalyticsTracker.swift",
       "kind": "IntegerLiteral",
-      "offset": 4987,
+      "offset": 4990,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/FirebaseAnalyticsTracker.swift",
       "kind": "IntegerLiteral",
-      "offset": 5028,
+      "offset": 5031,
       "length": 2,
       "value": "36"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/FirebaseAnalyticsTracker.swift",
       "kind": "Array",
-      "offset": 5073,
+      "offset": 5076,
       "length": 66,
       "value": "[\"server_id\", \"login_channel\", \"register_channel\", \"country_code\"]"
     },
@@ -62882,14 +63500,14 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/OEGAnalytics.swift",
       "kind": "IntegerLiteral",
-      "offset": 1208,
+      "offset": 1986,
       "length": 10,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Analytics\/OEGAnalytics.swift",
       "kind": "Dictionary",
-      "offset": 1646,
+      "offset": 2424,
       "length": 3,
       "value": "[]"
     },
@@ -62931,35 +63549,35 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Data\/AuthRepositoryImpl.swift",
       "kind": "StringLiteral",
-      "offset": 25884,
+      "offset": 26166,
       "length": 9,
       "value": "\"game_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Data\/AuthRepositoryImpl.swift",
       "kind": "StringLiteral",
-      "offset": 25918,
+      "offset": 26200,
       "length": 11,
       "value": "\"server_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Data\/AuthRepositoryImpl.swift",
       "kind": "StringLiteral",
-      "offset": 25956,
+      "offset": 26238,
       "length": 13,
       "value": "\"server_name\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Data\/AuthRepositoryImpl.swift",
       "kind": "StringLiteral",
-      "offset": 25992,
+      "offset": 26274,
       "length": 9,
       "value": "\"role_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Data\/AuthRepositoryImpl.swift",
       "kind": "StringLiteral",
-      "offset": 26026,
+      "offset": 26308,
       "length": 11,
       "value": "\"role_name\""
     },
@@ -63489,20 +64107,6 @@
       "value": "\"game_version\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Data\/DTOs\/AuthDTOs.swift",
-      "kind": "StringLiteral",
-      "offset": 12166,
-      "length": 13,
-      "value": "\"has_id_pass\""
-    },
-    {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Data\/DTOs\/AuthDTOs.swift",
-      "kind": "StringLiteral",
-      "offset": 12781,
-      "length": 13,
-      "value": "\"has_id_pass\""
-    },
-    {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Domain\/AuthModels.swift",
       "kind": "StringLiteral",
       "offset": 736,
@@ -63547,35 +64151,35 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Domain\/AuthUser.swift",
       "kind": "StringLiteral",
-      "offset": 6505,
+      "offset": 6543,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Domain\/AuthUser.swift",
       "kind": "StringLiteral",
-      "offset": 6585,
+      "offset": 6623,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Domain\/AuthUser.swift",
       "kind": "StringLiteral",
-      "offset": 6596,
+      "offset": 6634,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Domain\/AuthUser.swift",
       "kind": "BooleanLiteral",
-      "offset": 6847,
+      "offset": 6885,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/Domain\/AuthUser.swift",
       "kind": "BooleanLiteral",
-      "offset": 7316,
+      "offset": 7354,
       "length": 5,
       "value": "false"
     },
@@ -63638,42 +64242,42 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/OEGAuth.swift",
       "kind": "BooleanLiteral",
-      "offset": 9929,
+      "offset": 10263,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/OEGAuth.swift",
       "kind": "BooleanLiteral",
-      "offset": 9953,
+      "offset": 10287,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/OEGAuth.swift",
       "kind": "BooleanLiteral",
-      "offset": 26872,
+      "offset": 27935,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/OEGAuth.swift",
       "kind": "StringLiteral",
-      "offset": 29195,
+      "offset": 30258,
       "length": 8,
       "value": "\"manual\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/OEGAuth.swift",
       "kind": "BooleanLiteral",
-      "offset": 34305,
+      "offset": 35368,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Auth\/OEGAuth.swift",
       "kind": "BooleanLiteral",
-      "offset": 34329,
+      "offset": 35392,
       "length": 5,
       "value": "false"
     },
@@ -64085,45 +64689,493 @@
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1225,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 516,
+      "offset": 1296,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
       "kind": "StringLiteral",
-      "offset": 759,
+      "offset": 1539,
       "length": 4,
       "value": "\"vi\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 768,
+      "offset": 1548,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
+      "kind": "StringLiteral",
+      "offset": 1661,
+      "length": 4,
+      "value": "\"en\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
       "kind": "Dictionary",
-      "offset": 1213,
+      "offset": 2146,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
       "kind": "Array",
-      "offset": 2908,
+      "offset": 3841,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/NetworkClient.swift",
       "kind": "Dictionary",
-      "offset": 2948,
+      "offset": 3881,
       "length": 3,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 895,
+      "length": 20,
+      "value": "\"InvalidCredentials\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 937,
+      "length": 33,
+      "value": "\"Incorrect username or password.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 976,
+      "length": 59,
+      "value": "\"Tên đăng nhập hoặc mật khẩu không chính xác\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1041,
+      "length": 29,
+      "value": "\"用户名或密码错误。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1094,
+      "length": 21,
+      "value": "\"IdPassAlreadyLinked\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1137,
+      "length": 37,
+      "value": "\"This account already has an ALO ID.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1180,
+      "length": 69,
+      "value": "\"Tài khoản đã có ALO ID (tên đăng nhập và mật khẩu).\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1255,
+      "length": 51,
+      "value": "\"该账户已有 ALO ID（用户名和密码）。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1330,
+      "length": 14,
+      "value": "\"InvalidEmail\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1366,
+      "length": 24,
+      "value": "\"Invalid email address.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1396,
+      "length": 38,
+      "value": "\"Email của bạn không hợp lệ.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1440,
+      "length": 29,
+      "value": "\"电子邮箱地址无效。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1493,
+      "length": 23,
+      "value": "\"UsernameAlreadyExists\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1538,
+      "length": 26,
+      "value": "\"Username already exists.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1570,
+      "length": 37,
+      "value": "\"Tên đăng nhập đã tồn tại\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1613,
+      "length": 23,
+      "value": "\"用户名已存在。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1660,
+      "length": 20,
+      "value": "\"EmailAlreadyExists\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1702,
+      "length": 23,
+      "value": "\"Email already exists.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1731,
+      "length": 25,
+      "value": "\"Email đã tồn tại.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1762,
+      "length": 26,
+      "value": "\"电子邮箱已存在。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1812,
+      "length": 26,
+      "value": "\"CurrentPasswordIncorrect\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1860,
+      "length": 29,
+      "value": "\"Incorrect current password.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1895,
+      "length": 47,
+      "value": "\"Mật khẩu hiện tại không chính xác.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1948,
+      "length": 26,
+      "value": "\"当前密码不正确。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 1998,
+      "length": 22,
+      "value": "\"TooManyLoginAttempts\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2042,
+      "length": 68,
+      "value": "\"Too many failed login attempts, please try again in a few minutes.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2116,
+      "length": 93,
+      "value": "\"Bạn đã nhập sai mật khẩu quá nhiều lần, vui lòng thử lại sau ít phút.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2215,
+      "length": 53,
+      "value": "\"密码错误次数过多，请几分钟后再试。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2292,
+      "length": 12,
+      "value": "\"OtpExpired\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2326,
+      "length": 44,
+      "value": "\"OTP has expired. Please request a new one.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2376,
+      "length": 63,
+      "value": "\"Mã OTP đã hết hạn. Vui lòng yêu cầu mã OTP mới.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2445,
+      "length": 41,
+      "value": "\"验证码已过期，请重新获取。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2510,
+      "length": 23,
+      "value": "\"OtpVerificationFailed\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2546,
+      "length": 32,
+      "value": "\"Invalid OTP. Please try again.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2584,
+      "length": 32,
+      "value": "\"Invalid OTP. Please try again.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2622,
+      "length": 51,
+      "value": "\"Mã OTP không hợp lệ. Vui lòng thử lại.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2679,
+      "length": 32,
+      "value": "\"验证码无效，请重试。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2735,
+      "length": 23,
+      "value": "\"OtpVerificationFailed\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2771,
+      "length": 67,
+      "value": "\"Maximum verification attempts exceeded. Please request a new OTP.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2844,
+      "length": 67,
+      "value": "\"Maximum verification attempts exceeded. Please request a new OTP.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 2917,
+      "length": 89,
+      "value": "\"Đã vượt quá số lần xác thực cho phép. Vui lòng yêu cầu mã OTP mới.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3012,
+      "length": 59,
+      "value": "\"验证次数已超过上限，请重新获取验证码。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3095,
+      "length": 14,
+      "value": "\"MissingEmail\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3131,
+      "length": 42,
+      "value": "\"You have not updated your email address.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3179,
+      "length": 33,
+      "value": "\"Bạn chưa cập nhật email.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3218,
+      "length": 38,
+      "value": "\"您尚未填写电子邮箱地址。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3280,
+      "length": 22,
+      "value": "\"PhoneAlreadyVerified\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3324,
+      "length": 62,
+      "value": "\"Phone number has already been verified with another account.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3392,
+      "length": 74,
+      "value": "\"Số điện thoại đã được xác thực với tài khoản khác.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3472,
+      "length": 50,
+      "value": "\"该手机号码已在其他账户完成验证。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3546,
+      "length": 27,
+      "value": "\"PhoneAlreadyVerifiedError\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3595,
+      "length": 46,
+      "value": "\"Your phone number has already been verified.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3647,
+      "length": 61,
+      "value": "\"Số điện thoại của bạn đã được xác thực.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3714,
+      "length": 32,
+      "value": "\"您的手机号码已验证。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3770,
+      "length": 22,
+      "value": "\"EmailAlreadyVerified\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3814,
+      "length": 55,
+      "value": "\"Email has already been verified with another account.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3875,
+      "length": 59,
+      "value": "\"Email đã được xác thực với tài khoản khác.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 3940,
+      "length": 50,
+      "value": "\"该电子邮箱已在其他账户完成验证。\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 4014,
+      "length": 14,
+      "value": "\"UserNotFound\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 4050,
+      "length": 17,
+      "value": "\"User not found.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 4073,
+      "length": 36,
+      "value": "\"Người dùng không tồn tại.\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Network\/ServerErrorCatalog.swift",
+      "kind": "StringLiteral",
+      "offset": 4115,
+      "length": 20,
+      "value": "\"用户不存在。\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Common\/Storage\/SecureStorage.swift",
@@ -64877,9 +65929,16 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Data\/PaymentRepositoryImpl.swift",
       "kind": "IntegerLiteral",
-      "offset": 4901,
+      "offset": 4893,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Data\/PaymentRepositoryImpl.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5121,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Data\/UserDefaultsPendingTransactionStore.swift",
@@ -64926,28 +65985,28 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Domain\/PaymentModels.swift",
       "kind": "IntegerLiteral",
-      "offset": 770,
+      "offset": 1078,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Domain\/PaymentModels.swift",
       "kind": "IntegerLiteral",
-      "offset": 1843,
+      "offset": 2151,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Domain\/PaymentModels.swift",
       "kind": "FloatLiteral",
-      "offset": 1941,
+      "offset": 2249,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/Domain\/PaymentModels.swift",
       "kind": "StringLiteral",
-      "offset": 1977,
+      "offset": 2285,
       "length": 2,
       "value": "\"\""
     },
@@ -65013,6 +66072,13 @@
       "offset": 2876,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Payment\/OEGPayment.swift",
+      "kind": "Array",
+      "offset": 24976,
+      "length": 45,
+      "value": "[\"TestReceiptInProduction\", \"InvalidReceipt\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OEGEnums.swift",
@@ -65206,154 +66272,231 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 4324,
+      "offset": 3980,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
+      "kind": "Array",
+      "offset": 4127,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4628,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 4828,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
-      "kind": "BooleanLiteral",
-      "offset": 5193,
+      "offset": 4993,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
+      "kind": "StringLiteral",
+      "offset": 5180,
+      "length": 4,
+      "value": "\"en\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 19904,
+      "offset": 21568,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 29137,
+      "offset": 31359,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "StringLiteral",
-      "offset": 30741,
+      "offset": 32963,
       "length": 20,
       "value": "\"OEGConfigDidUpdate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 3023,
-      "length": 43,
-      "value": "\"[OEGPush] Cannot sync: SDK not configured\""
+      "offset": 1580,
+      "length": 13,
+      "value": "\"ALO_DEFAULT\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 3802,
+      "offset": 9801,
+      "length": 13,
+      "value": "\"Guest token\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "StringLiteral",
+      "offset": 9817,
+      "length": 7,
+      "value": "\"Token\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "StringLiteral",
+      "offset": 10376,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 3846,
+      "offset": 10420,
       "length": 9,
       "value": "\"game_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "Dictionary",
+      "offset": 10495,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 3966,
+      "offset": 11087,
+      "length": 54,
+      "value": "\"[OEGPush] Guest token sync skipped: player logged in\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11191,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "StringLiteral",
+      "offset": 11332,
       "length": 5,
       "value": "\"ios\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 4676,
-      "length": 41,
-      "value": "\"[OEGPush] Token synced (game=\""
+      "offset": 11815,
+      "length": 44,
+      "value": "\"[OEGPush] \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 4715,
+      "offset": 11834,
+      "length": 6,
+      "value": "\" synced (game=\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "StringLiteral",
+      "offset": 11857,
       "length": 1,
       "value": "\")\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
-      "kind": "StringLiteral",
-      "offset": 4890,
-      "length": 66,
-      "value": "\"[OEGPush] Sync failed (non-fatal): \""
+      "kind": "BooleanLiteral",
+      "offset": 11909,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 4955,
+      "offset": 12066,
+      "length": 75,
+      "value": "\"[OEGPush] \""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "StringLiteral",
+      "offset": 12085,
+      "length": 4,
+      "value": "\" sync failed (non-fatal): \""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "StringLiteral",
+      "offset": 12140,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12191,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 5919,
+      "offset": 13139,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 5963,
+      "offset": 13183,
       "length": 9,
       "value": "\"game_id\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6482,
+      "offset": 13702,
       "length": 8,
       "value": "\"DELETE\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6691,
+      "offset": 13911,
       "length": 46,
       "value": "\"[OEGPush] Token deactivated (game=\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6735,
+      "offset": 13955,
       "length": 1,
       "value": "\")\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6910,
+      "offset": 14130,
       "length": 72,
       "value": "\"[OEGPush] Deactivate failed (non-fatal): \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 6981,
+      "offset": 14201,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Push\/OEGPush.swift",
       "kind": "StringLiteral",
-      "offset": 11020,
+      "offset": 19512,
       "length": 29,
       "value": "\"OEGPushNotificationReceived\""
     },
@@ -66711,7 +67854,7 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/ViewModels\/UpdateProfileViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 5682,
+      "offset": 5938,
       "length": 4,
       "value": "true"
     },
@@ -66774,7 +67917,7 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/DashboardSideMenuView.swift",
       "kind": "BooleanLiteral",
-      "offset": 5353,
+      "offset": 5306,
       "length": 5,
       "value": "false"
     },
@@ -66803,13 +67946,6 @@
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/DashboardView.swift",
       "kind": "BooleanLiteral",
       "offset": 755,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/DashboardView.swift",
-      "kind": "BooleanLiteral",
-      "offset": 8752,
       "length": 5,
       "value": "false"
     },
@@ -66941,113 +68077,141 @@
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
+      "kind": "StringLiteral",
+      "offset": 2864,
+      "length": 33,
+      "value": "\"https:\/\/alogame.vn\/privacy.html\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
+      "kind": "StringLiteral",
+      "offset": 2942,
+      "length": 50,
+      "value": "\"https:\/\/alogame.vn\/policy.html#5-muc-dich-co-ban\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
+      "kind": "StringLiteral",
+      "offset": 3040,
+      "length": 52,
+      "value": "\"https:\/\/alogame.vn\/policy.html#5-muc-dich-tuy-chon\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 1978,
+      "offset": 6883,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2199,
+      "offset": 7104,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 2338,
+      "offset": 7243,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2384,
+      "offset": 7289,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 2651,
+      "offset": 7556,
       "length": 12,
       "value": "\"btn_google\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 2719,
+      "offset": 7624,
       "length": 8,
       "value": "\"btn_fb\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 2780,
+      "offset": 7685,
       "length": 11,
       "value": "\"btn_apple\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 2845,
+      "offset": 7750,
       "length": 12,
       "value": "\"btn_tiktok\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
+      "kind": "StringLiteral",
+      "offset": 7822,
+      "length": 16,
+      "value": "\"banner_18_over\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 2965,
+      "offset": 7946,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3011,
+      "offset": 7992,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 3055,
+      "offset": 8036,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 16835,
+      "offset": 24309,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "StringLiteral",
-      "offset": 21269,
+      "offset": 28743,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 21322,
+      "offset": 28796,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 21367,
+      "offset": 28841,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/LoginSwiftUIView.swift",
       "kind": "BooleanLiteral",
-      "offset": 21568,
+      "offset": 29042,
       "length": 5,
       "value": "false"
     },
@@ -67270,15 +68434,22 @@
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/UpdateProfileView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 749,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/UpdateProfileView.swift",
       "kind": "StringLiteral",
-      "offset": 722,
+      "offset": 871,
       "length": 12,
       "value": "\"dd\/MM\/yyyy\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Auth\/Views\/UpdateProfileView.swift",
       "kind": "BooleanLiteral",
-      "offset": 786,
+      "offset": 935,
       "length": 4,
       "value": "true"
     },
@@ -67348,56 +68519,70 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 6142,
+      "offset": 6181,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 9875,
+      "offset": 9914,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12336,
+      "offset": 12375,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12370,
+      "offset": 12409,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12403,
+      "offset": 12442,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12437,
+      "offset": 12476,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "BooleanLiteral",
-      "offset": 12470,
+      "offset": 12509,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
+      "kind": "BooleanLiteral",
+      "offset": 16214,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
+      "kind": "BooleanLiteral",
+      "offset": 19697,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/Components.swift",
       "kind": "IntegerLiteral",
-      "offset": 18309,
+      "offset": 24275,
       "length": 1,
       "value": "6"
     },
@@ -67522,267 +68707,288 @@
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
+      "kind": "StringLiteral",
+      "offset": 2868,
+      "length": 8,
+      "value": "\"201012\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
+      "kind": "StringLiteral",
+      "offset": 2918,
+      "length": 8,
+      "value": "\"5A2327\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
+      "kind": "StringLiteral",
+      "offset": 2966,
+      "length": 8,
+      "value": "\"FF9B9E\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 2890,
+      "offset": 3146,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 2944,
+      "offset": 3200,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 2998,
+      "offset": 3254,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3060,
+      "offset": 3316,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3110,
+      "offset": 3366,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3170,
+      "offset": 3426,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3217,
+      "offset": 3473,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3263,
+      "offset": 3519,
       "length": 2,
       "value": "40"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3334,
+      "offset": 3590,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3381,
+      "offset": 3637,
       "length": 3,
       "value": "350"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3431,
+      "offset": 3687,
       "length": 3,
       "value": "420"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3483,
+      "offset": 3739,
       "length": 3,
       "value": "600"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "FloatLiteral",
-      "offset": 3540,
+      "offset": 3796,
       "length": 4,
       "value": "0.86"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3605,
+      "offset": 3861,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3653,
+      "offset": 3909,
       "length": 2,
       "value": "80"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3715,
+      "offset": 3971,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3759,
+      "offset": 4015,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3803,
+      "offset": 4059,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3848,
+      "offset": 4104,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3894,
+      "offset": 4150,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3941,
+      "offset": 4197,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 3992,
+      "offset": 4248,
       "length": 2,
       "value": "40"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4048,
+      "offset": 4304,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4108,
+      "offset": 4364,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4162,
+      "offset": 4418,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4218,
+      "offset": 4474,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4278,
+      "offset": 4534,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4360,
+      "offset": 4616,
       "length": 3,
       "value": "200"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "FloatLiteral",
-      "offset": 4434,
+      "offset": 4690,
       "length": 3,
       "value": "1.5"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "FloatLiteral",
-      "offset": 4492,
+      "offset": 4748,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4732,
+      "offset": 4988,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4832,
+      "offset": 5088,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 4961,
+      "offset": 5217,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 5016,
+      "offset": 5272,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 5144,
+      "offset": 5400,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 5260,
+      "offset": 5516,
       "length": 2,
       "value": "20"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 5364,
+      "offset": 5620,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/DesignTokens.swift",
       "kind": "IntegerLiteral",
-      "offset": 5491,
+      "offset": 5747,
       "length": 2,
       "value": "32"
     },
@@ -67820,6 +69026,20 @@
       "offset": 387,
       "length": 18,
       "value": "\"oeg_sdk_language\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/OEGToast.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2260,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Common\/OEGToast.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4228,
+      "length": 1,
+      "value": "4"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
@@ -67873,252 +69093,252 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 7662,
+      "offset": 8331,
       "length": 4,
       "value": "44.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 7701,
+      "offset": 8370,
       "length": 4,
       "value": "16.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 7746,
+      "offset": 8415,
       "length": 4,
       "value": "64.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 7896,
+      "offset": 8565,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 7902,
+      "offset": 8571,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 8010,
+      "offset": 8679,
       "length": 3,
       "value": "0.6"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 8061,
+      "offset": 8730,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 8084,
+      "offset": 8753,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 8126,
+      "offset": 8795,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "StringLiteral",
-      "offset": 8190,
+      "offset": 8859,
       "length": 5,
       "value": "\"✕\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 8262,
+      "offset": 8931,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 8537,
+      "offset": 9206,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 8543,
+      "offset": 9212,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "StringLiteral",
-      "offset": 8774,
+      "offset": 9443,
       "length": 20,
       "value": "\"ic_floating_bubble\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "StringLiteral",
-      "offset": 8897,
+      "offset": 9566,
       "length": 16,
       "value": "\"logo_oeg_login\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "StringLiteral",
-      "offset": 9025,
+      "offset": 9694,
       "length": 21,
       "value": "\"gamecontroller.fill\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 9523,
+      "offset": 10192,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 9559,
+      "offset": 10228,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 9596,
+      "offset": 10265,
       "length": 3,
       "value": "1.5"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 9645,
+      "offset": 10314,
       "length": 4,
       "value": "0x33"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 9652,
+      "offset": 10321,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 9706,
+      "offset": 10375,
       "length": 4,
       "value": "0x33"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 9713,
+      "offset": 10382,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 9766,
+      "offset": 10435,
       "length": 4,
       "value": "0x33"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 9773,
+      "offset": 10442,
       "length": 5,
       "value": "255.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 9827,
+      "offset": 10496,
       "length": 3,
       "value": "1.0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 9961,
+      "offset": 10630,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 9967,
+      "offset": 10636,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 10212,
+      "offset": 10881,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 10223,
+      "offset": 10892,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "IntegerLiteral",
-      "offset": 10260,
+      "offset": 10929,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "FloatLiteral",
-      "offset": 10297,
+      "offset": 10966,
       "length": 4,
       "value": "0.15"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 15863,
+      "offset": 16532,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "StringLiteral",
-      "offset": 16003,
+      "offset": 16672,
       "length": 8,
       "value": "\"square\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "StringLiteral",
-      "offset": 16069,
+      "offset": 16738,
       "length": 23,
       "value": "\"checkmark.square.fill\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Dashboard\/FloatingBubbleManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 16198,
+      "offset": 16867,
       "length": 5,
       "value": "false"
     },
@@ -68160,481 +69380,481 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 21403,
+      "offset": 21531,
       "length": 15,
       "value": "\"FacebookAppID\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 21510,
+      "offset": 21638,
       "length": 23,
       "value": "\"FBSDKCoreKit.Settings\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 21702,
+      "offset": 21830,
       "length": 28,
       "value": "[\"shared\", \"sharedSettings\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22180,
+      "offset": 22308,
       "length": 11,
       "value": "\"setAppID:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22410,
+      "offset": 22538,
       "length": 21,
       "value": "\"FacebookClientToken\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22552,
+      "offset": 22680,
       "length": 17,
       "value": "\"setClientToken:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23027,
+      "offset": 23155,
       "length": 17,
       "value": "\"TikTokClientKey\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23138,
+      "offset": 23266,
       "length": 34,
       "value": "\"TikTokOpenSDKApplicationDelegate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 23268,
+      "offset": 23396,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23671,
+      "offset": 23799,
       "length": 44,
       "value": "\"application:didFinishLaunchingWithOptions:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24181,
+      "offset": 24309,
       "length": 50,
       "value": "\"TikTok SDK initialized (TTKSDKAuthRequest found)\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24397,
+      "offset": 24525,
       "length": 19,
       "value": "\"TTKSDKAuthRequest\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24466,
+      "offset": 24594,
       "length": 74,
       "value": "\"TikTok SDK: TTKSDKAuthRequest not found — SDK may have renamed classes\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 24750,
+      "offset": 24878,
       "length": 64,
       "value": "[\"FBSDKCoreKit.ApplicationDelegate\", \"FBSDKApplicationDelegate\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 25095,
+      "offset": 25223,
       "length": 28,
       "value": "[\"shared\", \"sharedInstance\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 25485,
+      "offset": 25613,
       "length": 44,
       "value": "\"application:didFinishLaunchingWithOptions:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27699,
+      "offset": 27827,
       "length": 34,
       "value": "\"FBSDKCoreKit.ApplicationDelegate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27816,
+      "offset": 27944,
       "length": 8,
       "value": "\"shared\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27898,
+      "offset": 28026,
       "length": 8,
       "value": "\"shared\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 28054,
+      "offset": 28182,
       "length": 30,
       "value": "\"application:openURL:options:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 28483,
+      "offset": 28611,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 28660,
+      "offset": 28788,
       "length": 51,
       "value": "\"application:openURL:sourceApplication:annotation:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 29174,
+      "offset": 29302,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 29369,
+      "offset": 29497,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30156,
+      "offset": 30284,
       "length": 58,
       "value": "\"TikTok URL scheme callback handled by TikTokSignInHelper\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 30255,
+      "offset": 30383,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30487,
+      "offset": 30615,
       "length": 18,
       "value": "\"TTKSDKURLHandler\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30570,
+      "offset": 30698,
       "length": 16,
       "value": "\"handleOpenURL:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 30839,
+      "offset": 30967,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31535,
+      "offset": 31663,
       "length": 62,
       "value": "\"TTKSDKURLHandler instance.handleOpenURL returned: \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31596,
+      "offset": 31724,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 31655,
+      "offset": 31783,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 32018,
+      "offset": 32146,
       "length": 59,
       "value": "\"TTKSDKURLHandler class.handleOpenURL returned: \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 32076,
+      "offset": 32204,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32135,
+      "offset": 32263,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32182,
+      "offset": 32310,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32637,
+      "offset": 32765,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 33096,
+      "offset": 33224,
       "length": 18,
       "value": "\"TTKSDKURLHandler\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 33211,
+      "offset": 33339,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 33624,
+      "offset": 33752,
       "length": 16,
       "value": "\"handleOpenURL:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34034,
+      "offset": 34162,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34323,
+      "offset": 34451,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34354,
+      "offset": 34482,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 65973,
+      "offset": 66199,
       "length": 26,
       "value": "\"OEGSDKWillPresentLoginUI\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 66060,
+      "offset": 66286,
       "length": 25,
       "value": "\"OEGSDKDidDismissLoginUI\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 739,
       "length": 16,
       "value": "\"banner_18_over\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 896,
       "length": 19,
       "value": "\"banner_18_over_lp\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1040,
       "length": 10,
       "value": "\"bg-check\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1179,
       "length": 12,
       "value": "\"bg-checked\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1318,
       "length": 11,
       "value": "\"btn_apple\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1454,
       "length": 10,
       "value": "\"btn_back\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1591,
       "length": 11,
       "value": "\"btn_close\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1723,
       "length": 8,
       "value": "\"btn_fb\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 1860,
       "length": 12,
       "value": "\"btn_google\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2001,
       "length": 12,
       "value": "\"btn_tiktok\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2146,
       "length": 14,
       "value": "\"btn_verified\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2289,
       "length": 12,
       "value": "\"btn_verify\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2424,
       "length": 9,
       "value": "\"eye_off\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2554,
       "length": 8,
       "value": "\"eye_on\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2698,
       "length": 16,
       "value": "\"ic_arrow_right\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2845,
       "length": 13,
       "value": "\"ic_calendar\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 2987,
       "length": 12,
       "value": "\"ic_confirm\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3118,
       "length": 7,
       "value": "\"ic_fb\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3269,
       "length": 20,
       "value": "\"ic_floating_bubble\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3408,
       "length": 7,
       "value": "\"ic_gg\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3545,
       "length": 13,
       "value": "\"ic_play_now\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3687,
       "length": 12,
       "value": "\"ic_success\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3828,
       "length": 12,
       "value": "\"ic_warning\""
     },
     {
-      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/.build\/xcframework-build\/derived-sim\/Build\/Intermediates.noindex\/ArchiveIntermediates\/OegSdkV2\/IntermediateBuildFilesPath\/OegSdkV2.build\/Release-iphonesimulator\/OegSdkV2-t.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
       "offset": 3976,
       "length": 16,

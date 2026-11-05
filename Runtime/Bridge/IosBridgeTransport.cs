@@ -13,13 +13,15 @@ namespace Alogame.SDK.Bridge
     /// </summary>
     internal sealed class IosBridgeTransport : IBridgeTransport
     {
+        // C `int` + one-byte C `bool`, matching `AlogameUnity_Setup(_: Int32, _: Bool)` in
+        // AlogameUnityBridge.swift. Without I1, a C# bool marshals as a 4-byte Win32 BOOL.
         [DllImport("__Internal")]
-        private static extern void AlogameUnity_Setup();
+        private static extern void AlogameUnity_Setup(int gameId, [MarshalAs(UnmanagedType.I1)] bool debugEnv);
 
         [DllImport("__Internal")]
         private static extern void AlogameUnity_SendToNative(string jsonPayload);
 
-        public void Initialize() => AlogameUnity_Setup();
+        public void Initialize(int gameId, bool debugEnv) => AlogameUnity_Setup(gameId, debugEnv);
 
         public void SendToNative(string jsonPayload) => AlogameUnity_SendToNative(jsonPayload);
     }

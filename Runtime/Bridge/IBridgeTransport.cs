@@ -9,7 +9,7 @@ namespace Alogame.SDK.Bridge
     internal interface IBridgeTransport
     {
         /// <summary>One-time setup — wires the native SDK bootstrap and the result callback.</summary>
-        void Initialize();
+        void Initialize(int gameId, bool debugEnv);
 
         /// <summary>Sends a serialized `{method, params, callbackId}` JSON payload to native.</summary>
         void SendToNative(string jsonPayload);

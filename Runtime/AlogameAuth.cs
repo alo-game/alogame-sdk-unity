@@ -45,8 +45,8 @@ namespace Alogame.SDK
         /// complete the OAuth flow itself and supply the resulting accessToken.
         /// </summary>
         /// <param name="authorizationCode">Optional authorization code (Apple Sign-In)</param>
-        /// <param name="nonce">Optional nonce (Apple Sign-In)</param>
-        /// <param name="codeVerifier">Optional PKCE code verifier (TikTok on Android)</param>
+        /// <param name="nonce">Optional nonce (Apple Sign-In, iOS only — the Android SDK takes none)</param>
+        /// <param name="codeVerifier">Optional PKCE code verifier (iOS only — the Android SDK takes none)</param>
         public static async Task<AuthResult> SocialLogin(
             SocialProvider provider,
             string accessToken,
@@ -89,6 +89,22 @@ namespace Alogame.SDK
                 ["uuid"] = uuid,
                 ["provider"] = provider.ToWireValue(),
                 ["accessToken"] = accessToken,
+            });
+            return AuthResult.FromJson(raw);
+        }
+
+        /// <summary>
+        /// Attach an Alo ID (username + password) to the current social or guest account, so the
+        /// player can also sign in with it (e.g. on the web top-up portal). Plain-text password.
+        /// </summary>
+        public static async Task<AuthResult> LinkAloId(string username, string pass, string fullname = null, string email = null)
+        {
+            var raw = await Bridge.AlogameBridge.CallNative("auth.linkAloId", new Dictionary<string, object>
+            {
+                ["username"] = username,
+                ["pass"] = pass,
+                ["fullname"] = fullname,
+                ["email"] = email,
             });
             return AuthResult.FromJson(raw);
         }
@@ -158,7 +174,9 @@ namespace Alogame.SDK
         public static async Task<AuthUser> GetCurrentUser()
         {
             var raw = await Bridge.AlogameBridge.CallNative("auth.getCurrentUser", null);
-            return AuthUser.FromJson(raw as Dictionary<string, object>);
+            var json = raw as Dictionary<string, object>;
+            // Logged out resolves {loggedIn: false}, not null.
+            return json != null && AuthUser.LooksLikeUser(json) ? AuthUser.FromJson(json) : null;
         }
 
         /// <summary>Returns true if a user session is active.</summary>
@@ -171,11 +189,61 @@ namespace Alogame.SDK
 
         // ── UI ───────────────────────────────────────────────────────────────────
 
-        /// <summary>Launch the built-in SDK login/register UI.</summary>
+        /// <summary>
+        /// Show the SDK's login/register UI and complete when the player is in. With a stored
+        /// session it completes without showing the login screen (after the maintenance check).
+        /// Throws <see cref="AlogameSdkException"/> if the player closes the screen or login fails.
+        /// Subscribe to <see cref="SessionEnded"/> and <see cref="LoggedIn"/> as well: the SDK's
+        /// dashboard can log the player out and back in later, without another call from the game.
+        /// </summary>
         public static async Task<AuthResult> ShowLoginUI()
         {
             var raw = await Bridge.AlogameBridge.CallNative("auth.showLoginUI", null);
             return AuthResult.FromJson(raw);
+        }
+
+        /// <summary>Show the SDK's change-password screen; completes when the password was changed.</summary>
+        public static Task ShowChangePassword() => Bridge.AlogameBridge.CallNative("ui.showChangePassword", null);
+
+        /// <summary>
+        /// Show the SDK's profile editor. Android opens the edit screen directly and completes with
+        /// the updated user; iOS opens the account dashboard (its profile editor is reached from
+        /// there) and completes once it is shown.
+        /// </summary>
+        public static async Task<AuthResult> ShowUpdateProfile()
+        {
+            var raw = await Bridge.AlogameBridge.CallNative("ui.showUpdateProfile", null);
+            return AuthResult.FromJson(raw);
+        }
+
+        // ── Events ───────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// The session ended outside the game's control — the player logged out or deleted the
+        /// account from the SDK dashboard. Return to your title screen; the SDK shows its login
+        /// screen and raises <see cref="LoggedIn"/> when the player is back. Main thread. Raised
+        /// only after <see cref="ShowLoginUI"/> has been called once.
+        /// </summary>
+        public static event System.Action<string> SessionEnded;
+
+        /// <summary>
+        /// The player logged in through the SDK UI without a pending <see cref="ShowLoginUI"/> call
+        /// — after a logout from the dashboard. Treat it like a fresh login. Main thread.
+        /// </summary>
+        public static event System.Action<AuthUser> LoggedIn;
+
+        internal static void DispatchSessionEnded(string message) => Raise(SessionEnded, message);
+        internal static void DispatchLoggedIn(AuthUser user) => Raise(LoggedIn, user);
+
+        // One throwing subscriber must not stop the others, nor unwind into the bridge.
+        private static void Raise<T>(System.Action<T> handlers, T value)
+        {
+            if (handlers == null) return;
+            foreach (var handler in handlers.GetInvocationList())
+            {
+                try { ((System.Action<T>)handler)(value); }
+                catch (System.Exception e) { UnityEngine.Debug.LogException(e); }
+            }
         }
 
         // ── Game Role ─────────────────────────────────────────────────────────────
@@ -203,6 +271,13 @@ namespace Alogame.SDK
         public static Task LogoutGameRole()
         {
             return Bridge.AlogameBridge.CallNative("auth.logoutGameRole", null);
+        }
+
+        /// <summary>The active character, or null when none is set.</summary>
+        public static async Task<GameRole> GetGameRole()
+        {
+            var raw = await Bridge.AlogameBridge.CallNative("auth.getGameRole", null);
+            return GameRole.FromJson(raw);
         }
     }
 

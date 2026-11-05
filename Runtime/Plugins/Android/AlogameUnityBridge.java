@@ -20,8 +20,8 @@ public final class AlogameUnityBridge {
 
     private AlogameUnityBridge() {}
 
-    public static void setup(Activity activity) {
-        OEGBridge.setupHeadless(activity, json ->
+    public static void setup(Activity activity, int gameId, boolean debugEnv) {
+        OEGBridge.setupHeadless(activity, gameId, debugEnv, json ->
             UnityPlayer.UnitySendMessage(CALLBACK_GAME_OBJECT, CALLBACK_METHOD, json)
         );
     }

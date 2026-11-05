@@ -101,6 +101,10 @@ namespace Alogame.SDK
         public string Country;
         public string Province;
 
+        /// <summary>True when the payload carries a user, not e.g. <c>{loggedIn: false}</c>.</summary>
+        internal static bool LooksLikeUser(Dictionary<string, object> json) =>
+            !string.IsNullOrEmpty(JsonField.Str(json, "uuid")) || !string.IsNullOrEmpty(JsonField.Str(json, "userId"));
+
         internal static AuthUser FromJson(Dictionary<string, object> json)
         {
             if (json == null) return null;
@@ -140,16 +144,34 @@ namespace Alogame.SDK
         public LoginMetadata LoginMetadata;
         public AlogameError Error;
 
+        /// <summary>
+        /// Builds the result of a call that resolved (a rejected call throws
+        /// <see cref="AlogameSdkException"/> instead). Both native bridges resolve auth calls with
+        /// the user object itself as <c>data</c> — <c>{uuid, userId, username, token, ...}</c> —
+        /// not with a <c>{success, user}</c> envelope; reading only the envelope keys made every
+        /// successful login come back as <c>Success = false, User = null</c>. The envelope is still
+        /// accepted in case a bridge sends it.
+        /// </summary>
         internal static AuthResult FromJson(object raw)
         {
             var json = raw as Dictionary<string, object>;
             if (json == null) return new AuthResult { Success = false };
+
+            if (json.ContainsKey("user") || json.ContainsKey("success"))
+            {
+                return new AuthResult
+                {
+                    Success = JsonField.Bool(json, "success") || JsonField.Obj(json, "user") != null,
+                    User = AuthUser.FromJson(JsonField.Obj(json, "user")),
+                    LoginMetadata = LoginMetadata.FromJson(JsonField.Obj(json, "loginMetadata")),
+                    Error = AlogameError.FromJson(JsonField.Obj(json, "error")),
+                };
+            }
+
             return new AuthResult
             {
-                Success = JsonField.Bool(json, "success"),
-                User = AuthUser.FromJson(JsonField.Obj(json, "user")),
-                LoginMetadata = LoginMetadata.FromJson(JsonField.Obj(json, "loginMetadata")),
-                Error = AlogameError.FromJson(JsonField.Obj(json, "error")),
+                Success = true,
+                User = AuthUser.LooksLikeUser(json) ? AuthUser.FromJson(json) : null,
             };
         }
     }
@@ -188,6 +210,32 @@ namespace Alogame.SDK
             {
                 Verified = JsonField.Bool(json, "verified"),
                 Error = AlogameError.FromJson(JsonField.Obj(json, "error")),
+            };
+        }
+    }
+
+    // ─── Game Role ──────────────────────────────────────────────────────────────
+
+    /// <summary>The active character reported with <see cref="AlogameAuth.SetGameRole"/>.</summary>
+    public sealed class GameRole
+    {
+        public string ServerId;
+        public string ServerName;
+        public string RoleId;
+        public string RoleName;
+        public int? Level;
+
+        internal static GameRole FromJson(object raw)
+        {
+            var json = raw as Dictionary<string, object>;
+            if (json == null || !JsonField.Bool(json, "hasRole")) return null;
+            return new GameRole
+            {
+                ServerId = JsonField.Str(json, "serverId"),
+                ServerName = JsonField.Str(json, "serverName"),
+                RoleId = JsonField.Str(json, "roleId"),
+                RoleName = JsonField.Str(json, "roleName"),
+                Level = JsonField.NullableInt(json, "level"),
             };
         }
     }

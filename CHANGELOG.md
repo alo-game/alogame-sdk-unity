@@ -2,6 +2,80 @@
 
 All notable changes to this package are documented here.
 
+## [1.0.0] - 2026-11-02
+
+Ships the native Android SDK **1.5.3** and iOS SDK **1.5.5** (0.1.x shipped 1.4.x), and
+initializes the way the native SDKs do.
+
+### Changed — breaking
+- **`AlogameSDK.Initialize(int gameId, bool debugEnv = false)`** replaces `Initialize()`. The game
+  id is the only value the game passes; social credentials, feature flags and tracking come from
+  the server per game. `debugEnv: true` selects the dev backend. A game still calling
+  `Initialize()` gets compile error CS7036 naming `gameId`.
+- **`oeg_config.json` is no longer read**, on either platform. Delete it from
+  `Assets/StreamingAssets/`. The iOS build hook no longer copies it to the bundle root.
+- `OEGBridge.setupHeadless` (Android `oeg-bridge.aar` and `Runtime/Plugins/iOS/OEGBridge.swift`)
+  now takes `gameId` and `debugEnv` and initializes through `OegSdk.init(context, gameId, debugEnv)`
+  / `OegSdkCore.Builder().setGameId(_:).setDebugEnv(_:).build()`. The Egret `setup(...)` path is
+  unchanged.
+
+### Fixed
+- **iOS build: `Unable to resolve module dependency: 'AppsFlyerLib'`.** The 1.5.x xcframework
+  imports AppsFlyer; the build hook now adds `AppsFlyerFramework-Static` 7.0.2
+  (product `AppsFlyerLib-Static`), and GoogleSignIn moves to 7.1.0 to match the native SDK.
+- **Android: AppsFlyer missing at runtime.** `com.appsflyer:af-android-sdk:7.0.1` is an
+  `implementation` dependency of the native SDK and is now declared by the Gradle hook.
+- Android sends the app's `versionName` as `game_version` (native 1.5.3), like iOS.
+
+### Added
+- `AlogameAnalytics.DeepLinkResolved` — AppsFlyer OneLink deep links (direct and deferred), as AppsFlyer's raw click-event payload (`deep_link_value`, `deep_link_sub1`…`10`, `is_deferred`, `media_source`, `campaign`, ...). Raised on the main thread; a link resolved before anything subscribes is delivered once to the first subscriber. Requires AppsFlyer as the game's attribution provider. Do not also register `OEGAnalytics.setAttributionListener` / `attributionDelegate` natively: the bridge owns the SDK's single listener.
+- Incoming links are forwarded to the SDK automatically: `AlogameSDK.Initialize` subscribes to `Application.deepLinkActivated` and forwards the launch `Application.absoluteURL`. Before this, Unity's own app controller took every link, so on iOS a OneLink could not open an installed game with its data. `AlogameAnalytics.ProcessDeeplink(url)` is public for links received some other way.
+
+### Fixed — login and payment did not work end to end
+- **Every auth call reported failure.** Both native bridges resolve with the user object, while
+  `AuthResult` read `{success, user}`: `Login`, `Register`, `PlayNow`, `SocialLogin`, `Merge`,
+  `UpdateProfile`, `FetchUserInfo` and `ShowLoginUI` returned `Success = false, User = null`
+  after a successful login. Both payload shapes are accepted now.
+- **Android `ShowLoginUI` resolved before the player logged in** (`{launched: true}`), and skipped
+  the maintenance check and update-info / link-account gates of a stored session. It now goes
+  through `OegSdk.showLogin` and resolves with the user.
+- **Android id/password login, register, merge sent the password unencoded.** The Android SDK
+  takes it base64-encoded (its own UI encodes; iOS encodes internally); the bridge encodes now.
+- **Android: omitted optional parameters were sent as the text `"null"`**, and `SetGameRole`
+  without a level / `UpdateProfile` without a gender never completed. C# no longer sends
+  nulls, and the bridge reads JSON null as "not provided"; a failing handler now answers
+  its call instead of leaving it pending.
+- Android floating-button calls run on the UI thread (they came from Unity's thread).
+- Android account errors use the same codes as iOS (409 / 404 / 403 / 401) instead of 500.
+- `GetCurrentUser` returns null when logged out (was an empty `AuthUser`).
+- iOS purchase goes through `OEGManager.inAppPurchase`, like native iOS games: a guest is
+  offered to link the account first, the loading overlay shows, and a second purchase while
+  one runs is refused (`409`) instead of never completing.
+- iOS `Info.plist`: URL schemes and query schemes are appended, not replaced; Facebook gets
+  `FacebookAppID`, `FacebookClientToken` and the `fb<id>` scheme (the bare id before);
+  `NSAllowsArbitraryLoads` is no longer set.
+
+### Added
+- `AlogameAuth.SessionEnded` / `LoggedIn` events: the SDK dashboard's logout and account
+  deletion end the session, and its login screen starts a new one — the game was never told.
+- `AlogamePush.MessageReceived` / `TokenRefreshed` events.
+- `AlogameSDK.ShowDashboard()`, `AlogameAuth.ShowChangePassword()`, `ShowUpdateProfile()`,
+  `LinkAloId(username, pass)`, `GetGameRole()`.
+- **iOS push works**: `AlogameAppDelegateListener.mm` forwards the APNs token, and the new
+  *Enable iOS Push Notifications* setting adds the capability, background mode and
+  `UNITY_USES_REMOTE_NOTIFICATIONS`. `GetDeviceToken` returns the token on iOS.
+- **iOS Facebook / TikTok / Google login**: their Swift packages are added when enabled, both
+  SDKs are started at launch, callback URLs reach the SDK, and `GoogleService-Info.plist`
+  under `Assets` is copied with its `REVERSED_CLIENT_ID` scheme.
+- **Android Firebase without Gradle edits**: `google-services.json` under `Assets` becomes the
+  Firebase resources (skipped when the Firebase Unity SDK is present).
+- The build fails early on Android when the minimum API level is below 24.
+- `Samples~/BasicIntegration/LoginSample`: every call and event on one IMGUI screen.
+
+### Re-vendored
+- `oeg-sdk.aar` (1.5.3), `OegSdkV2.xcframework` (1.5.5, dSYMs and `DebugSymbolsPath` stripped)
+  and `oeg-bridge.aar` (rebuilt against 1.5.3 with the bridge fixes above) all include OneLink delivery.
+
 ## [0.1.2] - 2026-08-24
 
 First release since 0.1.0 to change the native binaries. 0.1.0 and 0.1.1 both shipped the

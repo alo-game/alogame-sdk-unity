@@ -100,6 +100,7 @@
 "oeg_fill_fullname" = "Vui lòng nhập họ tên";
 "oeg_fill_email" = "Vui lòng nhập email";
 "oeg_invalid_email" = "Email không hợp lệ";
+"oeg_invalid_phone" = "Số điện thoại không hợp lệ";
 "oeg_fill_phone" = "Vui lòng nhập số điện thoại";
 "oeg_fill_birthday" = "Vui lòng nhập ngày sinh";
 
@@ -138,7 +139,9 @@
 
 /* Terms */
 "oeg_terms_agree_prefix" = "Tôi đã đọc và đồng ý với ";
-"oeg_terms_of_service" = "Điều khoản sử dụng dịch vụ và Chính sách bảo vệ dữ liệu cá nhân (mục đích xử lý dữ liệu cơ bản)";
+"oeg_terms_of_service" = "Điều khoản sử dụng dịch vụ";
+"oeg_terms_and_privacy_connector" = " và ";
+"oeg_privacy_basic_policy" = "Chính sách bảo vệ dữ liệu cá nhân (mục đích xử lý dữ liệu cơ bản)";
 "oeg_privacy_optional_prefix" = "Tôi đồng ý với ";
 "oeg_privacy_optional_policy" = "Chính sách bảo vệ dữ liệu cá nhân (mục đích xử lý dữ liệu tuỳ chọn)";
 "oeg_consent_master" = "Tôi đã đọc và đồng ý với các điều khoản";
@@ -164,6 +167,7 @@
 
 /* Force Update Popup */
 "oeg_force_update_message" = "Đã có phiên bản mới (%@). Vui lòng cập nhật để tiếp tục chơi.";
+"oeg_force_update_message_no_version" = "Đã có phiên bản mới. Vui lòng cập nhật để tiếp tục chơi.";
 "oeg_force_update_now" = "Cập nhật ngay";
 "oeg_force_update_continue_old" = "Tiếp tục dùng bản cũ";
 "oeg_bubble_hide_title" = "Ẩn Floating Button?";
@@ -176,8 +180,9 @@
 
 /* Link Account */
 "oeg_link_account" = "Liên kết tài khoản";
-"oeg_link_account_iap_warning" = "Bạn đang sử dụng tài khoản chơi ngay và chưa liên kết, có rủi ro mất thông tin tài khoản, đề nghị tiến hành liên kết tài khoản OEG ID, tiếp tục?";
-"oeg_link_account_guest_prompt" = "Bạn có muốn liên kết tài khoản khách với tài khoản OEG?";
+"oeg_link_account_iap_warning" = "Bạn đang sử dụng tài khoản chơi ngay và chưa liên kết, có rủi ro mất thông tin tài khoản, đề nghị tiến hành liên kết tài khoản ALO ID, tiếp tục?";
+"oeg_link_account_guest_prompt" = "Bạn có muốn liên kết tài khoản khách với tài khoản ALO ID?";
+"oeg_link_alo_id" = "Liên kết ALO ID";
 "oeg_link" = "Liên kết";
 "oeg_skip" = "Bỏ qua";
 "oeg_continue_payment" = "Tiếp tục thanh toán";

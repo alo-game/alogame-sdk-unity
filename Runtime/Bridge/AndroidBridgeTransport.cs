@@ -13,11 +13,11 @@ namespace Alogame.SDK.Bridge
     {
         private const string BridgeClass = "com.alogame.unity.AlogameUnityBridge";
 
-        public void Initialize()
+        public void Initialize(int gameId, bool debugEnv)
         {
             using var activity = GetCurrentActivity();
             using var clazz = new AndroidJavaClass(BridgeClass);
-            clazz.CallStatic("setup", activity);
+            clazz.CallStatic("setup", activity, gameId, debugEnv);
         }
 
         public void SendToNative(string jsonPayload)

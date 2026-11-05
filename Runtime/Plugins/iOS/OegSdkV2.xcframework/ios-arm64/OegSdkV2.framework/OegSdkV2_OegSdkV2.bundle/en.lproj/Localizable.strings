@@ -100,6 +100,7 @@
 "oeg_fill_fullname" = "Please enter full name";
 "oeg_fill_email" = "Please enter email";
 "oeg_invalid_email" = "Invalid email address";
+"oeg_invalid_phone" = "Invalid phone number";
 "oeg_fill_phone" = "Please enter phone number";
 "oeg_fill_birthday" = "Please enter birthday";
 
@@ -138,7 +139,9 @@
 
 /* Terms */
 "oeg_terms_agree_prefix" = "I have read and agree to the ";
-"oeg_terms_of_service" = "Terms of Service and Privacy Policy (basic data processing purposes)";
+"oeg_terms_of_service" = "Terms of Service";
+"oeg_terms_and_privacy_connector" = " and ";
+"oeg_privacy_basic_policy" = "Privacy Policy (basic data processing purposes)";
 "oeg_privacy_optional_prefix" = "I agree to the ";
 "oeg_privacy_optional_policy" = "Privacy Policy (optional data processing purposes)";
 "oeg_consent_master" = "I have read and agree to the terms";
@@ -164,6 +167,7 @@
 
 /* Force Update Popup */
 "oeg_force_update_message" = "A new version (%@) is available. Please update to continue playing.";
+"oeg_force_update_message_no_version" = "A new version is available. Please update to continue playing.";
 "oeg_force_update_now" = "Update now";
 "oeg_force_update_continue_old" = "Continue with old version";
 "oeg_bubble_hide_title" = "Hide Floating Button?";
@@ -176,8 +180,9 @@
 
 /* Link Account */
 "oeg_link_account" = "Link Account";
-"oeg_link_account_iap_warning" = "You are using a guest account and have not linked it yet. There is a risk of losing account information. Please link your OEG ID account to continue.";
-"oeg_link_account_guest_prompt" = "Do you want to link your guest account with an OEG account?";
+"oeg_link_account_iap_warning" = "You are using a guest account and have not linked it yet. There is a risk of losing account information. Please link your ALO ID account to continue.";
+"oeg_link_account_guest_prompt" = "Do you want to link your guest account with an ALO ID?";
+"oeg_link_alo_id" = "Link ALO ID";
 "oeg_link" = "Link";
 "oeg_skip" = "Skip";
 "oeg_continue_payment" = "Continue Payment";

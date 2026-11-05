@@ -12,47 +12,25 @@ namespace Alogame.SDK.Editor
     /// <summary>
     /// Configures the generated Xcode project so a game developer never has to open it.
     ///
-    /// Three things Unity does not do on its own:
+    /// Two things Unity does not do on its own:
     ///
     ///  1. SWIFT_VERSION — this package ships two .swift files (OEGBridge.swift, the shared
     ///     dispatch table, and AlogameUnityBridge.swift, the @_cdecl front door). No Unity
     ///     template target sets a Swift language version, so without this both fail with
     ///     "Swift language version not specified".
     ///
-    ///  2. Embed + rpath — OegSdkV2 and AdjustSigSdk are *dynamic* frameworks. Unity copies
-    ///     them into the project and links them, but does not embed them, and a dynamic
-    ///     framework that is linked and not embedded is absent from the .app at runtime. Both
-    ///     the embed and LD_RUNPATH_SEARCH_PATHS are required; missing either produces a build
-    ///     that succeeds and then dies at launch with "Library not loaded".
-    ///
-    ///  3. oeg_config.json — the iOS SDK reads it from `Bundle.main`, but Unity puts
-    ///     StreamingAssets under Data/Raw/, which is not the bundle root. See CopyConfig below.
+    ///  2. Embed + rpath — OegSdkV2 is a *dynamic* framework. Unity copies it into the project
+    ///     and links it, but does not embed it, and a dynamic framework that is linked and not
+    ///     embedded is absent from the .app at runtime. Both the embed and
+    ///     LD_RUNPATH_SEARCH_PATHS are required; missing either produces a build that succeeds
+    ///     and then dies at launch with "Library not loaded".
     ///
     /// Unity 2019.3+ generates two targets: plugins compile into UnityFramework, while the
     /// .app is the main target and only the main target can embed.
     ///
-    /// ── On the Adjust duplicate-class warning ────────────────────────────────────────────
-    /// At runtime the console reports classes like ADJAdRevenue "implemented in both" the app
-    /// binary and OegSdkV2.framework. That is a known consequence of how the xcframework is
-    /// built, not a misconfiguration here, and it is not currently avoidable from Unity:
-    ///
-    ///   * OegSdkV2.xcframework links AdjustSdk, GoogleSignIn and FirebaseAnalytics
-    ///     *statically* — `nm -gU` reports OBJC_CLASS_$_ADJAdRevenue, _GIDSignIn, _FIRAnalytics
-    ///     and _FIRApp as defined, with no matching undefined symbols.
-    ///   * But its `.swiftinterface` still imports AdjustSdk, FirebaseAnalytics, FirebaseCore
-    ///     and GoogleSignIn, so anything doing `import OegSdkV2` — i.e. OEGBridge.swift — fails
-    ///     to compile unless those modules are resolvable. Dropping the packages produces
-    ///     "Unable to resolve module dependency: 'FirebaseAnalytics'".
-    ///   * AdjustSigSdk is a genuine *dynamic* dependency (OegSdkV2 carries an
-    ///     @rpath/AdjustSigSdk.framework load command and does not define ADJSigner), and the
-    ///     Adjust package ships it. Vendoring our own copy as well collides at the Products
-    ///     path — "Multiple commands produce .../AdjustSigSdk.framework".
-    ///
-    /// So the packages must be present to compile, and Adjust must reach the main target to get
-    /// AdjustSigSdk embedded, which is exactly what makes the static copy duplicate. The real
-    /// fix is upstream: build OegSdkV2.xcframework without statically absorbing its
-    /// dependencies. Until then this configuration is the one verified to build, install and
-    /// run on a device.
+    /// Adjust is intentionally NOT one of the packages below — OegSdkV2 no longer depends on it
+    /// (v2/ios/Package.swift), so there is no AdjustSigSdk dynamic dependency to embed and no
+    /// duplicate-class workaround needed here.
     /// </summary>
     public static class AlogameIosPostprocessBuild
     {
@@ -60,8 +38,6 @@ namespace Alogame.SDK.Editor
 
         /// <summary>
         /// Dynamic frameworks vendored under Runtime/Plugins/iOS that must be embedded.
-        /// AdjustSigSdk is not here: it arrives with the Adjust package and is embedded via
-        /// EmbedInApp below — see the class summary.
         /// </summary>
         private static readonly string[] EmbeddedFrameworks =
         {
@@ -75,17 +51,31 @@ namespace Alogame.SDK.Editor
         /// package, and all three are common in mobile games.
         ///
         /// EmbedInApp additionally links the product into the main target, which is what makes
-        /// Xcode embed that package's dynamic frameworks into the .app. Only Adjust needs it
-        /// (for AdjustSigSdk.framework); GoogleSignIn and FirebaseAnalytics resolve as static
-        /// libraries, and linking a static library into both targets would duplicate every
-        /// symbol it defines.
+        /// Xcode embed that package's dynamic frameworks into the .app. Neither package below
+        /// currently needs it — both resolve as static libraries, and linking a static library
+        /// into both targets would duplicate every symbol it defines. Kept as a per-entry flag
+        /// for any future dynamic-framework dependency.
         /// </summary>
         private static readonly (string Url, string Version, string[] Products, bool EmbedInApp)[] SwiftPackages =
         {
-            ("https://github.com/google/GoogleSignIn-iOS", "7.0.0", new[] { "GoogleSignIn" }, false),
-            ("https://github.com/adjust/ios_sdk", "5.0.0", new[] { "AdjustSdk" }, true),
-            ("https://github.com/firebase/firebase-ios-sdk", "10.24.0", new[] { "FirebaseAnalytics" }, false),
+            ("https://github.com/google/GoogleSignIn-iOS", "7.1.0", new[] { "GoogleSignIn" }, false),
+            ("https://github.com/firebase/firebase-ios-sdk", "12.19.2", new[] { "FirebaseAnalytics" }, false),
+            // Product is "AppsFlyerLib-Static", not the package name — same as v2/ios/Package.swift.
+            ("https://github.com/AppsFlyerSDK/AppsFlyerFramework-Static", "7.0.2", new[] { "AppsFlyerLib-Static" }, false),
         };
+
+        /// <summary>
+        /// Optional social-login SDKs, added only when enabled in AlogameSDKSettings. The native
+        /// SDK reaches them by reflection, so they are linked into the app target only (nothing
+        /// in UnityFramework imports them); Xcode embeds their dynamic frameworks from there.
+        /// Versions match what native Alogame games ship with (OEGM2: facebook-ios-sdk 19.x;
+        /// tiktok-opensdk-ios 2.5.x).
+        /// </summary>
+        private static readonly (string Url, string Version, string[] Products) FacebookPackage =
+            ("https://github.com/facebook/facebook-ios-sdk", "19.0.0", new[] { "FacebookLogin" });
+
+        private static readonly (string Url, string Version, string[] Products) TikTokPackage =
+            ("https://github.com/tiktok/tiktok-opensdk-ios", "2.5.0", new[] { "TikTokOpenAuthSDK", "TikTokOpenSDKCore" });
 
         // 100 so this runs after Unity's own project generation and after
         // AlogameBuildPostprocessor (order 0), which edits Info.plist rather than the pbxproj.
@@ -113,11 +103,129 @@ namespace Alogame.SDK.Editor
                 project.AddBuildProperty(t, "LD_RUNPATH_SEARCH_PATHS", "@executable_path/Frameworks");
             }
 
+            var settings = AlogameSDKSettings.LoadOrNull();
+
             AddSwiftPackages(project, mainTarget, frameworkTarget);
+            AddSocialPackages(project, mainTarget, settings);
             EmbedFrameworks(project, mainTarget, pathToBuiltProject);
-            CopyConfig(project, mainTarget, pathToBuiltProject);
+            FixConfigurationBuildDir(project, mainTarget);
+            AddGoogleServiceInfo(project, mainTarget, pathToBuiltProject);
 
             project.WriteToFile(projectPath);
+
+            // After the PBXProject write: ProjectCapabilityManager reads and writes the project
+            // file itself.
+            if (settings != null && settings.enableIosPushNotifications)
+                EnablePush(projectPath, mainTarget, pathToBuiltProject, settings.iosPushDevelopmentEnvironment);
+        }
+
+        private static void AddSocialPackages(PBXProject project, string mainTarget, AlogameSDKSettings settings)
+        {
+            if (settings == null) return;
+            var packages = new List<(string Url, string Version, string[] Products)>();
+            if (settings.enableFacebookLogin) packages.Add(FacebookPackage);
+            if (settings.enableTikTokLogin) packages.Add(TikTokPackage);
+            foreach (var (url, version, products) in packages)
+            {
+                var packageGuid = project.AddRemotePackageReferenceAtVersionUpToNextMajor(url, version);
+                foreach (var product in products)
+                    project.AddRemotePackageFrameworkToProject(mainTarget, product, packageGuid, false);
+                Debug.Log(Tag + " added " + url + " (" + string.Join(", ", products) + ").");
+            }
+        }
+
+        /// <summary>
+        /// Google Sign-In on iOS needs the client id (the SDK reads CLIENT_ID from
+        /// GoogleService-Info.plist) and the reversed client id as a URL scheme. Firebase reads
+        /// the same file. Copies Assets/**/GoogleService-Info.plist into the app bundle and
+        /// registers the scheme; without the file Google login cannot start.
+        /// </summary>
+        private static void AddGoogleServiceInfo(PBXProject project, string mainTarget, string pathToBuiltProject)
+        {
+            var source = AlogameAssetSearch.FindInAssets("GoogleService-Info.plist");
+            if (source == null)
+            {
+                Debug.LogWarning(Tag + " no GoogleService-Info.plist under Assets — Google login and Firebase " +
+                                 "will not work on iOS. Download it from the Firebase console (iOS app with this " +
+                                 "bundle id) and put it anywhere under Assets.");
+                return;
+            }
+
+            const string fileName = "GoogleService-Info.plist";
+            File.Copy(source, Path.Combine(pathToBuiltProject, fileName), true);
+            if (string.IsNullOrEmpty(project.FindFileGuidByProjectPath(fileName)))
+            {
+                var fileGuid = project.AddFile(fileName, fileName, PBXSourceTree.Source);
+                project.AddFileToBuild(mainTarget, fileGuid);
+            }
+
+            var google = new PlistDocument();
+            google.ReadFromFile(source);
+            var reversed = google.root["REVERSED_CLIENT_ID"]?.AsString();
+            var bundleId = google.root["BUNDLE_ID"]?.AsString();
+            if (!string.IsNullOrEmpty(bundleId) && bundleId != PlayerSettings.applicationIdentifier)
+                Debug.LogWarning(Tag + " GoogleService-Info.plist is for bundle id '" + bundleId + "' but the app is '" +
+                                 PlayerSettings.applicationIdentifier + "'. Google login will fail.");
+            if (string.IsNullOrEmpty(reversed))
+            {
+                Debug.LogWarning(Tag + " GoogleService-Info.plist has no REVERSED_CLIENT_ID — enable Google Sign-In " +
+                                 "for the iOS app in Firebase and download the file again.");
+                return;
+            }
+
+            var infoPath = Path.Combine(pathToBuiltProject, "Info.plist");
+            var info = new PlistDocument();
+            info.ReadFromFile(infoPath);
+            AlogameBuildPostprocessor.AddUrlScheme(info.root, reversed);
+            File.WriteAllText(infoPath, info.WriteToString());
+            Debug.Log(Tag + " copied GoogleService-Info.plist and registered the Google URL scheme.");
+        }
+
+        /// <summary>
+        /// Push capability + remote-notification background mode, and turns on Unity's
+        /// remote-notification app-delegate methods: with UNITY_USES_REMOTE_NOTIFICATIONS 0
+        /// UnityAppController does not implement didRegisterForRemoteNotificationsWithDeviceToken:,
+        /// so the APNs token never reaches AlogameAppDelegateListener.mm and the backend never
+        /// learns the device.
+        /// </summary>
+        private static void EnablePush(string projectPath, string mainTarget, string pathToBuiltProject, bool development)
+        {
+            var entitlements = "Unity-iPhone/" + PlayerSettings.productName.Replace(" ", "") + ".entitlements";
+            var capabilities = new ProjectCapabilityManager(projectPath, entitlements, null, mainTarget);
+            capabilities.AddPushNotifications(development);
+            capabilities.AddBackgroundModes(BackgroundModesOptions.RemoteNotifications);
+            capabilities.WriteToFile();
+
+            var preprocessor = Path.Combine(pathToBuiltProject, "Classes", "Preprocessor.h");
+            if (File.Exists(preprocessor))
+            {
+                var text = File.ReadAllText(preprocessor);
+                var updated = text.Replace("#define UNITY_USES_REMOTE_NOTIFICATIONS 0", "#define UNITY_USES_REMOTE_NOTIFICATIONS 1");
+                if (updated != text) File.WriteAllText(preprocessor, updated);
+            }
+            else
+            {
+                Debug.LogError(Tag + " Classes/Preprocessor.h not found — the APNs token will not reach the SDK.");
+            }
+            Debug.Log(Tag + " enabled Push Notifications (aps-environment " + (development ? "development" : "production") + ").");
+        }
+
+        /// <summary>
+        /// Unity's iOS export template sets CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)" on the
+        /// main target for *every* configuration, so Debug and Release (and therefore a
+        /// regular build vs. an Archive) all resolve SPM binary targets into the same output
+        /// directory. OegSdkV2 is a signed binary xcframework, so the two configs each try to
+        /// copy their own "OegSdkV2.xcframework-ios.signature" into that shared path — the
+        /// second one to run fails with "couldn't be copied ... because an item with the same
+        /// name already exists". Re-expanding it to Xcode's own per-configuration default
+        /// restores the separation without disturbing anything else Unity relies on BUILD_DIR
+        /// for. This has to be re-applied on every export because Unity regenerates the whole
+        /// pbxproj from its template each time.
+        /// </summary>
+        private static void FixConfigurationBuildDir(PBXProject project, string mainTarget)
+        {
+            project.SetBuildProperty(mainTarget, "CONFIGURATION_BUILD_DIR",
+                "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)");
         }
 
         private static void AddSwiftPackages(PBXProject project, string mainTarget, string frameworkTarget)
@@ -208,38 +316,6 @@ namespace Alogame.SDK.Editor
             if (!slice.StartsWith("ios-")) return false;
             if (slice.Contains("maccatalyst")) return false;
             return slice.Contains("-simulator") == wantSimulator;
-        }
-
-        /// <summary>
-        /// The iOS SDK loads its config with
-        /// `Bundle.main.url(forResource: "oeg_config", withExtension: "json")` (see
-        /// SdkConfig.swift). Unity places StreamingAssets under `Data/Raw/` inside the bundle,
-        /// which that lookup does not search — so a game that follows the Android instructions
-        /// and drops the file in StreamingAssets silently gets the default config, and the SDK
-        /// initialises with `game_id = 0` and then fails remote config with a bundle-ID
-        /// mismatch. Observed on device before this was added.
-        ///
-        /// Copying rather than asking the developer to add it to Xcode by hand keeps a single
-        /// source of truth: StreamingAssets/oeg_config.json serves both platforms.
-        /// </summary>
-        private static void CopyConfig(PBXProject project, string mainTarget, string pathToBuiltProject)
-        {
-            const string fileName = "oeg_config.json";
-            var source = Path.Combine(pathToBuiltProject, "Data/Raw", fileName);
-            if (!File.Exists(source))
-            {
-                Debug.LogWarning(Tag + " no " + fileName + " in StreamingAssets — the SDK will start with " +
-                                 "an empty config (game_id 0) and every call will fail. Add your game's " +
-                                 fileName + " to Assets/StreamingAssets/.");
-                return;
-            }
-
-            var destination = Path.Combine(pathToBuiltProject, fileName);
-            File.Copy(source, destination, true);
-
-            var guid = project.AddFile(destination, fileName, PBXSourceTree.Source);
-            project.AddFileToBuild(mainTarget, guid);
-            Debug.Log(Tag + " copied " + fileName + " to the app bundle root.");
         }
     }
 }

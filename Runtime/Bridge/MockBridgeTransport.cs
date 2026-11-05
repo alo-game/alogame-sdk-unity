@@ -11,9 +11,9 @@ namespace Alogame.SDK.Bridge
     /// </summary>
     internal sealed class MockBridgeTransport : IBridgeTransport
     {
-        public void Initialize()
+        public void Initialize(int gameId, bool debugEnv)
         {
-            Debug.Log("[Alogame Mock SDK] Initialized (Editor/standalone preview mode).");
+            Debug.Log($"[Alogame Mock SDK] Initialized for game {gameId} (debugEnv={debugEnv}, Editor/standalone preview mode).");
         }
 
         public void SendToNative(string jsonPayload)
@@ -28,9 +28,32 @@ namespace Alogame.SDK.Bridge
             {
                 ["callbackId"] = callbackId,
                 ["success"] = true,
-                ["data"] = new Dictionary<string, object>(),
+                ["data"] = MockData(method),
             };
             AlogameBridge.HandleNativeResult(Json.Serialize(response));
+        }
+
+        private static readonly HashSet<string> UserMethods = new()
+        {
+            "auth.login", "auth.register", "auth.playNow", "auth.socialLogin", "auth.merge",
+            "auth.mergeSocial", "auth.showLoginUI", "auth.fetchUserInfo", "auth.updateProfile",
+            "auth.linkAloId", "auth.getCurrentUser", "ui.showUpdateProfile",
+        };
+
+        /// <summary>Shaped like the native bridges' payloads so game code takes its success path.</summary>
+        private static object MockData(string method)
+        {
+            if (UserMethods.Contains(method))
+            {
+                return new Dictionary<string, object>
+                {
+                    ["id"] = "mock-uuid", ["uuid"] = "mock-uuid", ["userId"] = "0",
+                    ["username"] = "editor", ["displayName"] = "Editor", ["token"] = "mock-token",
+                    ["isPlayNow"] = false, ["loginType"] = "oeg", ["accountStatus"] = "active",
+                };
+            }
+            if (method == "payment.queryProducts") return new List<object>();
+            return new Dictionary<string, object>();
         }
     }
 }
