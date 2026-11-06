@@ -66307,21 +66307,21 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 21568,
+      "offset": 22336,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 31359,
+      "offset": 32712,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/Core\/Public\/OegSdkCore.swift",
       "kind": "StringLiteral",
-      "offset": 32963,
+      "offset": 34316,
       "length": 20,
       "value": "\"OEGConfigDidUpdate\""
     },
@@ -69366,329 +69366,336 @@
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1285,
+      "offset": 1369,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1803,
+      "offset": 1887,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 21531,
+      "offset": 15481,
+      "length": 35,
+      "value": "\"A purchase is already in progress\""
+    },
+    {
+      "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
+      "kind": "StringLiteral",
+      "offset": 22403,
       "length": 15,
       "value": "\"FacebookAppID\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 21638,
+      "offset": 22510,
       "length": 23,
       "value": "\"FBSDKCoreKit.Settings\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 21830,
+      "offset": 22702,
       "length": 28,
       "value": "[\"shared\", \"sharedSettings\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22308,
+      "offset": 23180,
       "length": 11,
       "value": "\"setAppID:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22538,
+      "offset": 23410,
       "length": 21,
       "value": "\"FacebookClientToken\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 22680,
+      "offset": 23552,
       "length": 17,
       "value": "\"setClientToken:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23155,
+      "offset": 24027,
       "length": 17,
       "value": "\"TikTokClientKey\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23266,
+      "offset": 24138,
       "length": 34,
       "value": "\"TikTokOpenSDKApplicationDelegate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 23396,
+      "offset": 24268,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 23799,
+      "offset": 24671,
       "length": 44,
       "value": "\"application:didFinishLaunchingWithOptions:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24309,
+      "offset": 25181,
       "length": 50,
       "value": "\"TikTok SDK initialized (TTKSDKAuthRequest found)\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24525,
+      "offset": 25397,
       "length": 19,
       "value": "\"TTKSDKAuthRequest\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 24594,
+      "offset": 25466,
       "length": 74,
       "value": "\"TikTok SDK: TTKSDKAuthRequest not found — SDK may have renamed classes\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 24878,
+      "offset": 25750,
       "length": 64,
       "value": "[\"FBSDKCoreKit.ApplicationDelegate\", \"FBSDKApplicationDelegate\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 25223,
+      "offset": 26095,
       "length": 28,
       "value": "[\"shared\", \"sharedInstance\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 25613,
+      "offset": 26485,
       "length": 44,
       "value": "\"application:didFinishLaunchingWithOptions:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27827,
+      "offset": 28699,
       "length": 34,
       "value": "\"FBSDKCoreKit.ApplicationDelegate\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 27944,
+      "offset": 28816,
       "length": 8,
       "value": "\"shared\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 28026,
+      "offset": 28898,
       "length": 8,
       "value": "\"shared\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 28182,
+      "offset": 29054,
       "length": 30,
       "value": "\"application:openURL:options:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 28611,
+      "offset": 29483,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 28788,
+      "offset": 29660,
       "length": 51,
       "value": "\"application:openURL:sourceApplication:annotation:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 29302,
+      "offset": 30174,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 29497,
+      "offset": 30369,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30284,
+      "offset": 31156,
       "length": 58,
       "value": "\"TikTok URL scheme callback handled by TikTokSignInHelper\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 30383,
+      "offset": 31255,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30615,
+      "offset": 31487,
       "length": 18,
       "value": "\"TTKSDKURLHandler\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 30698,
+      "offset": 31570,
       "length": 16,
       "value": "\"handleOpenURL:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 30967,
+      "offset": 31839,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31663,
+      "offset": 32535,
       "length": 62,
       "value": "\"TTKSDKURLHandler instance.handleOpenURL returned: \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 31724,
+      "offset": 32596,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 31783,
+      "offset": 32655,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 32146,
+      "offset": 33018,
       "length": 59,
       "value": "\"TTKSDKURLHandler class.handleOpenURL returned: \""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 32204,
+      "offset": 33076,
       "length": 22,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32263,
+      "offset": 33135,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32310,
+      "offset": 33182,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 32765,
+      "offset": 33637,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 33224,
+      "offset": 34096,
       "length": 18,
       "value": "\"TTKSDKURLHandler\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "Array",
-      "offset": 33339,
+      "offset": 34211,
       "length": 28,
       "value": "[\"sharedInstance\", \"shared\"]"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 33752,
+      "offset": 34624,
       "length": 16,
       "value": "\"handleOpenURL:\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34162,
+      "offset": 35034,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34451,
+      "offset": 35323,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 34482,
+      "offset": 35354,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 66199,
+      "offset": 67071,
       "length": 26,
       "value": "\"OEGSDKWillPresentLoginUI\""
     },
     {
       "filePath": "\/Users\/thohd\/Dev\/OEG-Workspace\/Workspace\/v2\/ios\/Sources\/OegSdkV2\/UI\/Public\/OEGManager.swift",
       "kind": "StringLiteral",
-      "offset": 66286,
+      "offset": 67158,
       "length": 25,
       "value": "\"OEGSDKDidDismissLoginUI\""
     },

@@ -2,6 +2,34 @@
 
 All notable changes to this package are documented here.
 
+## [1.0.1] - 2026-11-06
+
+Ships the native Android SDK **1.5.4** and iOS SDK **1.5.6**. No C# API changes.
+
+### Fixed — Android payment
+- **A paid purchase could be lost when Google Play reported the item as already owned.** The SDK
+  consumed the purchase even when server verification failed, so the player paid and got
+  nothing. It now consumes only after the server credits it (or reports it already credited);
+  otherwise the purchase is kept and verified again after the next login.
+- "Already owned" now picks the purchase of the product being bought, not the first owned one.
+- Purchases saved for a later retry (server or network error) now record the player and the
+  game data, so they can actually be retried.
+- Undelivered purchases are retried after every login, including the automatic login of a saved
+  session (only the login screen did before, and only when billing was already connected).
+
+### Fixed — crashes
+- **Android:** logout no longer crashes when the game does not include Credential Manager
+  (`androidx.credentials`).
+- **iOS:** the SDK no longer asks for App Tracking Transparency when `Info.plist` has no
+  `NSUserTrackingUsageDescription` (iOS terminates the app in that case). The Unity build hook
+  already writes the key; this protects games that remove it.
+
+### Fixed — iOS payment
+- The player level from `SetGameRole` / purchase `GameData` reaches the server (it was always 1).
+
+### Removed
+- Stray `Runtime/.mnemos/` metadata files that 1.0.0 shipped by mistake.
+
 ## [1.0.0] - 2026-11-02
 
 Ships the native Android SDK **1.5.3** and iOS SDK **1.5.5** (0.1.x shipped 1.4.x), and
